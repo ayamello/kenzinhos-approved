@@ -20,6 +20,9 @@ const GlobalStyle = createGlobalStyle`
     button {
         cursor: pointer;
     }
+    h1 {
+        font-family: ---title-font;
+    }
 `;
 
 export default GlobalStyle;
