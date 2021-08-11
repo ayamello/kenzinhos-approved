@@ -1,10 +1,14 @@
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../Services/api";
-import { InputContainer, TitleContainer } from "../Signup/styles";
-import { FormContainer, MainContainer } from "./styles";
+import {
+  TitleContainer,
+  InputContainer,
+  FormContainer,
+  MainContainer,
+} from "./styles";
 import { Button, TextField } from "@material-ui/core";
 
 const Login = () => {
@@ -38,13 +42,13 @@ const Login = () => {
   };
 
   const handleClick = () => {
-    history.push('/signup')
-}
+    history.push("/signup");
+  };
   return (
     <MainContainer>
       <TitleContainer>
         <h1>Não é cadastrado?</h1>
-        <button onClick={handleClick}>Cadastre-se</button>
+        <Link to="/signup">Cadastre-se</Link>
       </TitleContainer>
       <FormContainer>
         <h1>Login</h1>

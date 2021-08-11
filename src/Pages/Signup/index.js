@@ -8,6 +8,7 @@ import { Button, TextField } from "@material-ui/core";
 import { FormContainer } from "./styles";
 import { InputContainer } from "./styles";
 import { TitleContainer } from "./styles";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -111,14 +112,14 @@ const Signup = () => {
               type="submit"
               className="submitButton"
             >
-              Cadastro
+              Cadastrar
             </Button>
           </InputContainer>
         </form>
       </FormContainer>
       <TitleContainer>
         <h1>Já é cadastrado?</h1>
-        <button onClick={handleClick}>Login</button>
+        <Link to='/login'>login</Link>
       </TitleContainer>
     </MainContainer>
   );
