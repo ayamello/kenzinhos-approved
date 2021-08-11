@@ -1,6 +1,11 @@
+import { HomeContainer } from "./styles";
+import HomeCard from "../../Components/HomeCard";
+
 const Home = () => {
     return(
-        <div></div>
+        <div>
+            <HomeCard/>
+        </div>
     );
 }
 
