@@ -41,9 +41,6 @@ const Login = () => {
     // .catch((err) => toast.error("Verificar email"));
   };
 
-  const handleClick = () => {
-    history.push("/signup");
-  };
   return (
     <MainContainer>
       <TitleContainer>
