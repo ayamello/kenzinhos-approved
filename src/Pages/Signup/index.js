@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router";
-import { Form, MainContainer } from "./styles";
+import { MainContainer } from "./styles";
 import { Button, TextField } from "@material-ui/core";
 import { FormContainer } from "./styles";
 import { InputContainer } from "./styles";
@@ -43,6 +43,10 @@ const Signup = () => {
     //   .catch((err) =>
     //     // toast.error("Erro ao criar a conta. Email já cadastrado")
     //   );
+  }
+
+  const handleClick = () => {
+      history.push('/login')
   }
 
   return (
@@ -107,14 +111,14 @@ const Signup = () => {
               type="submit"
               className="submitButton"
             >
-              login
+              Cadastro
             </Button>
           </InputContainer>
         </form>
       </FormContainer>
       <TitleContainer>
         <h1>Já é cadastrado?</h1>
-        <button>Login</button>
+        <button onClick={handleClick}>Login</button>
       </TitleContainer>
     </MainContainer>
   );
