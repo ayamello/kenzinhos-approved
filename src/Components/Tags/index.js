@@ -4,7 +4,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
-import { SubTitleContainer, TitleContainer, useStyles } from "./styles";
+import {
+  DescriprionContainer,
+  SubTitleContainer,
+  TitleContainer,
+  useStyles,
+} from "./styles";
 
 const Tags = () => {
   const classes = useStyles();
@@ -35,71 +40,51 @@ const Tags = () => {
 
   return (
     <>
-      <div>
-        <Accordion className={classes.root}>
+      {groups.map((group) => (
+        <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
             <Typography className={classes.heading}>
-              {groups.map((group) => (
-                <div key={group.id}>
-                  <TitleContainer>
-                    <h3>{group.name}</h3>
-                    <h5>{group.category}</h5>
-                  </TitleContainer>
-                  <SubTitleContainer>
-                    <span>Atividades: {group.activities.length}</span>
-                    <span>Metas: {group.goals.length}</span>
-                  </SubTitleContainer>
-                </div>
-              ))}
+              <div key={group.id}>
+                <TitleContainer>
+                  <span>{group.name}</span>
+                  <p>{group.category}</p>
+                </TitleContainer>
+                <SubTitleContainer>
+                  <span>Atividades: {group.activities.length}</span>
+                  <span>Metas: {group.goals.length}</span>
+                </SubTitleContainer>
+              </div>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
+            <Typography className={classes.lowerMenu}>
+              <span>Atividades:</span>
+              {group.activities.map((activity) => (
+                <DescriprionContainer key={activity.id}>
+                  <p>{activity.title}</p>
+                  <p>Finalizar em: {activity.realization_time}</p>
+                </DescriprionContainer>
+              ))}
+              <hr></hr>
+              <span>Metas:</span>
+              {group.goals.map((goal) => (
+                <DescriprionContainer key={goal.id}>
+                  <p>{goal.title}</p>
+                  <p>Nível: {goal.difficulty}</p>
+                  {/* <span>{goal.achieved ? 'Sim' : 'Não'}</span>
+                    <span>{goal.how_much_achieved}</span> */}
+                </DescriprionContainer>
+              ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
-      </div>
+      ))}
     </>
   );
 };
 
 export default Tags;
-// const getGroups = (token) => {
-//     api
-//       .get("groups/subscriptions/", {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//       .then((response) => {
-//         setGroups([...response.data]);
-//       })
-//       .catch((err) => console.log(err));
-//   };
-//   const deleteGroup = (id) => {
-//     api
-//       .delete(`groups/${id}/unsubscribe/`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//       .then(() => {
-//         getGroups(token);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-//   useEffect(() => {
-//     getGroups(token);
-//   }, [token]);
-//   return (
-//     <GroupsUserContext.Provider value={{ groups, setGroups, getGroups }}>
-//       {children}
-//     </GroupsUserContext.Provider>
-//   );
-// };
-// export const useGroupsUser = () => useContext(GroupsUserContext);
