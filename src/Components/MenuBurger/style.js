@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    padding: 0.5vh 0.5vw;
+    padding: 0.5vh 2vw;
+
     button {
         width: 30px;
         height: 27px;
