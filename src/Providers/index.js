@@ -1,8 +1,10 @@
+import { HabitsProvider } from './Habits'
+
 const Providers = ({children}) => {
     return(
-        <div>
+        <HabitsProvider>
             {children}
-        </div>
+        </HabitsProvider>
     );
 }
 
