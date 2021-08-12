@@ -1,4 +1,5 @@
-import { Accordion, AccordionSummary, Typography } from "@material-ui/core";
+import { Accordion, Typography } from "@material-ui/core";
+import { AccordionSummary } from "./styles";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";

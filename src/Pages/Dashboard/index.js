@@ -1,11 +1,11 @@
-import Tags from "../../Components/Tags"
+import NavbarDash from "../../Components/NavbarDash";
 
 const Dashboard = () => {
-    return(
-        <div>
-            <Tags/>
-        </div>
-    );
-}
+  return (
+    <div>
+      <NavbarDash />
+    </div>
+  );
+};
 
 export default Dashboard;
