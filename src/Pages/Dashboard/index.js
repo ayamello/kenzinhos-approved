@@ -1,11 +1,11 @@
-import NavbarDash from '../../Components/NavbarDash';
+import NavbarDash from "../../Components/NavbarDash";
 
 const Dashboard = () => {
-    return(
-        <div>
-            <NavbarDash/>
-        </div>
-    );
-}
+  return (
+    <div>
+      <NavbarDash />
+    </div>
+  );
+};
 
 export default Dashboard;
