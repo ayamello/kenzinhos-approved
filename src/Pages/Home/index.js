@@ -8,7 +8,17 @@ import { HomeContainer,
         HomeCardsContainer 
     } from "./styles";
 
+import { useHistory } from "react-router";
+
 const Home = () => {
+
+
+    const history = useHistory();
+
+    const sendTo = (path) => {
+        history.push(path);
+      };
+
     return(
         <HomeContainer>
             <HomeHeader>                
@@ -26,8 +36,8 @@ const Home = () => {
                     Potencialize seu aprendizado
                 </h1>
                 <div>
-                    <ButtonPurple>Cadastre-se</ButtonPurple>
-                    <ButtonWhite>Login</ButtonWhite>
+                    <ButtonPurple onClick={() => sendTo('/cadastro')}>Cadastre-se</ButtonPurple>
+                    <ButtonWhite onClick={() => sendTo('/login')}>Login</ButtonWhite>
                 </div>
             </BodyContainer>
             <ImgContainer>
