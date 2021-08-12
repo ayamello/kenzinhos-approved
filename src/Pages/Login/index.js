@@ -43,7 +43,11 @@ const Login = () => {
         localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
         history.push("/dashboard", { data: decoded.user_id });
       })
-      .catch((err) => toast.error("Não foi possível fazer o login. Verifique dados informados"));
+      .catch((err) =>
+        toast.error(
+          "Não foi possível fazer o login. Verifique dados informados"
+        )
+      );
   };
 
   return (
@@ -81,15 +85,17 @@ const Login = () => {
             />
           </InputContainer>
           <InputContainer>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              type="submit"
-              className="submitButton"
-            >
-              login
-            </Button>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                type="submit"
+                className="submitButton"
+              >
+                login
+              </Button>
+            </div>
           </InputContainer>
         </form>
       </FormContainer>
