@@ -3,12 +3,12 @@ import { HomeContainer,
         BodyContainer, 
         ButtonPurple, 
         ButtonWhite, 
-        ImgContainer,
         HomeCards, 
         HomeCardsContainer 
     } from "./styles";
 
 import { useHistory } from "react-router";
+import SimpleMenu from "../../Components/SimpleMenu";
 
 const Home = () => {
 
@@ -21,14 +21,13 @@ const Home = () => {
 
     return(
         <HomeContainer>
-            <HomeHeader>                
-                <h1>Kenzinhos</h1>       
+            <HomeHeader>                  
                 <nav>
                     <a href='/'>Home</a>
                     <a href='/quemsomos'>Quem somos</a>
                     <a href='/contato'>Contato</a>
                 </nav>
-                <button>=</button>
+                <SimpleMenu/>
             </HomeHeader>
             <BodyContainer>
                 <h1>
@@ -40,9 +39,6 @@ const Home = () => {
                     <ButtonWhite onClick={() => sendTo('/login')}>Login</ButtonWhite>
                 </div>
             </BodyContainer>
-            <ImgContainer>
-                Imagem
-            </ImgContainer>
             <HomeCardsContainer>
                 <HomeCards>
                     <h1>M</h1>

@@ -1,26 +1,30 @@
 import styled from "styled-components";
-// import background from
-
+import backgroundDesktop from "../../Assets/Img/home.png";
+import backgroundMobile from "../../Assets/Img/homeMobile.png";
 
 export const HomeContainer = styled.div`
 
-    background-color: purple;
+    background: url(${backgroundMobile});
+    background-size: cover;
     width: 100%;
     height: 100vh;
     
+    @media (min-width: 768px){
+
+        background: url(${backgroundDesktop});
+        background-size: cover;
+        
+        
+    }
 `;
 
 
 export const HomeHeader = styled.header`
 
-    display: flex;
-    justify-content:space-between;
-    padding: 5%;
-    align-items: center;
-
-    h1{
-        color: white;
-    }
+    text-align: right;
+    padding-top: 9%;
+    padding-right: 5%;
+    
 
     button{
         color: white;
@@ -33,7 +37,9 @@ export const HomeHeader = styled.header`
 
     @media (min-width: 768px){
 
-        padding: 2%;
+        padding-top: 5.5%;
+        display: flex;
+        justify-content: flex-end;
 
         button{
             display: none;
@@ -52,21 +58,18 @@ export const HomeHeader = styled.header`
 
     @media (min-width: 1024px){
 
-        h1{
-            margin-left: 5%;
-        }
-
-        nav{
-            margin-right: 5%;
-        }
+        padding-top: 5%;
+        
     }
 
 `;
 
+
 export const BodyContainer = styled.div`
 
-    margin: 10%;
+    margin: 15%;
     width: 65%;
+    
 
     h1{
         color: white;
@@ -82,7 +85,7 @@ export const BodyContainer = styled.div`
 
     @media (min-width: 768px) {
 
-        margin: 5%;
+        margin: 7%;
         margin-left: 15%;
         width: 30%;
 
@@ -90,32 +93,16 @@ export const BodyContainer = styled.div`
 
     @media (min-width: 1024px){
 
-        width: 50%;
-
         h1{
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
     }
 
 `;
 
-export const ImgContainer = styled.div`
-
-    margin: auto;
-    width: 150px;
-    height: 150px;
-    background-color: gray;
-
-    @media (min-width: 768px){
-
-        display: none;
-    }
-
-`;
 
 export const HomeCardsContainer = styled.div`
 
-    /* background-image: src($); */
     display: none;
     
 
@@ -137,11 +124,12 @@ export const HomeCardsContainer = styled.div`
 
 export const HomeCards = styled.div`
     
-    width: 140px;
-    height: 170px;
+    width: 120px;
+    height: 160px;
     background-color: white;
     text-align: center;
     border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1px solid grey;
     display: flex;
     flex-direction: column;
@@ -162,8 +150,8 @@ export const HomeCards = styled.div`
 
     @media (min-width: 1024px){
 
-        width: 170px;
-        height: 200px;
+        width: 140px;
+        height: 170px;
     }
 
 `;
@@ -191,3 +179,4 @@ export const ButtonPurple = styled.button`
         font-size: 1rem;
     
 `;
+
