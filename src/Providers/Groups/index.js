@@ -6,7 +6,7 @@ const GroupsUserContext = createContext();
 
 export const GroupsUserProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
-  const { token } = useToken();
+  const { token } = JSON.parse(localStorage.getItem("@Kenzinho:token"));
 
   const getGroups = (token) => {
     api
@@ -22,6 +22,18 @@ export const GroupsUserProvider = ({ children }) => {
   const deleteGroup = (id) => {
     api
       .delete(`groups/${id}/unsubscribe/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        getGroups(token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const subscribeToAGroup = (id) => {
+    api
+      .post(`groups/${id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
