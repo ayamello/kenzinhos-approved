@@ -1,6 +1,12 @@
+import CreateHabitsModal from "../../Components/CreateHabitsModal"
+import Habits from "../../Components/Habits"
+
 const Dashboard = () => {
     return(
-        <div></div>
+        <div>
+            <CreateHabitsModal/>
+            <Habits/>
+        </div>
     );
 }
 
