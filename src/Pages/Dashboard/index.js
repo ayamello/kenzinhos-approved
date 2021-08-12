@@ -1,6 +1,10 @@
+import Tags from "../../Components/Tags"
+
 const Dashboard = () => {
     return(
-        <div></div>
+        <div>
+            <Tags/>
+        </div>
     );
 }
 
