@@ -7,6 +7,8 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState("");
   const [activities, setNewActivities] = useState();
   const [activitiesGroup, setActivitiesGroup] = useState("");
+  const [group, setGroup] = useState("");
+
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
@@ -18,7 +20,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setNewActivities(response.data))
+      .then((response) => setGroup(response.data))
       .catch((e) => console.log(e));
   }, [activities]);
 
