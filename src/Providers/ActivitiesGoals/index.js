@@ -5,44 +5,160 @@ const ListActivitiesGoalsContext = createContext();
 
 export const ActivitiesGoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState("");
-  const [value, setValue] = useState("");
-  const [change, setChange] = useState(true);
-  const [title, setTitle] = useState();
+  const [activities, setNewActivities] = useState();
   const [activitiesGroup, setActivitiesGroup] = useState("");
-  const group = JSON.parse(localStorage.getItem("@Kenzinho:token"));
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
+  );
 
   useEffect(() => {
     api
-      .get(`/groups/${group}/`)
-      .then((response) => {
-        setTitle(response.data.name);
-        setGoals(response.data.goals);
-        setActivitiesGroup(response.data.activities);
+      .get(`/groups/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch((err) => console.log(err));
-  }, [group, value, change]);
+      .then((response) => setNewActivities(response.data))
+      .catch((e) => console.log(e));
+  }, [activities]);
 
   const handleGoalDelete = (id) => {
-    api.delete(`/goals/${id}/`).then(() => setChange(!change));
+    const newGoals = goals.filter((meta) => meta.id !== id);
+    api.delete
+      .delete(`/goals/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setGoals());
   };
 
   const handleActivieDelete = (id) => {
-    api.delete(`/activities/${id}/`).then(() => setChange(!change));
+    const newActivities = activities.filter((atividade) => atividade.id !== id);
+
+    api
+      .delete(`activities/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setNewActivities(newActivities));
+  };
+
+  const handleGoalCreation = (data) => {
+    const {
+      title,
+      category,
+      difficulty,
+      frequency,
+      achieved,
+      how_much_achieved,
+      user,
+    } = data;
+
+    api
+      .post(
+        "/goals/",
+        {
+          title: title,
+          category: category,
+          difficulty: difficulty,
+          frequency: frequency,
+          achieved: achieved,
+          how_much_achieved: how_much_achieved,
+          user: user,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  };
+  const handleActivitieCreation = (data) => {
+    const {
+      title,
+      category,
+      difficulty,
+      frequency,
+      achieved,
+      how_much_achieved,
+      user,
+    } = data;
+
+    api
+      .post(
+        "/activities/",
+        {
+          title: title,
+          category: category,
+          difficulty: difficulty,
+          frequency: frequency,
+          achieved: achieved,
+          how_much_achieved: how_much_achieved,
+          user: user,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  };
+
+  const updateGoal = (data) => {
+    const { how_much_achieved, achieved, id } = data;
+
+    const newGoal = goals.filter((meta) => goals.id !== id);
+
+    api
+      .patch(
+        `/goals/${goals.id}/`,
+        {
+          how_much_achieved: how_much_achieved,
+          achieved: achieved,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .catch((e) => console.log(e));
+  };
+
+  const updateActivitie = (data) => {
+    const { how_much_achieved, achieved, id } = data;
+
+    const newActivities = activities.filter((atividade) => atividade.id !== id);
+
+    api
+      .patch(
+        `activities/${activities.id}/`,
+        {
+          how_much_achieved: how_much_achieved,
+          achieved: achieved,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .catch((e) => console.log(e));
   };
 
   return (
     <ListActivitiesGoalsContext.Provider
       value={{
-        change,
-        setChange,
         goals,
-        title,
         activitiesGroup,
-        setValue,
-        value,
         handleActivieDelete,
         handleGoalDelete,
-        group,
       }}
     >
       {children}
