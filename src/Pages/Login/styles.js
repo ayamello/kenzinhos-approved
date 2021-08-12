@@ -57,6 +57,9 @@ export const InputContainer = styled.div`
   flex-direction: column;
   height: 20%;
   width: 100%;
+  input {
+    background-color: white;
+  }
   @media screen and (max-width: 600px) {
     height: 33.33%;
   }

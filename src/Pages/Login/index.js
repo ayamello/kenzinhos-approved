@@ -10,6 +10,8 @@ import {
   MainContainer,
 } from "./styles";
 import { Button, TextField } from "@material-ui/core";
+import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const history = useHistory();
@@ -31,14 +33,17 @@ const Login = () => {
   });
 
   const onLoginFunction = (data) => {
-    api.post("/sessions/", data).then((response) => {
-      //   toast.info("Logado com sucesso");
-      const { access } = response.data;
-      localStorage.setItem("@habits:token", JSON.stringify(access));
-      const { username } = response.config.data;
-      history.push("/dashboard", { data: username });
-    });
-    // .catch((err) => toast.error("Verificar email"));
+    api
+      .post("/sessions/", data)
+      .then((response) => {
+        toast.info(`Bem vindo ${data.username}`);
+        const { access } = response.data;
+        const decoded = jwtDecode(access);
+        console.log(decoded);
+        localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
+        history.push("/dashboard", { data: decoded.user_id });
+      })
+      .catch((err) => toast.error("Não foi possível fazer o login. Verifique dados informados"));
   };
 
   return (

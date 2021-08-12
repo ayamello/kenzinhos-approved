@@ -9,6 +9,7 @@ import { FormContainer } from "./styles";
 import { InputContainer } from "./styles";
 import { TitleContainer } from "./styles";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -37,17 +38,15 @@ const Signup = () => {
   const history = useHistory();
   function onSubmitFunction({ username, email, password }) {
     const user = { username, email, password };
-    api.post("/users/", user).then((_) => {
-      // toast.success("Conta criada com sucesso");
-      return history.push("/login");
-    });
-    //   .catch((err) =>
-    //     // toast.error("Erro ao criar a conta. Email já cadastrado")
-    //   );
-  }
-
-  const handleClick = () => {
-      history.push('/login')
+    api
+      .post("/users/", user)
+      .then((_) => {
+        toast.success("Conta criada com sucesso");
+        return history.push("/login");
+      })
+      .catch((err) =>
+        toast.error("Erro ao criar a conta. Email já cadastrado")
+      );
   }
 
   return (
@@ -119,7 +118,7 @@ const Signup = () => {
       </FormContainer>
       <TitleContainer>
         <h1>Já é cadastrado?</h1>
-        <Link to='/login'>login</Link>
+        <Link to="/login">login</Link>
       </TitleContainer>
     </MainContainer>
   );
