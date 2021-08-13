@@ -14,11 +14,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body, input, button{
-       font-family: var(---body-font);
+       font-family: var(--body-font);
     }
-    
+
     h1, h2, h3, h4, h5, h6{
-        font-family: var(---title-font);
+        font-family: var(--title-font);
     }
 
     a {
@@ -27,6 +27,9 @@ const GlobalStyle = createGlobalStyle`
 
     button {
         cursor: pointer;
+    }
+    h1 {
+        font-family: ---title-font;
     }
 `;
 
