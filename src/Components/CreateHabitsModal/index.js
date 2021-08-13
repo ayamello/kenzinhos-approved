@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px',
     borderRadius:'5px',
     boxShadow: '0px 4px 4px rgba(116, 29, 203, 0.57)',
+  },
+  button:{
+    borderRadius: '15px',
   }
 }));
 
@@ -48,8 +51,12 @@ const CreateHabitsModal = () => {
 
   return (
     <div>   
-     
-        <Button onClick={handleOpen}>
+        <Button 
+          className={classes.button}
+          variant='contained'
+          color='primary'
+          size='small'
+          onClick={handleOpen}>
             Criar +
         </Button>
      

@@ -106,9 +106,8 @@ export const HabitsProvider = ({children}) => {
 
     };
 
-    useEffect(() => {
+    useEffect(() => { 
       if(habits === true){
-
         loadHabits() 
       }
       }, []);

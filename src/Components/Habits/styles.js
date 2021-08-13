@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const MainContainer = styled.div`
   max-width: 200px;
   min-width: 200px;
-  height: 250px;
+  height: 230px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -22,6 +22,7 @@ export const MainContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-start;
+  overflow:auto;
   
   div{
     display: flex;
@@ -37,7 +38,7 @@ export const MainContainer = styled.div`
 
 export const TitleContainer = styled.div`
   max-width: 370px;
-  height: 45px;
+  height: 60px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
