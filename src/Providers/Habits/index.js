@@ -1,32 +1,32 @@
 import { createContext, useEffect, useState, useContext } from 'react';
-
-import jwtDecode from "jwt-decode";
-
-import api from '../../Services/api'
+import jwtDecode from 'jwt-decode';
+import api from '../../Services/api';
+import { toast } from 'react-toastify';
 
 const HabitsContext = createContext();
 
 export const HabitsProvider = ({children}) => {
 
-    const [habits, setNewHabits] = useState([])
-
-    const [token] = useState(JSON.parse(localStorage.getItem("@Kenzinho:token")) || "");
-
-  
-
+    const [habits, setNewHabits] = useState([]);
+    const [token] = useState(JSON.parse(localStorage.getItem('@Kenzinho:token')) || '');
 
     const loadHabits = () =>{
+
       api
       .get('habits/personal/', {
         headers: {
           Authorization: `Bearer ${token}`,
         }
       }).then((response) => setNewHabits(response.data))
-        .catch((e) => console.log(e));
-    }
+        .catch((err) => 
+          toast.error('Hábitos não pode ser carregado'));
+
+    };
    
     const createHabit = (data) => {
+
       const decoded = jwtDecode(token)
+
         const { 
             title, 
             category,
@@ -51,10 +51,13 @@ export const HabitsProvider = ({children}) => {
                 Authorization: `Bearer ${token}`,
               }
             }, 
-            ).then(loadHabits())
-             .catch((e) => console.log(e));;
+            )
+            .then(loadHabits())
+            .then(toast.info('Hábito criado'))
+            .catch((err) => 
+              toast.error('Não foi possível criar um hábito. Verifique dados informados'));
 
-    }
+    };
 
     const deleteHabit = (id) =>{
 
@@ -65,10 +68,13 @@ export const HabitsProvider = ({children}) => {
             headers: {
             Authorization: `Bearer ${token}`,
             }
-        }).then((response) => setNewHabits(newHabits))
-          .then(loadHabits());
+        })
+        .then((response) => setNewHabits(newHabits))
+        .then(toast.error('Hábito excluído'))
+        .then(loadHabits())
+        .catch((err) => toast.error('Não foi possível excluir o hábito.'));
 
-    }
+    };
 
     const updateHabit = (data) =>{
 
@@ -89,9 +95,12 @@ export const HabitsProvider = ({children}) => {
                 headers: {
                 Authorization: `Bearer ${token}`,
                 }
-            }).catch((e) => console.log(e));
+            })
+            .then(loadHabits())
+            .then(toast.success('Hábito atualizado'))
+            .catch((err) => toast.error('Não foi possível atualizar o hábito.'));
 
-    }
+    };
 
     useEffect(() => {
       loadHabits() 
@@ -99,7 +108,7 @@ export const HabitsProvider = ({children}) => {
 
 
     return(
-        <HabitsContext.Provider value={{habits, createHabit, deleteHabit}}>
+        <HabitsContext.Provider value={{habits, createHabit, deleteHabit, updateHabit}}>
             {children}
         </HabitsContext.Provider>
     )
