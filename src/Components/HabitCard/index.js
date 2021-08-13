@@ -1,9 +1,22 @@
-import { ButtonContainer, MainContainer, TitleContainer } from './styles'
+import { useState } from 'react'
 import { useHabits } from '../../Providers/Habits'
+import { ButtonContainer, MainContainer, TitleContainer } from './styles'
 
 const HabitCard = ({habit}) => {
 
-const { deleteHabit } = useHabits()
+const [achieved, setAchieved] = useState(habit.achieved);
+const [howMuch, setHowMuch] = useState(habit.how_much_achieved);
+
+const id = habit.id;
+const how_much_achieved = Number(howMuch);
+
+const data = {
+    achieved,
+    how_much_achieved,
+    id   
+};
+
+const { deleteHabit,  updateHabit } = useHabits();
 
     return(
         <MainContainer>
@@ -17,16 +30,27 @@ const { deleteHabit } = useHabits()
             </TitleContainer>
             <TitleContainer>
                 <p>Quanto você evoluiu?</p> 
-                <input type='number' defaultValue={habit.how_much_achieved}/>
-                <input type='checkbox' defaultValue={habit.achieved}/>   
+                <input type='number' 
+                    defaultValue={habit.how_much_achieved}
+                    onChange={((e) => setHowMuch(e.target.value))}/>
+                <input type='checkbox'
+                    defaultValue={habit.achieved} 
+                    checked={achieved} 
+                    onChange={((e) => setAchieved(!achieved))} />   
             </TitleContainer>
             <ButtonContainer>
-                <button className='update'>Atualizar</button>
-                <button className='delete'onClick={() => deleteHabit(habit.id)}>Excluir</button>
+                <button className='update'
+                    onClick={() => updateHabit(data)}>
+                    Atualizar
+                </button> 
+                <button className='delete'
+                    onClick={() => deleteHabit(habit.id)}>
+                    Excluir
+                </button>
             </ButtonContainer>
         </MainContainer>
     )
-}
+};
 
 export default HabitCard
 
