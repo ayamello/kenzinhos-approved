@@ -8,13 +8,13 @@ const Navbar = () => {
     return(
         <Container>
             <Content>
-                <Link to="/dashboard-profile">
+                <Link to="/dashboard">
                     <img src={profile} alt="Imagem de usuário"/>
                     <h4>Perfil</h4>
                     <span>Kenzinho</span>
                 </Link>
 
-                <Link to="/dashboard-groups">
+                <Link to="/groups">
                     <img src={groups} alt="Imagem de usuário"/>
                     <h4>Grupo</h4>
                     <span>Participando: 2</span>
