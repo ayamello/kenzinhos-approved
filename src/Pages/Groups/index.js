@@ -1,55 +1,58 @@
 import { Container, Content } from "./style";
 import NavbarDash from "../../Components/NavbarDash";
-import CardGroup from '../../Components/CardGroup';
+import CardGroup from "../../Components/CardGroup";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
+import CreateGroupsModal from "../../Components/CreateGroupsModal";
 
 const Groups = () => {
   return (
-      <Container>
-          <NavbarDash />
+    <Container>
+      <NavbarDash />
 
-          <Content>
-              <div className="Header">
-                <h2>Groups</h2>
-                <button>Criar +</button>
-              </div>
+      <Content>
+        <div className="Header">
+          <h2>Groups</h2>
+          <CreateGroupsModal />
+        </div>
 
-              <div className="Groups">
-                <div className="GroupsList">
-                  <div className="SearchField">
-                    <input type="text" placeholder="Pesquisar grupo" />
-                    <button>
-                      {" "}
-                      <Search />{" "}
-                    </button>
-                  </div>
+        <div className="Groups">
+          <div className="GroupsList">
+            <div className="SearchField">
+              <input type="text" placeholder="Pesquisar grupo" />
+              <button>
+                {" "}
+                <Search />{" "}
+              </button>
+            </div>
 
-                  <div className="List">
-
-                    <div classsName="Resume">
-                      <div className="HeaderGroup">
-                        <h4>Nome do grupo</h4>
-                        <span>Categoria</span>
-                      </div>
-
-                      <div className="InfosGroup">
-                        <span>Atividades: 2</span>
-                        <span>Metas: 2</span>
-                      </div>
-                    </div>
-                    
-                    <div className="BtnToDetails">
-                        <button> <ArrowForwardIos/> </button>
-                    </div>
-                  </div>
+            <div className="List">
+              <div classsName="Resume">
+                <div className="HeaderGroup">
+                  <h4>Nome do grupo</h4>
+                  <span>Categoria</span>
                 </div>
 
-                <div classNmae="GroupDetails">
-                  <CardGroup/>
+                <div className="InfosGroup">
+                  <span>Atividades: 2</span>
+                  <span>Metas: 2</span>
                 </div>
               </div>
-          </Content>
-      </Container>
+
+              <div className="BtnToDetails">
+                <button>
+                  {" "}
+                  <ArrowForwardIos />{" "}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div classNmae="GroupDetails">
+            <CardGroup />
+          </div>
+        </div>
+      </Content>
+    </Container>
   );
 };
 
