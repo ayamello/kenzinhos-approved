@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
+import Hamburguer from '../../Assets/Img/hamburguer2.png'
+import { HamburguerIcon } from './styles';
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,7 +20,7 @@ export default function SimpleMenu() {
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-      <i class="fas fa-bars"></i>
+      <HamburguerIcon src={Hamburguer} alt="Icone Menu"/>
       </Button>
       <Menu
         id="simple-menu"
