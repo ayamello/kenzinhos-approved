@@ -1,11 +1,11 @@
-import { ActivitiesGoalsProvider } from "./ActivitiesGoals";
+import { HabitsProvider } from './Habits'
 
-const Providers = ({ children }) => {
-  return (
-    <div>
-      <ActivitiesGoalsProvider> {children} </ActivitiesGoalsProvider>
-    </div>
-  );
-};
+const Providers = ({children}) => {
+    return(
+        <HabitsProvider>
+            {children}
+        </HabitsProvider>
+    );
+}
 
 export default Providers;
