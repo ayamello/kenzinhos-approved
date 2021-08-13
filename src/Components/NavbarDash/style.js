@@ -3,7 +3,6 @@ import Background from '../../Assets/Img/navbar-dash.png';
 import BackgroundMob from '../../Assets/Img/navbar-dash-mobile.png';
 
 export const Container = styled.div`
-    position: absolute;
     width: 130px;
     height: 100vh;
     padding: 2vh 0;
@@ -32,6 +31,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     margin-top: 4vh;
+
     a {
         display: block;
         margin: 2vh 0;

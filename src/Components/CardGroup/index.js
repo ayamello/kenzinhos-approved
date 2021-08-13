@@ -5,7 +5,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { ContainerGoals, ContainerActivities } from "./styles";
+import { ContainerGoals, ContainerActivities } from "./style";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 450,
@@ -30,9 +31,11 @@ const useStyles = makeStyles({
     alignItems: "flex-end",
   },
 });
-export default function Group() {
+
+const Group = () => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+  
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -75,3 +78,5 @@ export default function Group() {
     </Card>
   );
 }
+
+export default Group;
