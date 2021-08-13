@@ -12,7 +12,7 @@ export const HabitsProvider = ({children}) => {
 
     const [token] = useState(JSON.parse(localStorage.getItem("@Kenzinho:token")) || "");
 
-    const decoded = jwtDecode(token)
+  
 
 
     const loadHabits = () =>{
@@ -26,6 +26,7 @@ export const HabitsProvider = ({children}) => {
     }
    
     const createHabit = (data) => {
+      const decoded = jwtDecode(token)
         const { 
             title, 
             category,
@@ -64,7 +65,8 @@ export const HabitsProvider = ({children}) => {
             headers: {
             Authorization: `Bearer ${token}`,
             }
-        }).then((response) => setNewHabits(newHabits));
+        }).then((response) => setNewHabits(newHabits))
+          .then(loadHabits());
 
     }
 
@@ -75,8 +77,6 @@ export const HabitsProvider = ({children}) => {
             achieved,
             id,
         } = data
-
-        const newHabits = habits.filter((habit) => habit.id !== id);
 
         api
         .patch(`habits/${id}/`,
@@ -99,7 +99,7 @@ export const HabitsProvider = ({children}) => {
 
 
     return(
-        <HabitsContext.Provider value={{habits, createHabit,}}>
+        <HabitsContext.Provider value={{habits, createHabit, deleteHabit}}>
             {children}
         </HabitsContext.Provider>
     )
