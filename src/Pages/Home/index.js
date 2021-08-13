@@ -34,7 +34,7 @@ const Home = () => {
           aprendizado
         </h1>
         <div>
-          <ButtonPurple onClick={() => sendTo("/cadastro")}>
+          <ButtonPurple onClick={() => sendTo("/signup")}>
             Cadastre-se
           </ButtonPurple>
           <ButtonWhite onClick={() => sendTo("/login")}>Login</ButtonWhite>

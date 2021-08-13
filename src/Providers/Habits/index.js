@@ -51,7 +51,7 @@ export const HabitsProvider = ({children}) => {
                 Authorization: `Bearer ${token}`,
               }
             }, 
-            ).then(loadHabits())
+            ).then(e => console.log(e))
              .catch((e) => console.log(e));;
 
     }
@@ -77,6 +77,8 @@ export const HabitsProvider = ({children}) => {
             achieved,
             id,
         } = data
+
+        const newHabits = habits.filter((habit) => habit.id !== id);
 
         api
         .patch(`habits/${id}/`,

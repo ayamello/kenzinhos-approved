@@ -87,7 +87,7 @@ const Login = () => {
               type="submit"
               className="submitButton"
             >
-              login
+              Entrar
             </Button>
           </InputContainer>
         </form>
