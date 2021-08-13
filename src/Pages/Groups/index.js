@@ -1,6 +1,6 @@
 import NavbarDash from "../../Components/NavbarDash";
 
-const Dashboard = () => {
+const Groups = () => {
   return (
     <div>
       <NavbarDash />
@@ -8,4 +8,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Groups;
