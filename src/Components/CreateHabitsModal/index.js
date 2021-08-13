@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useForm } from "react-hook-form";
-import { makeStyles, Button, TextField, Modal, Backdrop, Fade, Tooltip } from "@material-ui/core";
-import { FormContainer, InputContainer, TitleContainer } from "./styles";
+import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
+import { FormContainer, InputContainer, TitleContainer } from './styles';
+import { makeStyles, Button, TextField, Modal, Backdrop, Fade, Tooltip } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,11 +32,11 @@ const CreateHabitsModal = () => {
 
   const [open, setOpen] = useState(false);
 
+  const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
   const { createHabit } = useHabits();
 
-  const classes = useStyles();
 
   const handleOpen = () => {
     setOpen(true);
@@ -48,8 +48,8 @@ const CreateHabitsModal = () => {
 
   return (
     <div>   
-      <Tooltip title="Add" interactive>
-        <h3 type="button" onClick={handleOpen}>
+      <Tooltip title='Add' interactive>
+        <h3 type='button' onClick={handleOpen}>
             Criar +
         </h3>
       </Tooltip>
@@ -73,52 +73,51 @@ const CreateHabitsModal = () => {
         <div className={classes.inputs}>  
           <InputContainer>
             <TextField
-
-              size="small"
-              id="outlined-basic"
-              label="Título"
-              variant="outlined"
-              color="primary"
+              size='small'
+              id='outlined-basic'
+              label='Título'
+              variant='outlined'
+              color='primary'
               {...register("title")}
             />
           </InputContainer>
           <InputContainer>
             <TextField
-              size="small"
-              id="outlined-basic"
-              label="Categoria"
-              variant="outlined"
-              color="primary"
-              {...register("category")}
+              size='small'
+              id='outlined-basic'
+              label='Categoria'
+              variant='outlined'
+              color='primary'
+              {...register('category')}
             />
           </InputContainer>
           <InputContainer>
             <TextField
-              size="small"
-              id="outlined-basic"
-              label="Dificuldade"
-              variant="outlined"
-              color="primary"
-              {...register("difficulty")}
+              size='small'
+              id='outlined-basic'
+              label='Dificuldade'
+              variant='outlined'
+              color='primary'
+              {...register('difficulty')}
             />
           </InputContainer>
           <InputContainer>
             <TextField
-              size="small"
-              id="outlined-basic"
-              label="Frequência"
-              variant="outlined"
-              {...register("frequency")}
+              size='small'
+              id='outlined-basic'
+              label='Frequência'
+              variant='outlined'
+              {...register('frequency')}
             />
           </InputContainer>
           </div>   
           <InputContainer>
             <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              type="submit"
-              className="submitButton"
+              variant='contained'
+              color='primary'
+              size='small'
+              type='submit'
+              className='submitButton'
             >
               Adicionar
             </Button>
