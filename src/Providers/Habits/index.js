@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 
+import jwtDecode from "jwt-decode";
+
 import api from '../../Services/api'
 
 const HabitsContext = createContext();
@@ -10,16 +12,27 @@ export const HabitsProvider = ({children}) => {
 
     const [token] = useState(JSON.parse(localStorage.getItem("@Kenzinho:token")) || "");
 
-    const createHabit = (data) =>{
+  
 
+
+    const loadHabits = () =>{
+      api
+      .get('habits/personal/', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }).then((response) => setNewHabits(response.data))
+        .catch((e) => console.log(e));
+    }
+   
+    const createHabit = (data) => {
+      const decoded = jwtDecode(token)
         const { 
             title, 
             category,
             difficulty,
             frequency,
-            achieved,
-            how_much_achieved,
-            user } = data;
+           } = data;
 
         api
         .post('habits/',
@@ -28,9 +41,9 @@ export const HabitsProvider = ({children}) => {
                 category: category, 
                 difficulty: difficulty,
                 frequency: frequency,
-                achieved: achieved,
-                how_much_achieved: how_much_achieved, 
-                user: user,
+                achieved: false,
+                how_much_achieved: 0, 
+                user: decoded.user_id,
               }
             ,
             {
@@ -38,7 +51,7 @@ export const HabitsProvider = ({children}) => {
                 Authorization: `Bearer ${token}`,
               }
             }, 
-            ).then(e => console.log(e))
+            ).then(loadHabits())
              .catch((e) => console.log(e));;
 
     }
@@ -52,7 +65,8 @@ export const HabitsProvider = ({children}) => {
             headers: {
             Authorization: `Bearer ${token}`,
             }
-        }).then((response) => setNewHabits(newHabits));
+        }).then((response) => setNewHabits(newHabits))
+          .then(loadHabits());
 
     }
 
@@ -63,8 +77,6 @@ export const HabitsProvider = ({children}) => {
             achieved,
             id,
         } = data
-
-        const newHabits = habits.filter((habit) => habit.id !== id);
 
         api
         .patch(`habits/${id}/`,
@@ -82,20 +94,12 @@ export const HabitsProvider = ({children}) => {
     }
 
     useEffect(() => {
-
-        api
-      .get('habits/personal/', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      }).then((response) => setNewHabits(response.data))
-        .catch((e) => console.log(e));
-
-      }, [habits]);
+      loadHabits() 
+      }, []);
 
 
     return(
-        <HabitsContext.Provider value={{habits, createHabit,}}>
+        <HabitsContext.Provider value={{habits, createHabit, deleteHabit}}>
             {children}
         </HabitsContext.Provider>
     )
