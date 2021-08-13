@@ -48,27 +48,19 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const handleGoalCreation = (data) => {
-    const {
-      title,
-      category,
-      difficulty,
-      frequency,
-      achieved,
-      how_much_achieved,
-      user,
-    } = data;
+    const 
+      { title,
+  difficulty ,
+  how_much_achieved}= data
 
     api
       .post(
         "/goals/",
         {
-          title: title,
-          category: category,
-          difficulty: difficulty,
-          frequency: frequency,
-          achieved: achieved,
+          title:title,
+          difficulty:difficulty,
           how_much_achieved: how_much_achieved,
-          user: user,
+          
         },
         {
           headers: {
@@ -82,12 +74,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const handleActivitieCreation = (data) => {
     const {
       title,
-      category,
-      difficulty,
-      frequency,
-      achieved,
-      how_much_achieved,
-      user,
+     realization_time,
     } = data;
 
     api
@@ -95,12 +82,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         "/activities/",
         {
           title: title,
-          category: category,
-          difficulty: difficulty,
-          frequency: frequency,
-          achieved: achieved,
-          how_much_achieved: how_much_achieved,
-          user: user,
+          realization_time:realization_time
         },
         {
           headers: {
@@ -113,7 +95,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (data) => {
-    const { how_much_achieved, achieved, id } = data;
+    const {  achieved } = data;
 
     const newGoal = goals.filter((meta) => goals.id !== id);
 
@@ -121,7 +103,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .patch(
         `/goals/${goals.id}/`,
         {
-          how_much_achieved: how_much_achieved,
+         
           achieved: achieved,
         },
         {
@@ -134,7 +116,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const updateActivitie = (data) => {
-    const { how_much_achieved, achieved, id } = data;
+    const { title } = data;
 
     const newActivities = activities.filter((atividade) => atividade.id !== id);
 
@@ -142,8 +124,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .patch(
         `activities/${activities.id}/`,
         {
-          how_much_achieved: how_much_achieved,
-          achieved: achieved,
+          title:title
         },
         {
           headers: {
