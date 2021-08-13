@@ -36,8 +36,11 @@ export const Content = styled.div`
         display: flex;
 
         .GroupsList {
+            width: 35%;
+            margin-right: 50px;
+
             .SearchField {
-                width: 400px;
+                width: 100%;
                 border: 1px solid rgba(0,0,0,.1);
                 height: 36px;
                 display: flex;
@@ -117,7 +120,7 @@ export const Content = styled.div`
         }
 
         .GroupDetails {
-            
+            width: 60%;
         }
     }
 `;
