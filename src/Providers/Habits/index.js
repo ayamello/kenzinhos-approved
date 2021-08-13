@@ -20,7 +20,7 @@ export const HabitsProvider = ({children}) => {
       }).then((response) => setNewHabits(response.data))
         .catch((err) => 
           toast.error('Hábitos não pode ser carregado'));
-
+    
     };
    
     const createHabit = (data) => {
@@ -52,8 +52,10 @@ export const HabitsProvider = ({children}) => {
               }
             }, 
             )
-            .then(loadHabits())
-            .then(toast.info('Hábito criado'))
+            .then(() => {
+              toast.info('Hábito criado');
+              loadHabits()
+            })  
             .catch((err) => 
               toast.error('Não foi possível criar um hábito. Verifique dados informados'));
 
@@ -69,9 +71,11 @@ export const HabitsProvider = ({children}) => {
             Authorization: `Bearer ${token}`,
             }
         })
-        .then((response) => setNewHabits(newHabits))
-        .then(toast.error('Hábito excluído'))
-        .then(loadHabits())
+        .then((response) => {
+          setNewHabits(newHabits);
+          toast.error('Hábito excluído');
+          loadHabits()
+        })
         .catch((err) => toast.error('Não foi possível excluir o hábito.'));
 
     };
