@@ -88,6 +88,8 @@ export const HabitsProvider = ({children}) => {
             id,
         } = data
 
+        const newHabits = habits.filter((habit) => habit.id !== id);
+
         api
         .patch(`habits/${id}/`,
             {
