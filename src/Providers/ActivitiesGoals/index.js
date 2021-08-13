@@ -48,19 +48,14 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const handleGoalCreation = (data) => {
-    const 
-      { title,
-  difficulty ,
-  how_much_achieved}= data
-
+    const { title, difficulty, how_much_achieved } = data;
     api
       .post(
         "/goals/",
         {
-          title:title,
-          difficulty:difficulty,
+          title: title,
+          difficulty: difficulty,
           how_much_achieved: how_much_achieved,
-          
         },
         {
           headers: {
@@ -72,17 +67,14 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
   const handleActivitieCreation = (data) => {
-    const {
-      title,
-     realization_time,
-    } = data;
+    const { title, realization_time } = data;
 
     api
       .post(
         "/activities/",
         {
           title: title,
-          realization_time:realization_time
+          realization_time: realization_time,
         },
         {
           headers: {
@@ -95,15 +87,12 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (data) => {
-    const {  achieved } = data;
-
-    const newGoal = goals.filter((meta) => goals.id !== id);
+    const { achieved } = data;
 
     api
       .patch(
         `/goals/${goals.id}/`,
         {
-         
           achieved: achieved,
         },
         {
@@ -118,13 +107,11 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const updateActivitie = (data) => {
     const { title } = data;
 
-    const newActivities = activities.filter((atividade) => atividade.id !== id);
-
     api
       .patch(
         `activities/${activities.id}/`,
         {
-          title:title
+          title: title,
         },
         {
           headers: {
