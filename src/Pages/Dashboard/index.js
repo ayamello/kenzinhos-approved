@@ -1,7 +1,13 @@
+import NavbarDash from "../../Components/NavbarDash";
+import Habits from "../../Components/Habits";
+
 const Dashboard = () => {
     return(
-        <div></div>
+        <div>
+            <NavbarDash />
+            <Habits/>
+        </div>
     );
-}
+};
 
 export default Dashboard;

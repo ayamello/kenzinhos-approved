@@ -1,8 +1,16 @@
+import { HabitsProvider } from './Habits';
+import { ActivitiesGoalsProvider } from './ActivitiesGoals';
+import { GroupsUserProvider } from './GroupsUserProvider';
+
 const Providers = ({children}) => {
     return(
-        <div>
-            {children}
-        </div>
+        <HabitsProvider>
+            <ActivitiesGoalsProvider>
+                <GroupsUserProvider>
+                    {children}
+                </GroupsUserProvider>
+            </ActivitiesGoalsProvider>
+        </HabitsProvider>
     );
 }
 
