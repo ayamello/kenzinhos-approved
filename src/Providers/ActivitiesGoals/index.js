@@ -15,7 +15,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
   useEffect(() => {
     api
-      .get(`/groups/`, {
+      .get(`groups/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -27,7 +27,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const handleGoalDelete = (id) => {
     const newGoals = goals.filter((meta) => meta.id !== id);
     api.delete
-      .delete(`/goals/${id}/`, {
+      .delete(`goals/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -51,7 +51,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
     const { title, difficulty, how_much_achieved } = data;
     api
       .post(
-        "/goals/",
+        "goals/",
         {
           title: title,
           difficulty: difficulty,
@@ -71,7 +71,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
     api
       .post(
-        "/activities/",
+        "activities/",
         {
           title: title,
           realization_time: realization_time,
@@ -88,10 +88,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
   const updateGoal = (data) => {
     const { achieved } = data;
-
+    console.log(data);
     api
       .patch(
-        `/goals/${goals.id}/`,
+        `goals/${goals.id}/`,
         {
           achieved: achieved,
         },
@@ -129,6 +129,9 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         activitiesGroup,
         handleActivieDelete,
         handleGoalDelete,
+        updateActivitie,
+        updateGoal,
+        handleActivitieCreation,
       }}
     >
       {children}
