@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const history = useHistory();
-
   const loginSchema = yup.object().shape({
     username: yup.string().required("Usuário Obrigatório"),
     password: yup
@@ -39,7 +38,6 @@ const Login = () => {
         toast.info(`Bem vindo ${data.username}`);
         const { access } = response.data;
         const decoded = jwtDecode(access);
-        console.log(decoded);
         localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
         history.push("/dashboard", { data: decoded.user_id });
       })
@@ -85,17 +83,15 @@ const Login = () => {
             />
           </InputContainer>
           <InputContainer>
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                type="submit"
-                className="submitButton"
-              >
-                login
-              </Button>
-            </div>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              type="submit"
+              className="submitButton"
+            >
+              Entrar
+            </Button>
           </InputContainer>
         </form>
       </FormContainer>

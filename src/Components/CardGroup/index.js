@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
     margin: "0 2px",
     transform: "scale(0.8)",
   },
@@ -33,10 +32,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Group() {
+const Group = () => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-
+  
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -50,7 +49,6 @@ export default function Group() {
         >
           Categoria:
         </Typography>
-
         <Typography
           className={classes.title}
           color="textSecondary"
@@ -80,3 +78,5 @@ export default function Group() {
     </Card>
   );
 }
+
+export default Group;

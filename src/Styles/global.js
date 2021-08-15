@@ -11,10 +11,13 @@ const GlobalStyle = createGlobalStyle`
         --title-font: 'Source Code Pro';
         --body-font: 'Source Sans Pro';
         --blue-color: rgba(29,100,203,1);
+        --purple-color: rgba(116,29,203,.5);
+        --gray-details: rgba(149,149,149,1);
     }
 
     body, input, button{
        font-family: var(--body-font);
+       background-color: #F9F9F9;
     }
 
     h1, h2, h3, h4, h5, h6{
