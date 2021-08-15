@@ -11,16 +11,14 @@ export const HabitsProvider = ({children}) => {
     const [token] = useState(JSON.parse(localStorage.getItem('@Kenzinho:token')) || '');
 
     const loadHabits = () =>{
-
-      api
-      .get('habits/personal/', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      }).then((response) => setNewHabits(response.data))
-        .catch((err) => 
-          toast.error('Hábitos não pode ser carregado'));
-    
+        api
+        .get('habits/personal/', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }).then((response) => setNewHabits(response.data))
+          .catch((err) => 
+            toast.error('Hábitos não pode ser carregado'));
     };
    
     const createHabit = (data) => {
@@ -108,8 +106,10 @@ export const HabitsProvider = ({children}) => {
 
     };
 
-    useEffect(() => {
-      loadHabits() 
+    useEffect(() => { 
+      if(habits === true){
+        loadHabits() 
+      }
       }, []);
 
 

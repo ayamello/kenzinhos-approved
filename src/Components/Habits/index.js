@@ -9,9 +9,9 @@ const Habits = () => {
 
     return (
         <Container> 
-        <TitleContainer>
-        <h3>Hábitos</h3>
-        <CreateHabitsModal/>
+            <TitleContainer>
+                <h3>Hábitos</h3>
+            <CreateHabitsModal/>
         </TitleContainer>
         <MainContainer>
            

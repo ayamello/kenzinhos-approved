@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
 import { FormContainer, InputContainer, TitleContainer } from './styles';
-import { makeStyles, Button, TextField, Modal, Backdrop, Fade, Tooltip } from '@material-ui/core';
+import { makeStyles, Button, TextField, Modal, Backdrop, Fade } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'blue',
     backgroundImage: 'linear-gradient(#1D64CB, #741DCB)',
     border: '1px solid #000',
     borderRadius: '20px',
@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px',
     borderRadius:'5px',
     boxShadow: '0px 4px 4px rgba(116, 29, 203, 0.57)',
+  },
+  button:{
+    borderRadius: '15px',
   }
 }));
 
@@ -48,11 +51,15 @@ const CreateHabitsModal = () => {
 
   return (
     <div>   
-      <Tooltip title='Add' interactive>
-        <h3 type='button' onClick={handleOpen}>
+        <Button 
+          className={classes.button}
+          variant='contained'
+          color='primary'
+          size='small'
+          onClick={handleOpen}>
             Criar +
-        </h3>
-      </Tooltip>
+        </Button>
+     
       <Modal
         className={classes.modal}
         open={open}

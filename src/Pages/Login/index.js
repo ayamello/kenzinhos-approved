@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const history = useHistory();
-
   const loginSchema = yup.object().shape({
     username: yup.string().required("Usuário Obrigatório"),
     password: yup
