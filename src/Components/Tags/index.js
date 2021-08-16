@@ -1,9 +1,8 @@
 import { Accordion, Typography } from "@material-ui/core";
-import { AccordionSummary } from "./styles";
+import { AccordionSummary, MainContainer } from "./styles";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
 import {
   DescriprionContainer,
@@ -11,15 +10,13 @@ import {
   TitleContainer,
   useStyles,
 } from "./styles";
+import SearchBar from "../SearchBar";
 
 const Tags = () => {
   const classes = useStyles();
 
   const [token, setToken] = useState("");
-  const [userId, setUserId] = useState();
   const [groups, setGroups] = useState([]);
-
-  const history = useHistory();
 
   const getGroups = (token) => {
     api
@@ -35,12 +32,12 @@ const Tags = () => {
   useEffect(() => {
     let userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     setToken(userToken);
-    setUserId(history.location.state.data);
     getGroups(token);
   }, [token]);
 
   return (
-    <>
+    <MainContainer>
+      <SearchBar groups={groups} setGroups={setGroups} getGroups={getGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
@@ -70,7 +67,6 @@ const Tags = () => {
                   <p>Finalizar em: {activity.realization_time}</p>
                 </DescriprionContainer>
               ))}
-              <hr></hr>
               <span>Metas:</span>
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
@@ -84,7 +80,7 @@ const Tags = () => {
           </AccordionDetails>
         </Accordion>
       ))}
-    </>
+    </MainContainer>
   );
 };
 
