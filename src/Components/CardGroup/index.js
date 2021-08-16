@@ -9,7 +9,7 @@ import { ContainerGoals, ContainerActivities } from "./styles";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 450,
+    width: 550,
     height: 600,
     display: "flex",
     justifyContent: "space-around",
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 const Group = () => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-  
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -77,6 +77,6 @@ const Group = () => {
       </CardActions>
     </Card>
   );
-}
+};
 
 export default Group;
