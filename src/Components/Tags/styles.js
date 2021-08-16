@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    marginTop: "20px",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -43,7 +44,7 @@ export const AccordionSummary = withStyles({
 })(MuiAccordionSummary);
 
 export const MainContainer = styled.div`
-  width: 40%;
+  width: 100%;
   height: 50%;
   display: flex;
   flex-direction: column;
