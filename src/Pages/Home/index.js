@@ -10,6 +10,10 @@ import {
 
 import { useHistory } from "react-router";
 import SimpleMenu from "../../Components/SimpleMenu";
+import groups from '../../Assets/Img/groups.png';
+import profile from '../../Assets/Img/profile.png';
+import activities from '../../Assets/Img/bike.png';
+import goals from '../../Assets/Img/metas.png';
 
 const Home = () => {
   const history = useHistory();
@@ -42,22 +46,22 @@ const Home = () => {
       </BodyContainer>
       <HomeCardsContainer>
         <HomeCards>
-          <h1>M</h1>
+          <img src={goals} alt="Imagem de usuário"/>
           <h4>Metas</h4>
           <p>Defina e acompanhe</p>
         </HomeCards>
         <HomeCards>
-          <h1>A</h1>
+          <img src={activities} alt="Imagem de usuário"/>
           <h4>Atividades</h4>
           <p>Mantenha-se em dia</p>
         </HomeCards>
         <HomeCards>
-          <h1>H</h1>
+          <img src={profile} alt="Imagem de usuário"/>
           <h4>Hábitos</h4>
           <p>Desenvolva bons</p>
         </HomeCards>
         <HomeCards>
-          <h1>G</h1>
+          <img src={groups} alt="Imagem de usuário"/>
           <h4>Grupos</h4>
           <p>Participe e interaja</p>
         </HomeCards>
