@@ -5,12 +5,8 @@ import { useHabits } from '../../Providers/Habits';
 
 
 const Dashboard = () => {
-
+    
     const { loadHabits } = useHabits()
-
-    useEffect(() => () =>{
-        loadHabits()
-    }, [])
 
     useEffect(() => {
             loadHabits()
