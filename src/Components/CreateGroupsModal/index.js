@@ -92,18 +92,16 @@ const CreateGroups = () => {
                       color="primary"
                       {...register("name")}
                     />
-                  </InputContainer>
-                  <InputContainer>
+
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Categoria"
+                      label="Descrição"
                       variant="outlined"
                       color="primary"
                       {...register("description")}
                     />
-                  </InputContainer>
-                  <InputContainer>
+
                     <TextField
                       size="small"
                       id="outlined-basic"
@@ -113,11 +111,19 @@ const CreateGroups = () => {
                       {...register("category")}
                     />
                   </InputContainer>
+
                   <InputContainer>
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Atividades"
+                      label="Atividade"
+                      variant="outlined"
+                      color="primary"
+                    />
+                    <TextField
+                      size="small"
+                      id="outlined-basic"
+                      label="Tempo de realização"
                       variant="outlined"
                       color="primary"
                     />
@@ -126,7 +132,21 @@ const CreateGroups = () => {
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Metas"
+                      label="Meta"
+                      variant="outlined"
+                      color="primary"
+                    />
+                    <TextField
+                      size="small"
+                      id="outlined-basic"
+                      label="Dificuldade"
+                      variant="outlined"
+                      color="primary"
+                    />
+                    <TextField
+                      size="small"
+                      id="outlined-basic"
+                      label="Frequência"
                       variant="outlined"
                       color="primary"
                     />
