@@ -3,6 +3,8 @@ import Background from '../../Assets/Img/navbar-dash.png';
 import BackgroundMob from '../../Assets/Img/navbar-dash-mobile.png';
 
 export const Container = styled.div`
+    position: absolute;
+    z-index: 2;
     width: 130px;
     height: 100vh;
     padding: 2vh 0;
@@ -16,6 +18,25 @@ export const Container = styled.div`
 
     img {
         width: 60px;
+    }
+
+    .closeNav {
+        position: absolute;
+        left: 100px;
+        top: 5px;
+
+        button {
+            width: 20px;
+            height: 20px;
+            border: none;
+            background-color: transparent;
+
+            svg {
+                font-size: 20px;
+                color: var(--white-color);
+                transform: translateY(1px);
+            }
+        }
     }
 
     @media (min-width: 1024px) {

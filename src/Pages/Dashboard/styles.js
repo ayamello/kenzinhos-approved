@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-`;
-
 export const Content = styled.div`
   width: 100%;
   padding: 20px 40px;
 
   .Header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-bottom: 40px;
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
-
-    h2 {
-      font-size: 28px;
-      font-weight: 700;
+    span {
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+    .Email {
+      font-size: 1rem;
+      align-self: flex-start;
+      line-height: 35px;
     }
 
     button {
@@ -34,10 +34,9 @@ export const Content = styled.div`
 
   .Groups {
     display: flex;
-    justify-content: space-between;
 
     .GroupsList {
-      width: 35%;
+      width: 50%;
       margin-right: 50px;
 
       .SearchField {
@@ -75,8 +74,9 @@ export const Content = styled.div`
         align-items: center;
         padding: 1em;
         margin-top: 10px;
-        border: 2px solid rgba(29, 100, 203, 0.05);
-        box-shadow: 0px 4px 4px rgba(29, 100, 203, 0.2);
+        border: 2px solid rgba(29, 100, 203, 0.1);
+        box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+        width: 100%;
 
         .HeaderGroup {
           display: flex;
@@ -114,9 +114,7 @@ export const Content = styled.div`
         }
 
         &:hover {
-          cursor: pointer;
           transform: translateZ(50px);
-          transform: translateX(2px);
         }
       }
     }
