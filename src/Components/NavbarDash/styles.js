@@ -4,6 +4,7 @@ import BackgroundMob from '../../Assets/Img/navbar-dash-mobile.png';
 
 export const Container = styled.div`
     position: absolute;
+    z-index: 2;
     width: 130px;
     height: 100vh;
     padding: 2vh 0;
