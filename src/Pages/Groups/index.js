@@ -29,6 +29,7 @@ const Groups = () => {
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
   const [viewNavbar, setViewNavbar] = useState(false);
+  const [textInput, setTextInput] = useState("");
 
   useEffect(() => {
     api
@@ -52,6 +53,21 @@ const Groups = () => {
     setViewCardGroup(true);
   };
 
+  const handleSearchGroup = (groupName) => {
+    const group = groups.filter(group => group.name === groupName);
+    const id = group[0].id;
+    console.log(id)
+    
+    if(group) {
+      api.get(`groups/${id}/`)
+      .then(res => setGroups([res.data]))
+      .catch(err => console.log(err))
+    }
+    else {
+      console.log("Grupo não encontrado");
+    }
+  }
+
   return (
     <Container>
       {window.innerWidth >= 1024 || viewNavbar === true ? (
@@ -68,8 +84,8 @@ const Groups = () => {
         <div className="Groups">
           <div className="GroupsList">
             <div className="SearchField">
-              <input type="text" placeholder="Pesquisar grupo" />
-              <button>
+              <input type="text" placeholder="Pesquisar grupo" onChange={e => setTextInput(e.target.value)} />
+              <button onClick={() => handleSearchGroup(textInput)}>
                 <Search />
               </button>
             </div>
