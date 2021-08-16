@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
 import { FormContainer, InputContainer, TitleContainer } from './styles';
-import { makeStyles, Button, TextField, Modal, Backdrop, Fade } from '@material-ui/core';
+import { makeStyles, Button, TextField, Modal, Backdrop, Fade, MenuItem } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   inputs:{
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#ffff',
     border: '1px solid #000',
     padding: '15px',
     borderRadius:'5px',
@@ -28,6 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
   button:{
     borderRadius: '15px',
+  },
+  close:{
+    width:'1px',
+    borderRadius:'20px',
+    marginLeft:'190px',
+    marginBottom:'20px',
+    fontSize:'10px',
   }
 }));
 
@@ -74,7 +81,16 @@ const CreateHabitsModal = () => {
           <div className={classes.paper}>
         <FormContainer>        
             <TitleContainer>
-               <h1>Qual seu hábito?</h1>
+                <Button 
+          className={classes.close}
+          variant='contained'
+          color='primary'
+          size='small'
+          onClick={handleClose}>
+            x
+        </Button>
+        <h1>Qual seu hábito?</h1>
+     
             </TitleContainer>
         <form onSubmit={handleSubmit(createHabit)}>
         <div className={classes.inputs}>  
@@ -100,13 +116,36 @@ const CreateHabitsModal = () => {
           </InputContainer>
           <InputContainer>
             <TextField
+              className={classes.select}
               size='small'
               id='outlined-basic'
               label='Dificuldade'
               variant='outlined'
               color='primary'
               {...register('difficulty')}
-            />
+              select
+            >
+             <MenuItem 
+                    value={'muito-facil'}>
+                    Muito fácil
+                </MenuItem>
+                <MenuItem 
+                    value={'facil'}>
+                    Fácil
+                </MenuItem>
+                <MenuItem 
+                    value={'medio'}>
+                    Médio
+                </MenuItem>
+                <MenuItem 
+                    value={'dificil'}>
+                    Difícil
+                </MenuItem>
+                <MenuItem 
+                    value={'muito-dificil'}>
+                    Muito difícil
+                </MenuItem>
+          </TextField>
           </InputContainer>
           <InputContainer>
             <TextField

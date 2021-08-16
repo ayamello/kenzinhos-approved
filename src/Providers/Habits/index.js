@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import jwtDecode from 'jwt-decode';
 import api from '../../Services/api';
 import { toast } from 'react-toastify';
@@ -106,15 +106,8 @@ export const HabitsProvider = ({children}) => {
 
     };
 
-    useEffect(() => { 
-      if(habits === true){
-        loadHabits() 
-      }
-      }, []);
-
-
     return(
-        <HabitsContext.Provider value={{habits, createHabit, deleteHabit, updateHabit}}>
+        <HabitsContext.Provider value={{habits, createHabit, deleteHabit, updateHabit, loadHabits}}>
             {children}
         </HabitsContext.Provider>
     )
