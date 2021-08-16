@@ -1,46 +1,64 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  background: linear-gradient(
+    180deg,
+    #1d64cb 0%,
+    rgba(116, 29, 203, 0.57) 100%
+  );
+
+  @media (min-width: 1024px) {
+    display: flex;
+    background: #f9f9f9;
+  }
 `;
 
 export const Content = styled.div`
-  width: 100%;
-  padding: 20px 40px;
+  height: 100vh;
+  width: 85%;
+  margin: 0 auto;
 
   .Header {
+    width: 100%;
+    padding-top: 10px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
-    padding: 1em 0 0.2em 0;
-    border-bottom: 1px solid rgba(29, 100, 203, 0.1);
+    align-items: center;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     h2 {
-      font-size: 28px;
+      font-size: 25px;
       font-weight: 700;
+      color: white;
     }
 
     button {
+      height: 25px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
       font-family: "Source Code Pro";
-      padding: 0 1em;
+      padding: 0 0.5em;
       border: none;
-      border-radius: 10px;
-      color: #fff;
-      background-color: var(--blue-color);
+      border-radius: 5px;
+      color: var(--blue-color);
+      background-color: var(--white-color);
     }
   }
 
   .Groups {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+
     .GroupsList {
-      width: 35%;
-      margin-right: 50px;
+      width: 100%;
+      max-width: 415px;
+      margin: 0 auto;
 
       .SearchField {
-        width: 100%;
         border: 1px solid rgba(0, 0, 0, 0.1);
         height: 36px;
         display: flex;
@@ -69,59 +87,106 @@ export const Content = styled.div`
       }
 
       .List {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1em;
+        height: 65vh;
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
         margin-top: 10px;
-        border: 2px solid rgba(29, 100, 203, 0.05);
-        box-shadow: 0px 4px 4px rgba(29, 100, 203, 0.2);
 
-        .HeaderGroup {
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: white;
+          border-radius: 10px;
+          margin-top: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--blue-color);
+          border-radius: 10px;
+        }
+
+        .Group {
           display: flex;
+          justify-content: space-between;
           align-items: center;
+          padding: 1em;
+          margin-top: 10px;
+          border: 2px solid rgba(29, 100, 203, 0.05);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+          background-color: var(--white-color);
 
-          h4 {
-            font-family: "Source Sans Pro";
-            font-size: 18px;
-          }
-          span {
-            color: var(--gray-details);
-            font-size: 14px;
-            margin-left: 10px;
-          }
-        }
+          .HeaderGroup {
+            display: flex;
+            align-items: center;
 
-        .InfosGroup {
-          color: var(--gray-details);
-          font-size: 12px;
-          margin-top: 5px;
-
-          span + span {
-            margin-left: 15px;
-          }
-        }
-
-        .BtnToDetails {
-          button {
-            border: none;
-
-            svg {
+            h4 {
+              font-family: "Source Sans Pro";
+              font-size: 15px;
+            }
+            span {
+              color: var(--gray-details);
               font-size: 12px;
+              margin-left: 10px;
+              transform: translateY(1px);
             }
           }
-        }
 
-        &:hover {
-          cursor: pointer;
-          transform: translateZ(50px);
-          transform: translateX(2px);
+          .InfosGroup {
+            color: var(--gray-details);
+            font-size: 12px;
+            margin-top: 5px;
+
+            span + span {
+              margin-left: 15px;
+            }
+          }
+
+          .BtnToDetails {
+            button {
+              border: none;
+
+              svg {
+                font-size: 12px;
+              }
+            }
+          }
+
+          &:hover {
+            transform: translateZ(50px);
+            transform: translateX(2px);
+          }
         }
       }
     }
+  }
 
-    .GroupDetails {
-      width: 60%;
+  @media (min-width: 1024px) {
+    .Header {
+      padding: 1em 0 0.2em 0;
+      border-bottom: 1px solid rgba(29, 100, 203, 0.2);
+
+      h2 {
+        font-size: 28px;
+        color: #000;
+      }
+
+      button {
+        padding: 0 1em;
+        border-radius: 10px;
+        color: #fff;
+        background-color: var(--blue-color);
+      }
+    }
+
+    .Groups {
+      flex-direction: row;
+      
+      .GroupsList .List .Group {
+        box-shadow: 0px 4px 4px rgba(29, 100, 203, 0.4);
+      }
     }
   }
 `;
