@@ -1,12 +1,12 @@
 import NavbarDash from "../../Components/NavbarDash";
 import Habits from "../../Components/Habits";
-import { Content } from "./style";
+import { Content } from "./styles";
 import api from "../../Services/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import Tags from "../../Components/Tags";
-import { Container } from "../../Pages/Groups/style";
+import { Container } from "../../Pages/Groups/styles";
 
 const Dashboard = () => {
   const [token] = useState(
