@@ -10,7 +10,7 @@ export const Content = styled.div`
 
   .Header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 40px;
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
@@ -35,6 +35,7 @@ export const Content = styled.div`
   .Groups {
     display: flex;
     justify-content: space-between;
+
     .GroupsList {
       width: 35%;
       margin-right: 50px;
