@@ -5,6 +5,7 @@ export const Content = styled.div`
   padding: 20px 40px;
 
   .Header {
+    width: 90%;
     display: flex;
     justify-content: flex-start;
     margin-bottom: 40px;
@@ -73,7 +74,6 @@ export const Content = styled.div`
         justify-content: space-between;
         align-items: center;
         padding: 1em;
-        margin-top: 10px;
         border: 2px solid rgba(29, 100, 203, 0.1);
         box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
         width: 100%;

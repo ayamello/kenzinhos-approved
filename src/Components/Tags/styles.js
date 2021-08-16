@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     marginTop: "20px",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.5)",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -43,6 +44,13 @@ export const AccordionSummary = withStyles({
   expanded: {},
 })(MuiAccordionSummary);
 
+export const SubTitles = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
 export const MainContainer = styled.div`
   width: 100%;
   height: 50%;
@@ -59,11 +67,11 @@ export const TitleContainer = styled.div`
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 15px;
   p {
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 12px;
     color: #a0a0a0;
   }
 `;
@@ -76,7 +84,7 @@ export const SubTitleContainer = styled.div`
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 25px;
   color: #959595;
 `;
@@ -84,11 +92,12 @@ export const DescriprionContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  font-size: 15px;
   p {
     font-family: "Source Sans Pro";
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 28px;
     color: black;
   }
