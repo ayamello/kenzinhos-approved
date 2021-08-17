@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "../../Components/ActivitiesModal/style";
+import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
