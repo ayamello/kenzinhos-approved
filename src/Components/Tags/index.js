@@ -1,20 +1,22 @@
-import { Accordion, Typography } from "@material-ui/core";
-import { AccordionSummary, MainContainer, SubTitles } from "./styles";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
+import { Accordion, Typography, AccordionDetails } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import api from "../../Services/api";
 import {
   DescriprionContainer,
   SubTitleContainer,
   TitleContainer,
   useStyles,
+  AccordionSummary, 
+  MainContainer, 
+  SubTitles
 } from "./styles";
 import SearchBar from "../SearchBar";
 import CreateActivitiesModal from "../ActivitiesModal";
 import CreateGoalsModal from "../GoalsModal";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
+
 const Tags = () => {
   const classes = useStyles();
 

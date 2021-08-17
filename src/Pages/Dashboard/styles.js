@@ -1,12 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Containter = styled.div`
   display:flex;
   flex-direction: column;
 
 `
-
-
 export const Content = styled.div`
   width: 100%;
   padding: 20px 40px;
@@ -90,8 +88,10 @@ export const Content = styled.div`
         align-items: center;
         padding: 1em;
         border: 2px solid rgba(29, 100, 203, 0.1);
-        box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+        box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
         width: 100%;
+        background-color: var(--blue-color);
+        margin-top: 15px;
 
         .HeaderGroup {
           display: flex;
@@ -147,40 +147,20 @@ export const Content = styled.div`
     }
 
     .Groups {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    
       .GroupsList {
         width: 50%;
         margin-right: 50px;
 
-        .SearchField {
-          width: 100%;
-          border: 1px solid rgba(0, 0, 0, 0.1);
-          height: 36px;
-          display: flex;
-          align-items: center;
-
-          input {
-            width: 92%;
-            padding: 0 10px;
-          }
-
-          input,
-          button {
-            height: 34px;
-            border: none;
-            background-color: #fff;
-          }
-
-          button {
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0 5px;
-
-            svg {
-              transform: translateY(2px);
-            }
-          }
+        .List{
+          background-color: var(--white-color);
+          margin-top: 0px;
+          box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+       }
+      
+    }
   }
-  }
+}
 `;

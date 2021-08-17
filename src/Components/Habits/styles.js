@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* position: absolute; */
   left:40%;
   top:20%;
   @media screen and (min-width: 768px){
@@ -17,7 +16,7 @@ export const MainContainer = styled.div`
   background: #E5E5E5;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -35,6 +34,7 @@ export const MainContainer = styled.div`
     min-width: 450px;
     height: 450px;
     background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
   }
 `;
 
@@ -46,7 +46,7 @@ export const TitleContainer = styled.div`
   height: 60px;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -59,6 +59,7 @@ export const TitleContainer = styled.div`
     max-width: 450px;
     min-width: 450px;
     background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
   }
 `
 
