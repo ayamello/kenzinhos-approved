@@ -37,10 +37,7 @@ const Dashboard = () => {
       <Content>
         <div className="Header">
           <span>
-            Bem vindo,
-            <strong>
-              {user}
-            </strong>
+            Bem vindo, <span><strong>{user}</strong></span>
           </span>
           <span className="Email">{email}</span>
         </div>
