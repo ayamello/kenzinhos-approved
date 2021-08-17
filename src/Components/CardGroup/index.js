@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { ContainerGoals, ContainerActivities } from "./styles";
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 
 const useStyles = makeStyles({
   root: {
@@ -59,6 +60,7 @@ const useStyles = makeStyles({
 
 const Group = ({ group }) => {
   const classes = useStyles();
+  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
 
   return (
     <Card className={classes.root}>
@@ -85,9 +87,11 @@ const Group = ({ group }) => {
             Metas:
           </Typography>
           {group?.goals.map((goal) => (
-            <Typography variant="body2" component="p">
-              {goal.title}
-            </Typography>
+            <div>
+              <Typography variant="body2" component="p">
+                {goal.title}
+              </Typography>
+            </div>
           ))}
         </ContainerGoals>
         <ContainerActivities>
@@ -95,9 +99,11 @@ const Group = ({ group }) => {
             Atividades:
           </Typography>
           {group?.activities.map((activity) => (
-            <Typography variant="body2" component="li">
-              {activity.title}
-            </Typography>
+            <div>
+              <Typography variant="body2" component="li">
+                {activity.title}{" "}
+              </Typography>
+            </div>
           ))}
         </ContainerActivities>
       </CardContent>

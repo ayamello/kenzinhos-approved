@@ -70,23 +70,19 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.filter((group) => group.name === groupName);
-    const id = group[0].id;
-    console.log(id);
-
-    if (group) {
-      api
-        .get(`groups/${id}/`)
-        .then((res) => setGroups([res.data]))
-        .catch((err) => console.log(err));
-    } else {
-      console.log("Grupo não encontrado");
+    const group = groups.find((group) => group.name === groupName);
+    if (!group) {
+      return toast.error("Grupo não encontrado");
     }
+    api
+      .get(`groups/${group.id}/`)
+      .then((res) => setGroups([res.data]))
+      .catch((err) => console.log(err));
   };
 
   return (
     <Container>
-      <ViewNavbar/>
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
@@ -127,6 +123,7 @@ const Groups = () => {
 
                       <div className="InfosGroup">
                         <span>Atividades: {group.activities.length}</span>
+
                         <span>Metas: {group.goals.length}</span>
                       </div>
                     </div>
