@@ -7,9 +7,11 @@ import {
   InputContainer,
   FormContainer,
   MainContainer,
+  LogoContainer,
 } from "./styles";
 import { Button, TextField } from "@material-ui/core";
 import { useAuth } from "../../Providers/Auth";
+import logo from "../../Assets/Img/logoMobile.png";
 
 const Login = () => {
   const history = useHistory();
@@ -34,6 +36,11 @@ const Login = () => {
 
   return (
     <MainContainer>
+      <LogoContainer>
+        <Link to="/">
+          <img alt="logo" src={logo} />
+        </Link>
+      </LogoContainer>
       <TitleContainer>
         <h1>Não é cadastrado?</h1>
         <Link to="/signup">Cadastre-se</Link>

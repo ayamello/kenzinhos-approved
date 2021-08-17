@@ -10,6 +10,8 @@ import { InputContainer } from "./styles";
 import { TitleContainer } from "./styles";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { LogoContainer } from "../Login/styles";
+import logo from "../../Assets/Img/logoMobile.png";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -51,6 +53,11 @@ const Signup = () => {
 
   return (
     <MainContainer>
+      <LogoContainer>
+        <Link to="/">
+          <img alt="logo" src={logo} />
+        </Link>
+      </LogoContainer>
       <FormContainer>
         <h1>Cadastro</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>
