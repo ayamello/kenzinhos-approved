@@ -14,11 +14,11 @@ const Habits = () => {
             <CreateHabitsModal/>
         </TitleContainer>
         <MainContainer>
-           
             <div>
             {
             habits&&
-            habits.map((habit) => <HabitCard habit={habit} key={habit.id}/>)}
+            habits.map((habit) => <HabitCard habit={habit} key={habit.id}/>)
+            }
             </div>
         </MainContainer>
         </Container>
