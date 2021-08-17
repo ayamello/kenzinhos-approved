@@ -1,105 +1,106 @@
 import styled from "styled-components";
 import backgroundDesktop from "../../Assets/Img/home.png";
+import backgroundDesktop2 from "../../Assets/Img/home2.png";
 import backgroundMobile from "../../Assets/Img/homeMobile.png";
+
+export const MainContainer = styled.div`
+
+    background-color: #E5E5E5;
+`;
 
 export const HomeContainer = styled.div`
 
-    background: url(${backgroundMobile});
-    background-size: cover;
     width: 100%;
     height: 100vh;
+    background: url(${backgroundMobile});
+    background-size: cover;
     
     @media (min-width: 768px){
 
         background: url(${backgroundDesktop});
         background-size: cover;
-        
-        
+           
     }
 `;
 
-
 export const HomeHeader = styled.header`
 
-    text-align: right;
-    padding-top: 9%;
-    padding-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: rgba(80, 60, 200, 1);
+    width: 100%;
+    padding: 0 1%;
     
-
-    button{
-        color: white;
-        background:none;
+    #logoHeader{
+        width: 150px;
     }
 
     nav{
-        display: none;    
+        display: none;
     }
-
+    
     @media (min-width: 768px){
 
-        padding-top: 5.5%;
-        display: flex;
-        justify-content: flex-end;
+        padding: 0 5%;
 
-        button{
-            display: none;
+        #logoHeader{
+        width: 200px;
         }
 
         nav{
             display: flex;
             align-items: center;
-            column-gap: 100px;
+            column-gap: 50px;
         }
 
         a{
-            color: white;
+            color: white;   
+        }
+
+        button{
+            display: none;
         }
     }
-
-    @media (min-width: 1024px){
-
-        padding-top: 5%;
-        
-    }
-
 `;
-
 
 export const BodyContainer = styled.div`
 
-    margin: 15%;
-    width: 65%;
-    
+    width: 75%;
+    padding-top: 40%;
+    padding-left: 5%;
 
     h1{
         color: white;
         font-size: 1.6rem;
-        font-weight: 200;
+        font-weight: 500;
+        font-family: var(--title-font);
     }
     
     div{
-        margin-top: 30px;
+        margin-top: 10%;
         display: flex;
         column-gap: 20px;
     }
 
     @media (min-width: 768px) {
 
-        margin: 7%;
-        margin-left: 15%;
-        width: 30%;
+        padding-top: 18%;
+        margin-left: 12%;
+        width: 40%;
 
     }
 
     @media (min-width: 1024px){
 
+        padding-top: 14%;
+
         h1{
             font-size: 2rem;
         }
     }
-
 `;
-
 
 export const HomeCardsContainer = styled.div`
 
@@ -113,6 +114,7 @@ export const HomeCardsContainer = styled.div`
         justify-content: center;
         column-gap: 8%;
         padding-bottom: 20px;
+        padding-top: 4%;
         
     }
 
@@ -129,31 +131,35 @@ export const HomeCards = styled.div`
     background-color: white;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 1px solid grey;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     
 
-    h1{
-        font-size: 3rem;
+    img{
+        width: 60px;
     }
 
     h4{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     p{
-        font-size: 1.2rem;
+        font-size: 0.8rem;
+        color: grey;
     }
 
     @media (min-width: 1024px){
 
         width: 140px;
         height: 170px;
-    }
 
+        h4{
+        font-size: 1.2rem;
+        }
+    }
 `;
 
 export const ButtonWhite = styled.button`
@@ -180,3 +186,82 @@ export const ButtonPurple = styled.button`
     
 `;
 
+export const History = styled.div`
+
+    font-size: 1.3rem;
+    padding: 10%;
+    text-align: center;
+
+    h4{
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px){
+
+        font-size: 1.5rem;
+    }
+`;
+
+export const AboutCardsContainer = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: none;
+    margin-top: 50px;
+    justify-content: center;
+
+    @media (min-width: 768px){
+        
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        background: url(${backgroundDesktop2});
+        background-size: cover;
+    }
+`;
+
+export const AboutCards = styled.div`
+
+    width: 225px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 20px; 
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+
+
+    img{
+        width: 75px;
+        border-radius: 10px;
+        
+    }
+
+    @media (min-width: 768px){
+
+        width: 40%;
+        height: 150px;
+
+        img{
+        width: 100px;
+        }
+
+    }
+`;
+
+export const CardsInfo = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+`;
+
+export const IconsNav = styled.nav`
+
+    display: flex;
+    justify-content: space-around;
+`;

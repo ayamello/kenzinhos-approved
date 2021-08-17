@@ -22,7 +22,6 @@ export const MainContainer = styled.div`
   }
 `;
 
-
 export const TitleContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +37,6 @@ export const TitleContainer = styled.div`
     font-size: 13px;
   }
   input{
-    margin-top: 8px;
     width: 50px;
   }
 
@@ -46,7 +44,7 @@ export const TitleContainer = styled.div`
     
     }
   }
-`; 
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;

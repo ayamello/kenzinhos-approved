@@ -1,9 +1,8 @@
 import { Accordion, Typography } from "@material-ui/core";
-import { AccordionSummary } from "./styles";
+import { AccordionSummary, MainContainer, SubTitles } from "./styles";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import api from "../../Services/api";
 import {
   DescriprionContainer,
@@ -11,15 +10,15 @@ import {
   TitleContainer,
   useStyles,
 } from "./styles";
+import SearchBar from "../SearchBar";
+import CreateActivitiesModal from "../ActivitiesModal";
+import CreateGoalsModal from "../GoalsModal";
 
 const Tags = () => {
   const classes = useStyles();
 
   const [token, setToken] = useState("");
-  const [userId, setUserId] = useState();
   const [groups, setGroups] = useState([]);
-
-  const history = useHistory();
 
   const getGroups = (token) => {
     api
@@ -35,12 +34,12 @@ const Tags = () => {
   useEffect(() => {
     let userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     setToken(userToken);
-    setUserId(history.location.state.data);
     getGroups(token);
-  }, [token]);
+  }, [token, groups]);
 
   return (
-    <>
+    <MainContainer>
+      <SearchBar groups={groups} setGroups={setGroups} getGroups={getGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
@@ -51,7 +50,7 @@ const Tags = () => {
             <Typography className={classes.heading}>
               <div key={group.id}>
                 <TitleContainer>
-                  <span>{group.name}</span>
+                  <h4>{group.name}</h4>
                   <p>{group.category}</p>
                 </TitleContainer>
                 <SubTitleContainer>
@@ -63,15 +62,20 @@ const Tags = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={classes.lowerMenu}>
-              <span>Atividades:</span>
+              <SubTitles>
+                <h4>Atividades:</h4>
+                <CreateActivitiesModal groupId={group.id} />
+              </SubTitles>
               {group.activities.map((activity) => (
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
                 </DescriprionContainer>
               ))}
-              <hr></hr>
-              <span>Metas:</span>
+              <SubTitles>
+                <h4>Metas:</h4>
+                <CreateGoalsModal groupId={group.id} />
+              </SubTitles>
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
@@ -84,7 +88,7 @@ const Tags = () => {
           </AccordionDetails>
         </Accordion>
       ))}
-    </>
+    </MainContainer>
   );
 };
 

@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: absolute;
+  /* position: absolute; */
+  left:40%;
+  top:20%;
+  @media screen and (min-width: 768px){
   left:68%;
   top:20%;
+  }
 `
 
 export const MainContainer = styled.div`
-  max-width: 370px;
-  min-width: 370px;
-  height: 450px;
+  max-width: 200px;
+  min-width: 200px;
+  height: 230px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -18,21 +22,23 @@ export const MainContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-start;
+  overflow:auto;
   
   div{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  @media screen and (max-width: 600px) {
-    flex-direction: column-reverse;
-    justify-content: flex-end;
+  @media screen and (min-width: 768px) {
+    max-width: 450px;
+    min-width: 450px;
+    height: 450px;
   }
 `;
 
 export const TitleContainer = styled.div`
-  max-width: 370px;
-  height: 45px;
+  max-width: 450px;
+  height: 60px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;

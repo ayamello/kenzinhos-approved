@@ -1,29 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  button {
-    height: 25px;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: "Source Code Pro";
-    padding: 0 0.5em;
-    border: none;
-    border-radius: 5px;
-    color: var(--blue-color);
-    background-color: var(--white-color);
-  }
-
-  @media (min-width: 1024px) {
-    button {
-      padding: 0 1em;
-      border-radius: 10px;
-      color: #fff;
-      background-color: var(--blue-color);
-    }
-  }
-`;
-
 export const FormContainer = styled.div`
   height: 1;
   width: 2;

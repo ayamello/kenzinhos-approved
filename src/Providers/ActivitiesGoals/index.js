@@ -15,7 +15,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
   useEffect(() => {
     api
-      .get(`/groups/`, {
+      .get(`groups/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -27,7 +27,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const handleGoalDelete = (id) => {
     const newGoals = goals.filter((meta) => meta.id !== id);
     api.delete
-      .delete(`/goals/${id}/`, {
+      .delete(`goals/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,14 +48,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const handleGoalCreation = (data) => {
-    const { title, difficulty, how_much_achieved } = data;
+    const { title, difficulty, how_much_achieved, group } = data;
     api
       .post(
-        "/goals/",
+        "goals/",
         {
           title: title,
           difficulty: difficulty,
           how_much_achieved: how_much_achieved,
+          group: group,
         },
         {
           headers: {
@@ -67,14 +68,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
   const handleActivitieCreation = (data) => {
-    const { title, realization_time } = data;
+    const { title, realization_time, group } = data;
 
     api
       .post(
-        "/activities/",
+        "activities/",
         {
           title: title,
           realization_time: realization_time,
+          group: group,
         },
         {
           headers: {
@@ -88,10 +90,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
   const updateGoal = (data) => {
     const { achieved } = data;
-
+    console.log(data);
     api
       .patch(
-        `/goals/${goals.id}/`,
+        `goals/${goals.id}/`,
         {
           achieved: achieved,
         },
@@ -129,6 +131,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         activitiesGroup,
         handleActivieDelete,
         handleGoalDelete,
+        updateActivitie,
+        updateGoal,
+        handleActivitieCreation,
+        handleGoalCreation,
       }}
     >
       {children}
