@@ -70,7 +70,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   
   const handleActivitieCreation = (data) => {
     const { title, realization_time, group } = data;
-
+    
     api
       .post(
         "activities/",
