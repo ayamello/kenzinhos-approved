@@ -7,8 +7,10 @@ import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import Tags from "../../Components/Tags";
 import { Container } from "../../Pages/Groups/styles";
+import { useHabits } from "../../Providers/Habits";
 
 const Dashboard = () => {
+
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
@@ -16,8 +18,10 @@ const Dashboard = () => {
   const [email, setEmail] = useState("");
 
   const decoded = jwtDecode(token);
+  const { loadHabits } = useHabits();
 
   useEffect(() => {
+    loadHabits()
     api
       .get(`users/${decoded.user_id}/`)
       .then((response) => {
