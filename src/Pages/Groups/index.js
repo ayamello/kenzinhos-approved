@@ -1,7 +1,6 @@
-import NavbarDash from "../../Components/NavbarDash";
 import CreateGroupsModal from "../../Components/CreateGroupsModal";
-import MenuBurger from "../../Components/MenuBurger";
 import CardGroup from "../../Components/CardGroup";
+import ViewNavbar from "../../Components/ViewNavbar";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
@@ -28,7 +27,6 @@ const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
-  const [viewNavbar, setViewNavbar] = useState(false);
   const [textInput, setTextInput] = useState("");
 
   useEffect(() => {
@@ -70,11 +68,7 @@ const Groups = () => {
 
   return (
     <Container>
-      {window.innerWidth >= 1024 || viewNavbar === true ? (
-        <NavbarDash setViewNavbar={setViewNavbar} />
-      ) : (
-        <MenuBurger viewNavbar={viewNavbar} setViewNavbar={setViewNavbar} />
-      )}
+      <ViewNavbar/>
 
       <Content>
         <div className="Header">
