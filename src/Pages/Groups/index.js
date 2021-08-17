@@ -23,7 +23,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { toast } from "react-toastify";
-
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
@@ -51,8 +51,6 @@ const Groups = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  
-
   const handleViewDetailsGroup = (group) => {
     setGroupForCard(group);
     setViewCardGroup(true);
@@ -68,7 +66,7 @@ const Groups = () => {
       .then((res) => setGroups([res.data]))
       .catch((err) => console.log(err));
   };
-
+  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
   return (
     <Container>
       <ViewNavbar />
@@ -153,6 +151,12 @@ const Groups = () => {
                         {group.activities.map((activity) => (
                           <ActivitiesGroup key={activity.id}>
                             <p>{activity.title}</p>
+                            <button
+                              className="delete"
+                              onClick={() => handleActivieDelete(activity.id)}
+                            >
+                              Excluir
+                            </button>
                             <span>
                               <strong>Finalizar em:</strong>
                               {activity.realization_time}
@@ -168,9 +172,7 @@ const Groups = () => {
                               id={"goal" + index}
                               name={"goal" + index}
                             />
-                            <label htmlFor={"goal" + index}>
-                              {goal.title}
-                            </label>
+                            <label htmlFor={"goal" + index}>{goal.title}</label>
                             <span>
                               <strong>Nível:</strong>
                               {goal.difficulty}

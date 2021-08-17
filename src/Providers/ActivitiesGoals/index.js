@@ -55,10 +55,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
+      .then((e) => toast.info("Grupo criado com sucesso"))
       .catch((e) => console.log(e));
   };
-  
+
   const handleActivitieCreation = (data) => {
     const { title, realization_time, group } = data;
 
@@ -76,7 +76,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
+      .then((e) => toast.info("Grupo criado com sucesso"))
       .catch((e) => console.log(e));
   };
 
