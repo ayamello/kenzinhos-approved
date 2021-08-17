@@ -8,9 +8,11 @@ const HabitsContext = createContext();
 export const HabitsProvider = ({children}) => {
 
     const [habits, setNewHabits] = useState([]);
-    const [token] = useState(JSON.parse(localStorage.getItem('@Kenzinho:token')) || '');
 
     const loadHabits = () =>{
+
+      const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+
         api
         .get('habits/personal/', {
           headers: {
@@ -23,7 +25,8 @@ export const HabitsProvider = ({children}) => {
    
     const createHabit = (data) => {
 
-      const decoded = jwtDecode(token)
+      const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+      const decoded = jwtDecode(token);
 
         const { 
             title, 
@@ -52,7 +55,7 @@ export const HabitsProvider = ({children}) => {
             )
             .then(() => {
               toast.info('Hábito criado');
-              loadHabits()
+              loadHabits();
             })  
             .catch((err) => 
               toast.error('Não foi possível criar um hábito. Verifique dados informados'));
@@ -61,6 +64,7 @@ export const HabitsProvider = ({children}) => {
 
     const deleteHabit = (id) =>{
 
+        const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
         const newHabits = habits.filter((habit) => habit.id !== id);
 
         api
@@ -80,13 +84,13 @@ export const HabitsProvider = ({children}) => {
 
     const updateHabit = (data) =>{
 
+        const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+
         const {
             how_much_achieved,
             achieved,
             id,
         } = data
-
-        const newHabits = habits.filter((habit) => habit.id !== id);
 
         api
         .patch(`habits/${id}/`,
