@@ -1,4 +1,3 @@
-import NavbarDash from "../../Components/NavbarDash";
 import Habits from "../../Components/Habits";
 import { Content } from "./styles";
 import api from "../../Services/api";
@@ -8,6 +7,7 @@ import jwtDecode from "jwt-decode";
 import Tags from "../../Components/Tags";
 import { Container } from "../../Pages/Groups/styles";
 import { useHabits } from "../../Providers/Habits";
+import ViewNavbar from "../../Components/ViewNavbar";
 
 const Dashboard = () => {
   const [token] = useState(
@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <NavbarDash />
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
