@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import jwtDecode from 'jwt-decode';
 import api from '../../Services/api';
 import { toast } from 'react-toastify';
@@ -11,16 +11,14 @@ export const HabitsProvider = ({children}) => {
     const [token] = useState(JSON.parse(localStorage.getItem('@Kenzinho:token')) || '');
 
     const loadHabits = () =>{
-
-      api
-      .get('habits/personal/', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      }).then((response) => setNewHabits(response.data))
-        .catch((err) => 
-          toast.error('Hábitos não pode ser carregado'));
-    
+        api
+        .get('habits/personal/', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }).then((response) => setNewHabits(response.data))
+          .catch((err) => 
+            toast.error('Hábitos não pode ser carregado'));
     };
    
     const createHabit = (data) => {
@@ -108,13 +106,8 @@ export const HabitsProvider = ({children}) => {
 
     };
 
-    useEffect(() => {
-      loadHabits() 
-      }, []);
-
-
     return(
-        <HabitsContext.Provider value={{habits, createHabit, deleteHabit, updateHabit}}>
+        <HabitsContext.Provider value={{habits, createHabit, deleteHabit, updateHabit, loadHabits}}>
             {children}
         </HabitsContext.Provider>
     )

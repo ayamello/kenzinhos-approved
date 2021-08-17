@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
 import { FormContainer, InputContainer, TitleContainer } from './styles';
-import { makeStyles, Button, TextField, Modal, Backdrop, Fade, Tooltip } from '@material-ui/core';
+import { makeStyles, Button, TextField, Modal, Backdrop, Fade, MenuItem } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'blue',
     backgroundImage: 'linear-gradient(#1D64CB, #741DCB)',
     border: '1px solid #000',
     borderRadius: '20px',
@@ -20,11 +20,21 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   inputs:{
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#ffff',
     border: '1px solid #000',
     padding: '15px',
     borderRadius:'5px',
     boxShadow: '0px 4px 4px rgba(116, 29, 203, 0.57)',
+  },
+  button:{
+    borderRadius: '15px',
+  },
+  close:{
+    width:'1px',
+    borderRadius:'20px',
+    marginLeft:'190px',
+    marginBottom:'20px',
+    fontSize:'10px',
   }
 }));
 
@@ -48,11 +58,15 @@ const CreateHabitsModal = () => {
 
   return (
     <div>   
-      <Tooltip title='Add' interactive>
-        <h3 type='button' onClick={handleOpen}>
+        <Button 
+          className={classes.button}
+          variant='contained'
+          color='primary'
+          size='small'
+          onClick={handleOpen}>
             Criar +
-        </h3>
-      </Tooltip>
+        </Button>
+     
       <Modal
         className={classes.modal}
         open={open}
@@ -67,7 +81,16 @@ const CreateHabitsModal = () => {
           <div className={classes.paper}>
         <FormContainer>        
             <TitleContainer>
-               <h1>Qual seu hábito?</h1>
+                <Button 
+          className={classes.close}
+          variant='contained'
+          color='primary'
+          size='small'
+          onClick={handleClose}>
+            x
+        </Button>
+        <h1>Qual seu hábito?</h1>
+     
             </TitleContainer>
         <form onSubmit={handleSubmit(createHabit)}>
         <div className={classes.inputs}>  
@@ -93,13 +116,36 @@ const CreateHabitsModal = () => {
           </InputContainer>
           <InputContainer>
             <TextField
+              className={classes.select}
               size='small'
               id='outlined-basic'
               label='Dificuldade'
               variant='outlined'
               color='primary'
               {...register('difficulty')}
-            />
+              select
+            >
+             <MenuItem 
+                    value={'muito-facil'}>
+                    Muito fácil
+                </MenuItem>
+                <MenuItem 
+                    value={'facil'}>
+                    Fácil
+                </MenuItem>
+                <MenuItem 
+                    value={'medio'}>
+                    Médio
+                </MenuItem>
+                <MenuItem 
+                    value={'dificil'}>
+                    Difícil
+                </MenuItem>
+                <MenuItem 
+                    value={'muito-dificil'}>
+                    Muito difícil
+                </MenuItem>
+          </TextField>
           </InputContainer>
           <InputContainer>
             <TextField

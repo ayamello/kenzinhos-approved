@@ -7,7 +7,7 @@ export const Container = styled.div`
         width: 30px;
         height: 27px;
         border: none;
-        color: var(--blue-color);
+        color: white;
         border-radius: 3px;
         background-color: transparent;
 

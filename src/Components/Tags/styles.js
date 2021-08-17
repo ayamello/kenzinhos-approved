@@ -1,10 +1,11 @@
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import styled from "styled-components";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    width: "50%",
+    width: "100%",
+    marginTop: "20px",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -25,22 +26,29 @@ export const useStyles = makeStyles((theme) => ({
 
 export const AccordionSummary = withStyles({
   root: {
-    backgroundColor: 'rgba(0, 0, 0, .0)',
-    borderBottom: '1px solid rgba(0, 0, 0, .125)',
+    backgroundColor: "rgba(0, 0, 0, .0)",
+    borderBottom: "1px solid rgba(0, 0, 0, .125)",
     marginBottom: -1,
     minHeight: 56,
-    '&$expanded': {
+    "&$expanded": {
       minHeight: 56,
     },
   },
   content: {
     margin: 0,
-    '&$expanded': {
-      margin: '12px 0',
+    "&$expanded": {
+      margin: "12px 0",
     },
   },
   expanded: {},
 })(MuiAccordionSummary);
+
+export const MainContainer = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const TitleContainer = styled.div`
   display: flex;

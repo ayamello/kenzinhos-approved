@@ -22,7 +22,7 @@ export const HomeContainer = styled.div`
 export const HomeHeader = styled.header`
 
     text-align: right;
-    padding-top: 9%;
+    padding-top: 7%;
     padding-right: 5%;
     
 
@@ -134,14 +134,15 @@ export const HomeCards = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     
 
-    h1{
-        font-size: 3rem;
+    img{
+        width: 60px;
     }
 
     h4{
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     p{

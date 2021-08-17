@@ -33,12 +33,56 @@ export const GroupsUserProvider = ({ children }) => {
       });
   };
 
+  const subscribeToAGroup = (id) => {
+    api
+      .post(`groups/${id}/subscribe/`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        getGroups(token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const unsubscribeGroup = (id) => {
+    api
+      .delete(`groups/${id}/unsubscribe/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        getGroups(token);
+      })
+      .catch((err) => {});
+  };
+  const handleGroupCreation = (data) => {
+    const { name, description, category } = data;
+    api
+      .post(
+        "groups/",
+        {
+          name: name,
+          description: description,
+          category: category,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  };
+
   useEffect(() => {
     getGroups(token);
   }, [token]);
 
   return (
-    <GroupsUserContext.Provider value={{ groups, setGroups, getGroups }}>
+    <GroupsUserContext.Provider
+      value={{ groups, setGroups, getGroups, handleGroupCreation }}
+    >
       {children}
     </GroupsUserContext.Provider>
   );
