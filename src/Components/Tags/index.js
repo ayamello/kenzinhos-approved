@@ -11,7 +11,8 @@ import {
   useStyles,
 } from "./styles";
 import SearchBar from "../SearchBar";
-import CreateActivitiesModal from "../CreateActivitiesModal";
+import CreateActivitiesModal from "../ActivitiesModal";
+import CreateGoalsModal from "../GoalsModal";
 
 const Tags = () => {
   const classes = useStyles();
@@ -71,7 +72,10 @@ const Tags = () => {
                   <p>Finalizar em: {activity.realization_time}</p>
                 </DescriprionContainer>
               ))}
-              <h4>Metas:</h4>
+              <SubTitles>
+                <h4>Metas:</h4>
+                <CreateGoalsModal groupId={group.id} />
+              </SubTitles>
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
