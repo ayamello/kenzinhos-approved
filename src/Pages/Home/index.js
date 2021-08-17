@@ -93,13 +93,12 @@ const Home = () => {
           Sobre nós
         </h4>
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-          sunt in culpa qui officia deserunt mollit anim id est laborum."
+          Somos aluno do curso full stack da Kenzie, e tendo ingressado 
+          recentemente na programação conhecemos as dificuldades que um 
+          "kenzinho" enfrenta. Tendo isso em mente, desenvolvemos esta 
+          aplicação, com o intuito de ajudar os novos alunos a trabalhar 
+          algumas soft skills, como gestão de tempo, produtividade, formação 
+          de novos hábitos, que são essenciais ao trabalho de programador.
         </p>
       </History>
       <AboutCardsContainer id='bottom'>
