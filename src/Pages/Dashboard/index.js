@@ -1,13 +1,12 @@
 import Habits from "../../Components/Habits";
 import { Content } from "./styles";
-import api from "../../Services/api";
-import { useEffect } from "react";
-import { useState } from "react";
-import jwtDecode from "jwt-decode";
-import Tags from "../../Components/Tags";
 import { Container } from "../../Pages/Groups/styles";
-import { useHabits } from "../../Providers/Habits";
+import { useHabits } from '../../Providers/Habits';
+import { useState, useEffect } from "react";
+import api from "../../Services/api";
+import jwtDecode from "jwt-decode";
 import ViewNavbar from "../../Components/ViewNavbar";
+import Tags from "../../Components/Tags";
 
 const Dashboard = () => {
   const [token] = useState(
@@ -17,6 +16,7 @@ const Dashboard = () => {
   const [email, setEmail] = useState("");
 
   const decoded = jwtDecode(token);
+
   const { loadHabits } = useHabits();
 
   useEffect(() => {

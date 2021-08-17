@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   color:white;
-  height: 200px;
-  width: 145px;
+  height: 240px;
+  width: 160px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,10 +16,6 @@ export const MainContainer = styled.div`
   background-image: linear-gradient(#1D64CB, #741DCB);
   margin-bottom: 10px;
   margin-top: 10px;
-
-  @media screen and (min-width: 798px) {
-    
-  }
 `;
 
 export const TitleContainer = styled.div`
@@ -28,6 +24,7 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top:5px;
   
   h4{
     font-size: 14px;
@@ -39,11 +36,6 @@ export const TitleContainer = styled.div`
   input{
     width: 50px;
   }
-
-  @media screen and (max-width: 600px) {
-    
-    }
-  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -54,7 +46,7 @@ export const ButtonContainer = styled.div`
     font-size: 11px;
     width: 55px;
     height: 25px;
-    margin: 0px 5px 0px 5px;
+    margin: 5px 5px 5px 5px;
     border-radius: 6px;
   }
 
@@ -75,8 +67,6 @@ export const ButtonContainer = styled.div`
   .delete:active{
     color:black;
   }
-
-
-`
+`;
 
 

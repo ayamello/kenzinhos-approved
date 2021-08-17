@@ -65,33 +65,31 @@ const CreateHabitsModal = () => {
           size='small'
           onClick={handleOpen}>
             Criar +
-        </Button>
-     
-      <Modal
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
+        </Button>  
+        <Modal
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
         <Fade in={open}>
           <div className={classes.paper}>
         <FormContainer>        
-            <TitleContainer>
-                <Button 
-          className={classes.close}
-          variant='contained'
-          color='primary'
-          size='small'
-          onClick={handleClose}>
-            x
-        </Button>
+        <TitleContainer>
+          <Button 
+            className={classes.close}
+            variant='contained'
+            color='primary'
+            size='small'
+            onClick={handleClose}>
+              x
+          </Button>
         <h1>Qual seu hábito?</h1>
-     
-            </TitleContainer>
+        </TitleContainer>
         <form onSubmit={handleSubmit(createHabit)}>
         <div className={classes.inputs}>  
           <InputContainer>

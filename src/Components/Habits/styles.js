@@ -1,19 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   /* position: absolute; */
   left:40%;
   top:20%;
   @media screen and (min-width: 768px){
-  left:68%;
-  top:20%;
+  left:65%;
+  top:12%;
   }
 `
 
 export const MainContainer = styled.div`
   max-width: 200px;
   min-width: 200px;
-  height: 230px;
+  height: 260px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -37,7 +37,8 @@ export const MainContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  max-width: 450px;
+  max-width: 200px;
+  min-width: 200px;
   height: 60px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);
@@ -48,5 +49,9 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
+  @media screen and (min-width: 768px) {
+    max-width: 450px;
+    min-width: 450px;
+  }
 `
 
