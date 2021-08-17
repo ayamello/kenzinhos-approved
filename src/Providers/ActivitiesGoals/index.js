@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
+import { useAuth } from "../Auth/index";
+
 
 const ListActivitiesGoalsContext = createContext();
 
@@ -9,9 +11,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   const [activitiesGroup, setActivitiesGroup] = useState("");
   const [group, setGroup] = useState("");
 
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
-  );
+  const { token } = useAuth();
 
   useEffect(() => {
     api
