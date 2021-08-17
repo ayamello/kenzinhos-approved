@@ -17,12 +17,8 @@ const Signup = () => {
     email: yup.string().required("*Campo obrigatório").email("Email inválido"),
     password: yup
       .string()
-      .min(8, "*Mínimo de 8 dígitos")
-      .required("*Campo obrigatório")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
-        "Senha deve ter números, maiúscula e caractere especial"
-      ),
+      .min(6, "*Mínimo de 6 dígitos")
+      .required("*Campo obrigatório"),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "*Senha não confere"),
