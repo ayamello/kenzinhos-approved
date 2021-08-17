@@ -44,9 +44,10 @@ const Signup = () => {
         toast.success("Conta criada com sucesso");
         return history.push("/login");
       })
-      .catch((err) =>
-        toast.error("Erro ao criar a conta. Email já cadastrado")
-      );
+      .catch((err) => {
+        console.log(err);
+        toast.error("Erro ao criar a conta. Email já cadastrado");
+      });
   }
 
   return (

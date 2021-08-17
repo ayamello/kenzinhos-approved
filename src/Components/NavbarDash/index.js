@@ -1,11 +1,14 @@
 import { Container, Content } from './styles';
 import logo from '../../Assets/Img/logosimplified.png';
-import groups from '../../Assets/Img/groups.png';
+import groupsImg from '../../Assets/Img/groups.png';
 import profile from '../../Assets/Img/profile.png';
 import { ArrowBack } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { useGroupsUser } from '../../Providers/GroupsUserProvider';
 
 const Navbar = ({setViewNavbar}) => {
+    const { groups } = useGroupsUser()
+
     return(
         <Container>
             <Content>
@@ -22,9 +25,9 @@ const Navbar = ({setViewNavbar}) => {
                 </Link>
 
                 <Link to="/groups">
-                    <img src={groups} alt="Imagem de usuário"/>
+                    <img src={groupsImg} alt="Imagem de usuário"/>
                     <h4>Grupo</h4>
-                    <span>Participando: 2</span>
+                    <span>Participando: {groups.length}</span>
                 </Link>
             </Content>
             <img src={logo} alt="Logo"/>
