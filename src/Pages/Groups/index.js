@@ -5,16 +5,17 @@ import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
 
-import { 
-  Container, 
-  Content, 
-  HeaderGroup, 
-  ListGroups, 
-  InfosGroup, 
-  DetailsGroup, 
-  ActivitiesGroup, 
-  GoalsGroup, 
-  BtnSubscribe } from "./styles";
+import {
+  Container,
+  Content,
+  HeaderGroup,
+  ListGroups,
+  InfosGroup,
+  DetailsGroup,
+  ActivitiesGroup,
+  GoalsGroup,
+  BtnSubscribe,
+} from "./styles";
 
 import {
   Accordion,
@@ -22,24 +23,41 @@ import {
   AccordionDetails,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { toast } from "react-toastify";
 
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
   const [textInput, setTextInput] = useState("");
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
+  );
 
+  const getGroups = (token) => {
+    api
+      .get("groups/subscriptions/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setGroups([...response.data]);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     api
       .get("groups/")
       .then((res) => {
         const apiGroups = res.data.results.map((group) => ({
           ...group,
-          realization_time: new Date(group.realization_time).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-          }),
+          realization_time: new Date(group.realization_time).toLocaleDateString(
+            "pt-BR",
+            {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }
+          ),
         }));
         setGroups(apiGroups);
       })
@@ -52,19 +70,19 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.filter(group => group.name === groupName);
+    const group = groups.filter((group) => group.name === groupName);
     const id = group[0].id;
-    console.log(id)
-    
-    if(group) {
-      api.get(`groups/${id}/`)
-      .then(res => setGroups([res.data]))
-      .catch(err => console.log(err))
-    }
-    else {
+    console.log(id);
+
+    if (group) {
+      api
+        .get(`groups/${id}/`)
+        .then((res) => setGroups([res.data]))
+        .catch((err) => console.log(err));
+    } else {
       console.log("Grupo não encontrado");
     }
-  }
+  };
 
   return (
     <Container>
@@ -78,12 +96,25 @@ const Groups = () => {
         <div className="Groups">
           <div className="GroupsList">
             <div className="SearchField">
-              <input type="text" placeholder="Pesquisar grupo" onChange={e => setTextInput(e.target.value)} />
-              <button onClick={() => handleSearchGroup(textInput)}>
-                <Search />
+              <input
+                type="text"
+                placeholder="Pesquisar grupo"
+                onChange={(e) => setTextInput(e.target.value)}
+              />
+              <div>
+                <button onClick={() => handleSearchGroup(textInput)}>
+                  <Search />
+                </button>
+              </div>
+            </div>
+            <div>
+              <button
+                className="AllGroupsButton"
+                onClick={() => getGroups(token)}
+              >
+                Mostrar todos os grupos
               </button>
             </div>
-
             {window.innerWidth >= 1024 && (
               <div className="List">
                 {groups.map((group) => (
@@ -113,7 +144,7 @@ const Groups = () => {
             {window.innerWidth <= 768 && (
               <ListGroups>
                 {groups.map((group) => (
-                  <Accordion key={group.id} style={{marginTop: "5px"}}>
+                  <Accordion key={group.id} style={{ marginTop: "5px" }}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
@@ -137,7 +168,7 @@ const Groups = () => {
                           <ActivitiesGroup key={activity.id}>
                             <p>{activity.title}</p>
                             <span>
-                              <strong>Finalizar em:</strong> 
+                              <strong>Finalizar em:</strong>
                               {activity.realization_time}
                             </span>
                           </ActivitiesGroup>
@@ -146,10 +177,17 @@ const Groups = () => {
                         <h5>Metas</h5>
                         {group.goals.map((goal, index) => (
                           <GoalsGroup key={goal.id}>
-                            <input type="checkbox" id={"goal"+index} name={"goal"+index} />
-                            <label htmlFor={"goal"+index}> {goal.title}</label>
+                            <input
+                              type="checkbox"
+                              id={"goal" + index}
+                              name={"goal" + index}
+                            />
+                            <label htmlFor={"goal" + index}>
+                              {" "}
+                              {goal.title}
+                            </label>
                             <span>
-                              <strong>Nível:</strong> 
+                              <strong>Nível:</strong>
                               {goal.difficulty}
                             </span>
                           </GoalsGroup>

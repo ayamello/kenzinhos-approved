@@ -23,6 +23,12 @@ export const InputContainer = styled.div`
   .AllGroupsButton {
     margin-top: 5px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-family: var(--body-font);
+    font-weight: 700;
     
   }
   button {

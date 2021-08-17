@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: absolute;
+  /* position: absolute; */
   left:40%;
   top:20%;
   @media screen and (min-width: 768px){
@@ -30,14 +30,14 @@ export const MainContainer = styled.div`
     justify-content: space-around;
   }
   @media screen and (min-width: 768px) {
-    max-width: 370px;
-    min-width: 370px;
+    max-width: 450px;
+    min-width: 450px;
     height: 450px;
   }
 `;
 
 export const TitleContainer = styled.div`
-  max-width: 370px;
+  max-width: 450px;
   height: 60px;
   background: #F9F9F9;
   border: 2px solid rgba(29, 100, 203, 0.1);

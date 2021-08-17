@@ -13,9 +13,32 @@ const useStyles = makeStyles({
     height: 500,
     display: "flex",
     flexDirection: "column",
-    overflow: "auto",
+    overflowY: "auto",
+    overflowX: "hidden",
     marginLeft: 100,
   },
+
+  "@global": {
+    width: 550,
+    height: 500,
+    display: "flex",
+    flexDirection: "column",
+    overflowY: "auto",
+    overflowX: "hidden",
+    marginLeft: 100,
+    "*::-webkit-scrollbar": {
+      width: "5px",
+    },
+    "*::-webkit-scrollbar-track": {
+      backgroundColor: "white",
+      borderRadius: "10px",
+    },
+    "*::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(29,100,203,1)",
+      borderRadius: "10px",
+    },
+  },
+
   bullet: {
     display: "flex",
     flexDirection: "column",
@@ -36,7 +59,7 @@ const useStyles = makeStyles({
 
 const Group = ({ group }) => {
   const classes = useStyles();
-  
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -61,21 +84,21 @@ const Group = ({ group }) => {
           <Typography variant="h5" component="h4">
             Metas:
           </Typography>
-          {group?.goals.map(goal => 
-              <Typography variant="body2" component="p">
-                {goal.title}
-              </Typography>
-            )}    
+          {group?.goals.map((goal) => (
+            <Typography variant="body2" component="p">
+              {goal.title}
+            </Typography>
+          ))}
         </ContainerGoals>
         <ContainerActivities>
           <Typography variant="h5" component="h4">
             Atividades:
           </Typography>
-            {group?.activities.map(activity => 
-              <Typography variant="body2" component="li">
-                {activity.title}
-              </Typography>
-            )}          
+          {group?.activities.map((activity) => (
+            <Typography variant="body2" component="li">
+              {activity.title}
+            </Typography>
+          ))}
         </ContainerActivities>
       </CardContent>
       <CardActions className={classes.botao}>

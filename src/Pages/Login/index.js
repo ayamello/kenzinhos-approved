@@ -17,10 +17,7 @@ const Login = () => {
   const history = useHistory();
   const loginSchema = yup.object().shape({
     username: yup.string().required("Usuário Obrigatório"),
-    password: yup
-      .string()
-      .required("Senha obrigatória")
-      .min(8, "Mínimo de 8 dígitos"),
+    password: yup.string().required("Senha obrigatória"),
   });
 
   const {

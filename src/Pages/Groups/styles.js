@@ -184,6 +184,13 @@ export const Content = styled.div`
         background-color: var(--blue-color);
       }
     }
+    .AllGroupsButton {
+      margin-top: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0 5px;
+      height: 34px;
+    }
 
     .Groups {
       flex-direction: row;

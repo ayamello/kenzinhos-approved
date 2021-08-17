@@ -80,7 +80,9 @@ export const GroupsUserProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <GroupsUserContext.Provider value={{ groups, setGroups, getGroups }}>
+    <GroupsUserContext.Provider
+      value={{ groups, setGroups, getGroups, handleGroupCreation }}
+    >
       {children}
     </GroupsUserContext.Provider>
   );
