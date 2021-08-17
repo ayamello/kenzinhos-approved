@@ -67,8 +67,6 @@ const defaultDifficulty = () =>{
   }
 }
 
-console.log(howMuch)
-
 const { deleteHabit,  updateHabit } = useHabits();
 
     return(
