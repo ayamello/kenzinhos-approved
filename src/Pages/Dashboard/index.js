@@ -37,7 +37,6 @@ const Dashboard = () => {
       <Content>
         <div className="Header">
           <span>
-            Bem vindo,
             <strong>
               {user}
             </strong>

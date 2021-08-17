@@ -15,32 +15,24 @@ import CreateActivitiesModal from "../ActivitiesModal";
 import CreateGoalsModal from "../GoalsModal";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
+import { useGroupsUser } from "../../Providers/GroupsUserProvider";
+import { useAuth } from "../../Providers/Auth";
 const Tags = () => {
   const classes = useStyles();
+  const { token } = useAuth();
+  const { getGroups, groups } = useGroupsUser();
 
-  const [token, setToken] = useState("");
-  const [groups, setGroups] = useState([]);
-
-  const getGroups = (token) => {
-    api
-      .get("groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setGroups([...response.data]);
-      })
-      .catch((err) => console.log(err));
-  };
+  console.log(groups);
 
   useEffect(() => {
-    let userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
-    setToken(userToken);
     getGroups(token);
-  }, [token, groups]);
+  }, [groups]);
+
   const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
+
   return (
     <MainContainer>
-      <SearchBar groups={groups} setGroups={setGroups} getGroups={getGroups} />
+      <SearchBar groups={groups} getGroups={getGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary

@@ -6,7 +6,7 @@ import api from "../../Services/api";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const token = localStorage.getItem("@Kenzinho:token") || "";
+  const token = JSON.parse(localStorage.getItem("@Kenzinho:token")) || "";
 
   const [auth, setAuth] = useState(token);
 
