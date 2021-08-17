@@ -163,6 +163,10 @@ export const Content = styled.div`
     }
   }
 
+  .MuiAccordionSummary-content {
+    flex-direction: column;
+  }
+
   @media (min-width: 1024px) {
     .Header {
       padding: 1em 0 0.2em 0;
@@ -180,13 +184,124 @@ export const Content = styled.div`
         background-color: var(--blue-color);
       }
     }
+    .AllGroupsButton {
+      margin-top: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0 5px;
+      height: 34px;
+    }
 
     .Groups {
       flex-direction: row;
-      
+
       .GroupsList .List .Group {
         box-shadow: 0px 4px 4px rgba(29, 100, 203, 0.4);
       }
     }
+  }
+`;
+
+export const ListGroups = styled.div`
+  height: 65vh;
+  margin-top: 10px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--blue-color);
+    border-radius: 10px;
+  }
+`;
+
+export const HeaderGroup = styled.div`
+  display: flex;
+  align-items: center;
+
+  h4 {
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+  }
+
+  span {
+    color: var(--gray-details);
+    font-size: 12px;
+    margin-left: 10px;
+    transform: translateY(2px);
+  }
+`;
+
+export const InfosGroup = styled.div`
+  color: var(--gray-details);
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+
+  span {
+    display: block;
+  }
+
+  span + span {
+    margin-left: 15px;
+  }
+`;
+
+export const DetailsGroup = styled.div`
+  width: 100%;
+  h5 {
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+  }
+`;
+
+export const ActivitiesGroup = styled.div`
+  margin: 7px 0;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(116, 29, 203, 0.2);
+
+  p,
+  span {
+    font-size: 13px;
+  }
+`;
+
+export const GoalsGroup = styled.div`
+  margin: 7px 0;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(116, 29, 203, 0.2);
+
+  label,
+  span {
+    font-size: 13px;
+  }
+
+  span {
+    display: block;
+  }
+
+  input {
+    transform: translateY(2px);
+  }
+`;
+
+export const BtnSubscribe = styled.div`
+  text-align: right;
+
+  button {
+    border: none;
+    color: white;
+    background-color: var(--blue-color);
+    font-size: "Source Code Pro";
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 10px;
   }
 `;
