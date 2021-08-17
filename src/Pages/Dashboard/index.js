@@ -1,3 +1,4 @@
+import Habits from "../../Components/Habits";
 import { Content } from "./styles";
 import { Container } from "../../Pages/Groups/styles";
 import { useHabits } from '../../Providers/Habits';
@@ -5,7 +6,6 @@ import { useState, useEffect } from "react";
 import api from "../../Services/api";
 import jwtDecode from "jwt-decode";
 import ViewNavbar from "../../Components/ViewNavbar";
-import Habits from "../../Components/Habits";
 import Tags from "../../Components/Tags";
 
 const Dashboard = () => {
@@ -39,7 +39,6 @@ const Dashboard = () => {
           <span>
             Bem vindo,
             <strong>
-              {"  "}
               {user}
             </strong>
           </span>

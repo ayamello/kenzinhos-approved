@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
-import { FormContainer, InputContainer, TitleContainer } from './styles';
+import { Container, FormContainer, InputContainer, TitleContainer } from './styles';
 import { makeStyles, Button, TextField, Modal, Backdrop, Fade, MenuItem } from '@material-ui/core';
 
 
@@ -57,7 +57,7 @@ const CreateHabitsModal = () => {
   };
 
   return (
-    <div>   
+    <Container>   
         <Button 
           className={classes.button}
           variant='contained'
@@ -171,7 +171,7 @@ const CreateHabitsModal = () => {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </Container>
   );
 }
 
