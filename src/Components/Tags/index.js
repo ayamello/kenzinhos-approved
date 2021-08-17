@@ -1,5 +1,5 @@
 import { Accordion, Typography } from "@material-ui/core";
-import { AccordionSummary, MainContainer } from "./styles";
+import { AccordionSummary, MainContainer, SubTitles } from "./styles";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import {
   useStyles,
 } from "./styles";
 import SearchBar from "../SearchBar";
+import CreateActivitiesModal from "../CreateActivitiesModal";
 
 const Tags = () => {
   const classes = useStyles();
@@ -33,7 +34,7 @@ const Tags = () => {
     let userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     setToken(userToken);
     getGroups(token);
-  }, [token]);
+  }, [token, groups]);
 
   return (
     <MainContainer>
@@ -48,7 +49,7 @@ const Tags = () => {
             <Typography className={classes.heading}>
               <div key={group.id}>
                 <TitleContainer>
-                  <span>{group.name}</span>
+                  <h4>{group.name}</h4>
                   <p>{group.category}</p>
                 </TitleContainer>
                 <SubTitleContainer>
@@ -60,14 +61,17 @@ const Tags = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography className={classes.lowerMenu}>
-              <span>Atividades:</span>
+              <SubTitles>
+                <h4>Atividades:</h4>
+                <CreateActivitiesModal groupId={group.id} />
+              </SubTitles>
               {group.activities.map((activity) => (
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
                 </DescriprionContainer>
               ))}
-              <span>Metas:</span>
+              <h4>Metas:</h4>
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>

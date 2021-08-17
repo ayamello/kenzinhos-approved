@@ -67,7 +67,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
   const handleActivitieCreation = (data) => {
-    const { title, realization_time } = data;
+    const { title, realization_time, group } = data;
 
     api
       .post(
@@ -75,6 +75,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         {
           title: title,
           realization_time: realization_time,
+          group: group,
         },
         {
           headers: {
