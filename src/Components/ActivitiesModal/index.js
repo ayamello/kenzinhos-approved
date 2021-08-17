@@ -14,7 +14,7 @@ import {
   Fade,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "./style";
+import { ButtonAdd, InputId } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -111,8 +111,9 @@ const CreateActivitiesModal = ({ groupId }) => {
                   <InputContainer>
                     <TextField
                       size="small"
+                      placeholder='dd/mm/aaaa'
                       id="outlined-basic"
-                      label="Tempo para realização"
+                      label="Finalizar em: "
                       variant="outlined"
                       color="primary"
                       {...register("realization_time")}

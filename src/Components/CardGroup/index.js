@@ -54,10 +54,10 @@ const Group = ({ group }) => {
         </ContainerActivities>
       </CardContent>
       <CardActions className={classes.botao}>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          size="medium" 
+        <Button
+          variant="contained"
+          color="primary"
+          size="medium"
           onClick={() => subscribeToAGroup(group.id)}
         >
           Inscrever-se
