@@ -9,7 +9,6 @@ import Habits from "../../Components/Habits";
 import Tags from "../../Components/Tags";
 
 const Dashboard = () => {
-
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
@@ -44,7 +43,7 @@ const Dashboard = () => {
               {user}
             </strong>
           </span>
-          <span className='Email'>{email}</span>
+          <span className="Email">{email}</span>
         </div>
 
         <div className="Groups">

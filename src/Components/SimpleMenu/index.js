@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Link } from 'react-router-dom';
 import Hamburguer from '../../Assets/Img/hamburguer2.png'
 import { HamburguerIcon } from './styles';
 
@@ -29,9 +28,9 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}><Link to='/'>Home</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link to='/quemsomos'>Quem somos</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link to='/contato'>Contato</Link></MenuItem>
+        <MenuItem onClick={handleClose}><a href='#top'>Home</a></MenuItem>
+        <MenuItem onClick={handleClose}><a href='#middleMobile'>Sobre nós</a></MenuItem>
+        <MenuItem onClick={handleClose}><a href='#bottom'>Contato</a></MenuItem>
       </Menu>
     </div>
   );

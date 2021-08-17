@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useGroupsUser } from "../../Providers/GroupsUserProvider";
-import { FormContainer, InputContainer, TitleContainer } from "./styles";
+import {
+  FormContainer,
+  InputContainer,
+  TitleContainer,
+} from "../CreateHabitsModal/styles";
 import {
   makeStyles,
   Button,
@@ -9,7 +12,10 @@ import {
   Modal,
   Backdrop,
   Fade,
+  MenuItem,
 } from "@material-ui/core";
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
+import { ButtonAdd, InputId } from "../../Components/ActivitiesModal/style";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -26,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   inputs: {
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#ffff",
     border: "1px solid #000",
     padding: "15px",
     borderRadius: "5px",
@@ -35,15 +41,22 @@ const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: "15px",
   },
+  close: {
+    width: "1px",
+    borderRadius: "20px",
+    marginLeft: "190px",
+    marginBottom: "20px",
+    fontSize: "10px",
+  },
 }));
 
-const CreateGroups = () => {
+const CreateGoalsModal = ({ groupId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { handleGroupCreation } = useGroupsUser();
+  const { handleGoalCreation } = useListActivitiesGoals();
 
   const handleOpen = () => {
     setOpen(true);
@@ -55,15 +68,7 @@ const CreateGroups = () => {
 
   return (
     <div>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        size="small"
-        onClick={handleOpen}
-      >
-        Criar +
-      </Button>
+      <ButtonAdd onClick={handleOpen}>+ meta</ButtonAdd>
 
       <Modal
         className={classes.modal}
@@ -79,41 +84,69 @@ const CreateGroups = () => {
           <div className={classes.paper}>
             <FormContainer>
               <TitleContainer>
-                <h1>Crie seu grupo</h1>
+                <Button
+                  className={classes.close}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  onClick={handleClose}
+                >
+                  x
+                </Button>
+                <h1>Crie uma nova Meta</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(handleGroupCreation)}>
+              <form onSubmit={handleSubmit(handleGoalCreation)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Nome"
+                      label="Título"
                       variant="outlined"
                       color="primary"
-                      {...register("name")}
+                      {...register("title")}
                     />
-
+                  </InputContainer>
+                  <InputContainer>
+                    <TextField
+                      className={classes.select}
+                      size="small"
+                      id="outlined-basic"
+                      label="Dificuldade"
+                      variant="outlined"
+                      color="primary"
+                      {...register("difficulty")}
+                      select
+                    >
+                      <MenuItem value={"muito-facil"}>Muito fácil</MenuItem>
+                      <MenuItem value={"facil"}>Fácil</MenuItem>
+                      <MenuItem value={"medio"}>Médio</MenuItem>
+                      <MenuItem value={"dificil"}>Difícil</MenuItem>
+                      <MenuItem value={"muito-dificil"}>Muito difícil</MenuItem>
+                    </TextField>
+                  </InputContainer>
+                  <InputContainer>
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Descrição"
+                      label="Quanto já realizou"
                       variant="outlined"
+                      type="number"
                       color="primary"
-                      {...register("description")}
+                      {...register("how_much_achieved")}
                     />
-
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Categoria"
-                      variant="outlined"
-                      color="primary"
-                      {...register("category")}
+                  </InputContainer>
+                  <InputContainer>
+                    <InputId
+                      className="hidden-id"
+                      value={groupId}
+                      {...register("group")}
                     />
                   </InputContainer>
                 </div>
                 <InputContainer>
                   <Button
+                    onClick={handleClose}
                     variant="contained"
                     color="primary"
                     size="small"
@@ -132,4 +165,4 @@ const CreateGroups = () => {
   );
 };
 
-export default CreateGroups;
+export default CreateGoalsModal;
