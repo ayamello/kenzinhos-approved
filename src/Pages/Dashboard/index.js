@@ -39,7 +39,6 @@ const Dashboard = () => {
           <span>
             Bem vindo,
             <strong>
-              {"  "}
               {user}
             </strong>
           </span>
