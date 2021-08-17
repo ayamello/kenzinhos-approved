@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
+import { toast } from "react-toastify";
 
 const GroupsUserContext = createContext();
 
@@ -20,19 +21,6 @@ export const GroupsUserProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const deleteGroup = (id) => {
-    api
-      .delete(`groups/${id}/unsubscribe/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(() => {
-        getGroups(token);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const subscribeToAGroup = (id) => {
     api
       .post(`groups/${id}/subscribe/`, null, {
@@ -40,21 +28,14 @@ export const GroupsUserProvider = ({ children }) => {
       })
       .then(() => {
         getGroups(token);
+        toast.success("Inscrição realizada com sucesso");
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Você já faz parte desse grupo")
       });
   };
-  const unsubscribeGroup = (id) => {
-    api
-      .delete(`groups/${id}/unsubscribe/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(() => {
-        getGroups(token);
-      })
-      .catch((err) => {});
-  };
+  
   const handleGroupCreation = (data) => {
     const { name, description, category } = data;
     api
@@ -81,7 +62,7 @@ export const GroupsUserProvider = ({ children }) => {
 
   return (
     <GroupsUserContext.Provider
-      value={{ groups, setGroups, getGroups, handleGroupCreation }}
+      value={{ groups, setGroups, getGroups, handleGroupCreation, subscribeToAGroup }}
     >
       {children}
     </GroupsUserContext.Provider>

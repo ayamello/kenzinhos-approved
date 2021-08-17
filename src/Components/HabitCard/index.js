@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHabits } from '../../Providers/Habits'
 import { ButtonContainer, MainContainer, TitleContainer } from './styles'
 import { Slider } from '@material-ui/core'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Rating } from '@material-ui/lab';
 
 const AchievedSlider = withStyles({
@@ -50,24 +50,22 @@ const data = {
 };
 
 const defaultDifficulty = () =>{
-  if(habit.difficulty === "muito-facil"){
+  if(habit.difficulty === 'muito-facil'){
     return 1
   }
-  if(habit.difficulty === "facil"){
+  if(habit.difficulty === 'facil'){
     return 2
   }
-  if(habit.difficulty === "medio"){
+  if(habit.difficulty === 'medio'){
     return 3
   }
-  if(habit.difficulty === "dificil"){
+  if(habit.difficulty === 'dificil'){
     return 4
   }
-  if(habit.difficulty === "muito-dificil"){
+  if(habit.difficulty === 'muito-dificil'){
     return 5
   }
 }
-
-console.log(howMuch)
 
 const { deleteHabit,  updateHabit } = useHabits();
 
@@ -81,7 +79,7 @@ const { deleteHabit,  updateHabit } = useHabits();
             <TitleContainer>   
                 <h4>Dificuldade</h4>
                 <Rating
-                    name="read-only"
+                    name='read-only'
                     defaultValue={defaultDifficulty}
                     readOnly
                 />

@@ -18,8 +18,7 @@ export const HomeContainer = styled.div`
     @media (min-width: 768px){
 
         background: url(${backgroundDesktop});
-        background-size: cover;
-           
+        background-size: cover;       
     }
 `;
 
@@ -68,7 +67,7 @@ export const HomeHeader = styled.header`
 export const BodyContainer = styled.div`
 
     width: 75%;
-    padding-top: 40%;
+    padding-top: 30%;
     padding-left: 5%;
 
     h1{
@@ -86,15 +85,14 @@ export const BodyContainer = styled.div`
 
     @media (min-width: 768px) {
 
-        padding-top: 18%;
+        padding-top: 16%;
         margin-left: 12%;
         width: 40%;
-
     }
 
     @media (min-width: 1024px){
 
-        padding-top: 14%;
+        padding-top: 12%;
 
         h1{
             font-size: 2rem;
@@ -106,7 +104,6 @@ export const HomeCardsContainer = styled.div`
 
     display: none;
     
-
     @media (min-width: 768px){
         
         display: flex;
@@ -137,7 +134,6 @@ export const HomeCards = styled.div`
     justify-content: space-evenly;
     align-items: center;
     
-
     img{
         width: 60px;
     }
@@ -170,8 +166,7 @@ export const ButtonWhite = styled.button`
         border-radius: 10px;
         border: none;
         color: var(--blue-color);
-        font-size: 1rem;
-    
+        font-size: 1rem;    
 `;
 
 export const ButtonPurple = styled.button`
@@ -182,8 +177,7 @@ export const ButtonPurple = styled.button`
         border-radius: 10px;
         color: white;
         border: 1px solid white;
-        font-size: 1rem;
-    
+        font-size: 1rem;   
 `;
 
 export const History = styled.div`
@@ -211,6 +205,7 @@ export const AboutCardsContainer = styled.div`
     background: none;
     margin-top: 50px;
     justify-content: center;
+    padding-bottom: 20px;
 
     @media (min-width: 768px){
         
@@ -224,7 +219,7 @@ export const AboutCardsContainer = styled.div`
 
 export const AboutCards = styled.div`
 
-    width: 225px;
+    width: 310px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -233,22 +228,19 @@ export const AboutCards = styled.div`
     display: flex;
     justify-content: space-around;
 
-
     img{
         width: 75px;
-        border-radius: 10px;
-        
+        border-radius: 10px;   
     }
 
     @media (min-width: 768px){
 
-        width: 40%;
+        width: 45%;
         height: 150px;
 
         img{
         width: 100px;
         }
-
     }
 `;
 
@@ -257,7 +249,6 @@ export const CardsInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 `;
 
 export const IconsNav = styled.nav`

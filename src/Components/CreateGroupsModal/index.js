@@ -9,7 +9,9 @@ import {
   Modal,
   Backdrop,
   Fade,
+  MenuItem,
 } from "@material-ui/core";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -35,6 +37,16 @@ const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: "15px",
   },
+  close: {
+    width: "1px",
+    borderRadius: "20px",
+    marginLeft: "190px",
+    marginBottom: "20px",
+    fontSize: "10px",
+  },
+  select: {
+    backgroundColor: "#ffff",
+  },
 }));
 
 const CreateGroups = () => {
@@ -51,6 +63,9 @@ const CreateGroups = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleCreation = () => {
+    toast.info("Grupo criado");
   };
 
   return (
@@ -79,6 +94,15 @@ const CreateGroups = () => {
           <div className={classes.paper}>
             <FormContainer>
               <TitleContainer>
+                <Button
+                  className={classes.close}
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  onClick={handleClose}
+                >
+                  x
+                </Button>
                 <h1>Crie seu grupo</h1>
               </TitleContainer>
               <form onSubmit={handleSubmit(handleGroupCreation)}>
@@ -103,13 +127,19 @@ const CreateGroups = () => {
                     />
 
                     <TextField
+                      className={classes.select}
                       size="small"
                       id="outlined-basic"
                       label="Categoria"
                       variant="outlined"
                       color="primary"
                       {...register("category")}
-                    />
+                      select
+                    >
+                      <MenuItem value={"Educação"}>Educação</MenuItem>
+                      <MenuItem value={"Saúde"}>Saúde</MenuItem>
+                      <MenuItem value={"Finanças"}>Finanças</MenuItem>
+                    </TextField>
                   </InputContainer>
                 </div>
                 <InputContainer>
@@ -119,6 +149,7 @@ const CreateGroups = () => {
                     size="small"
                     type="submit"
                     className="submitButton"
+                    onClick={handleCreation}
                   >
                     Adicionar
                   </Button>

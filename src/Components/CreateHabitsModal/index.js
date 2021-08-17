@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
-import { FormContainer, InputContainer, TitleContainer } from './styles';
+import { Container, FormContainer, InputContainer, TitleContainer } from './styles';
 import { makeStyles, Button, TextField, Modal, Backdrop, Fade, MenuItem } from '@material-ui/core';
 
 
@@ -57,7 +57,7 @@ const CreateHabitsModal = () => {
   };
 
   return (
-    <div>   
+    <Container>   
         <Button 
           className={classes.button}
           variant='contained'
@@ -65,33 +65,31 @@ const CreateHabitsModal = () => {
           size='small'
           onClick={handleOpen}>
             Criar +
-        </Button>
-     
-      <Modal
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
+        </Button>  
+        <Modal
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
         <Fade in={open}>
           <div className={classes.paper}>
         <FormContainer>        
-            <TitleContainer>
-                <Button 
-          className={classes.close}
-          variant='contained'
-          color='primary'
-          size='small'
-          onClick={handleClose}>
-            x
-        </Button>
+        <TitleContainer>
+          <Button 
+            className={classes.close}
+            variant='contained'
+            color='primary'
+            size='small'
+            onClick={handleClose}>
+              x
+          </Button>
         <h1>Qual seu hábito?</h1>
-     
-            </TitleContainer>
+        </TitleContainer>
         <form onSubmit={handleSubmit(createHabit)}>
         <div className={classes.inputs}>  
           <InputContainer>
@@ -173,7 +171,7 @@ const CreateHabitsModal = () => {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </Container>
   );
 }
 
