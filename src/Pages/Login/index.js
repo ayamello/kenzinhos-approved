@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import api from "../../Services/api";
 import {
   TitleContainer,
   InputContainer,
@@ -10,11 +9,12 @@ import {
   MainContainer,
 } from "./styles";
 import { Button, TextField } from "@material-ui/core";
-import jwtDecode from "jwt-decode";
-import { toast } from "react-toastify";
+import { useAuth } from "../../Providers/Auth";
 
 const Login = () => {
   const history = useHistory();
+  const { signIn } = useAuth();
+
   const loginSchema = yup.object().shape({
     username: yup.string().required("Usuário Obrigatório"),
     password: yup.string().required("Senha obrigatória"),
@@ -29,20 +29,7 @@ const Login = () => {
   });
 
   const onLoginFunction = (data) => {
-    api
-      .post("/sessions/", data)
-      .then((response) => {
-        toast.info(`Bem vindo ${data.username}`);
-        const { access } = response.data;
-        const decoded = jwtDecode(access);
-        localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
-        history.push("/dashboard", { data: decoded.user_id });
-      })
-      .catch((err) =>
-        toast.error(
-          "Não foi possível fazer o login. Verifique dados informados"
-        )
-      );
+    signIn(data, history);
   };
 
   return (
