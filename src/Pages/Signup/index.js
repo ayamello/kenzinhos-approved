@@ -10,6 +10,8 @@ import { InputContainer } from "./styles";
 import { TitleContainer } from "./styles";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { LogoContainer } from "../Login/styles";
+import logo from "../../Assets/Img/logoMobile.png";
 
 const Signup = () => {
   const schema = yup.object().shape({
@@ -17,12 +19,8 @@ const Signup = () => {
     email: yup.string().required("*Campo obrigatório").email("Email inválido"),
     password: yup
       .string()
-      .min(8, "*Mínimo de 8 dígitos")
-      .required("*Campo obrigatório")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
-        "Senha deve ter números, maiúscula e caractere especial"
-      ),
+      .min(6, "*Mínimo de 6 dígitos")
+      .required("*Campo obrigatório"),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "*Senha não confere"),
@@ -44,13 +42,19 @@ const Signup = () => {
         toast.success("Conta criada com sucesso");
         return history.push("/login");
       })
-      .catch((err) =>
-        toast.error("Erro ao criar a conta. Email já cadastrado")
-      );
+      .catch((err) => {
+        console.log(err);
+        toast.error("Erro ao criar a conta. Email já cadastrado");
+      });
   }
 
   return (
     <MainContainer>
+      <LogoContainer>
+        <Link to="/">
+          <img alt="logo" src={logo} />
+        </Link>
+      </LogoContainer>
       <FormContainer>
         <h1>Cadastro</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>

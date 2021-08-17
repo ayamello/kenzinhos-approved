@@ -4,7 +4,6 @@ import ViewNavbar from "../../Components/ViewNavbar";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
-
 import {
   Container,
   Content,
@@ -23,12 +22,14 @@ import {
   AccordionDetails,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
-
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
+  const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
@@ -44,23 +45,11 @@ const Groups = () => {
       })
       .catch((err) => console.log(err));
   };
+
   useEffect(() => {
     api
       .get("groups/")
-      .then((res) => {
-        const apiGroups = res.data.results.map((group) => ({
-          ...group,
-          realization_time: new Date(group.realization_time).toLocaleDateString(
-            "pt-BR",
-            {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            }
-          ),
-        }));
-        setGroups(apiGroups);
-      })
+      .then((res) => setGroups(res.data.results))
       .catch((err) => console.log(err));
   }, []);
 
@@ -70,23 +59,25 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.filter((group) => group.name === groupName);
-    const id = group[0].id;
-    console.log(id);
-
-    if (group) {
-      api
-        .get(`groups/${id}/`)
-        .then((res) => setGroups([res.data]))
-        .catch((err) => console.log(err));
-    } else {
-      console.log("Grupo não encontrado");
+    const group = groups.find((group) => group.name === groupName);
+    if (!group) {
+      return toast.error("Grupo não encontrado");
     }
+    api
+      .get(`groups/${group.id}/`)
+      .then((res) => setGroups([res.data]))
+      .catch((err) => console.log(err));
   };
 
+  const ShowAllGroupsBtn = () => {
+    getGroups(token);
+    setViewBtnShowAllGroups(false);
+  };
+
+  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
   return (
     <Container>
-      <ViewNavbar/>
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
@@ -107,14 +98,7 @@ const Groups = () => {
                 </button>
               </div>
             </div>
-            <div>
-              <button
-                className="AllGroupsButton"
-                onClick={() => getGroups(token)}
-              >
-                Mostrar todos os grupos
-              </button>
-            </div>
+
             {window.innerWidth >= 1024 && (
               <div className="List">
                 {groups.map((group) => (
@@ -127,6 +111,7 @@ const Groups = () => {
 
                       <div className="InfosGroup">
                         <span>Atividades: {group.activities.length}</span>
+
                         <span>Metas: {group.goals.length}</span>
                       </div>
                     </div>
@@ -167,6 +152,12 @@ const Groups = () => {
                         {group.activities.map((activity) => (
                           <ActivitiesGroup key={activity.id}>
                             <p>{activity.title}</p>
+                            <button
+                              className="delete"
+                              onClick={() => handleActivieDelete(activity.id)}
+                            >
+                              Excluir
+                            </button>
                             <span>
                               <strong>Finalizar em:</strong>
                               {activity.realization_time}
@@ -182,10 +173,7 @@ const Groups = () => {
                               id={"goal" + index}
                               name={"goal" + index}
                             />
-                            <label htmlFor={"goal" + index}>
-                              {" "}
-                              {goal.title}
-                            </label>
+                            <label htmlFor={"goal" + index}>{goal.title}</label>
                             <span>
                               <strong>Nível:</strong>
                               {goal.difficulty}
@@ -203,6 +191,8 @@ const Groups = () => {
               </ListGroups>
             )}
           </div>
+
+          {viewBtnShowAllGroups && <BtnShowAllGroups ShowAllGroupsBtn={ShowAllGroupsBtn} />}
 
           <div className="GroupDetails">
             {viewCardGroup && <CardGroup group={groupForCard} />}

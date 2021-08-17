@@ -11,6 +11,7 @@ import {
   Fade,
   MenuItem,
 } from "@material-ui/core";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -62,6 +63,9 @@ const CreateGroups = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleCreation = () => {
+    toast.info("Grupo criado");
   };
 
   return (
@@ -145,6 +149,7 @@ const CreateGroups = () => {
                     size="small"
                     type="submit"
                     className="submitButton"
+                    onClick={handleCreation}
                   >
                     Adicionar
                   </Button>

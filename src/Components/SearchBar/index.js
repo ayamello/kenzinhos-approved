@@ -1,4 +1,3 @@
-import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import { InputContainer } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
