@@ -17,18 +17,17 @@ import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import { useAuth } from "../../Providers/Auth";
+import UpdateActivities from "../UpdateActivitiesModal";
 const Tags = () => {
   const classes = useStyles();
   const { token } = useAuth();
   const { getGroups, groups } = useGroupsUser();
 
-  console.log(groups);
-
   useEffect(() => {
     getGroups(token);
   }, [groups]);
 
-  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
+  const { handleActivieDelete, handleGoalDelete, updateActivitie } = useListActivitiesGoals();
 
   return (
     <MainContainer>
@@ -64,6 +63,7 @@ const Tags = () => {
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
+                  <UpdateActivities activityId={activity.id}/>
                   <button
                     className="delete"
                     onClick={() => handleActivieDelete(activity.id)}
