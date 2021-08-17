@@ -22,6 +22,7 @@ export const InputContainer = styled.div`
   }
   .AllGroupsButton {
     margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
   button {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
