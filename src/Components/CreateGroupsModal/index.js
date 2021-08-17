@@ -111,46 +111,6 @@ const CreateGroups = () => {
                       {...register("category")}
                     />
                   </InputContainer>
-
-                  <InputContainer>
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Atividade"
-                      variant="outlined"
-                      color="primary"
-                    />
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Tempo de realização"
-                      variant="outlined"
-                      color="primary"
-                    />
-                  </InputContainer>
-                  <InputContainer>
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Meta"
-                      variant="outlined"
-                      color="primary"
-                    />
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Dificuldade"
-                      variant="outlined"
-                      color="primary"
-                    />
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Frequência"
-                      variant="outlined"
-                      color="primary"
-                    />
-                  </InputContainer>
                 </div>
                 <InputContainer>
                   <Button

@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "./styles";
 import { Dehaze } from '@material-ui/icons';
 
 const MenuBurger = ({viewNavbar, setViewNavbar}) => {

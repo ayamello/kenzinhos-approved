@@ -16,15 +16,13 @@ const SearchBar = ({ groups, setGroups, getGroups }) => {
   return (
     <>
       <InputContainer>
-        <TextField
-          label="Grupos"
-          variant="outlined"
+        <input
+          placeholder="Meu Grupo"
           type="text"
-          size="small"
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
         />
-        
+
         <button
           onClick={() => {
             findGroup(groupName);
@@ -33,7 +31,7 @@ const SearchBar = ({ groups, setGroups, getGroups }) => {
         >
           <SearchIcon />
         </button>
-        <button onClick={() => getGroups(userToken)}>
+        <button className='AllGroupsButton'onClick={() => getGroups(userToken)}>
           Mostrar todos os meus grupos
         </button>
       </InputContainer>
