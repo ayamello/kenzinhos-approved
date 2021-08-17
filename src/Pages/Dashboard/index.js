@@ -4,7 +4,7 @@ import { useHabits } from '../../Providers/Habits';
 import { useState, useEffect } from "react";
 import api from "../../Services/api";
 import jwtDecode from "jwt-decode";
-import NavbarDash from "../../Components/NavbarDash";
+import ViewNavbar from "../../Components/ViewNavbar";
 import Habits from "../../Components/Habits";
 import Tags from "../../Components/Tags";
 
@@ -32,7 +32,7 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <NavbarDash />
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
