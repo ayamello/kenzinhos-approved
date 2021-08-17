@@ -13,7 +13,8 @@ import {
 import SearchBar from "../SearchBar";
 import CreateActivitiesModal from "../ActivitiesModal";
 import CreateGoalsModal from "../GoalsModal";
-
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
+import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 const Tags = () => {
   const classes = useStyles();
 
@@ -36,7 +37,7 @@ const Tags = () => {
     setToken(userToken);
     getGroups(token);
   }, [token, groups]);
-
+  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
   return (
     <MainContainer>
       <SearchBar groups={groups} setGroups={setGroups} getGroups={getGroups} />
@@ -55,6 +56,7 @@ const Tags = () => {
                 </TitleContainer>
                 <SubTitleContainer>
                   <span>Atividades: {group.activities.length}</span>
+
                   <span>Metas: {group.goals.length}</span>
                 </SubTitleContainer>
               </div>
@@ -70,6 +72,12 @@ const Tags = () => {
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
+                  <button
+                    className="delete"
+                    onClick={() => handleActivieDelete(activity.id)}
+                  >
+                    <DeleteForeverSharpIcon />
+                  </button>
                 </DescriprionContainer>
               ))}
               <SubTitles>
@@ -80,6 +88,9 @@ const Tags = () => {
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
                   <p>Nível: {goal.difficulty}</p>
+                  <button onClick={() => handleGoalDelete(goal.id)}>
+                    <DeleteForeverSharpIcon className="classes.button" />
+                  </button>
                   {/* <span>{goal.achieved ? 'Sim' : 'Não'}</span>
                     <span>{goal.how_much_achieved}</span> */}
                 </DescriprionContainer>

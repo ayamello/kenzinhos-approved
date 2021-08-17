@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../Services/api";
+import { toast } from "react-toastify";
 
 const ListActivitiesGoalsContext = createContext();
 
@@ -13,38 +14,28 @@ export const ActivitiesGoalsProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
 
-  useEffect(() => {
-    api
-      .get(`groups/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setGroup(response.data))
-      .catch((e) => console.log(e));
-  }, [activities]);
-
   const handleGoalDelete = (id) => {
-    const newGoals = goals.filter((meta) => meta.id !== id);
-    api.delete
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
+    api
       .delete(`goals/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setGoals());
+      .then((response) => setGoals(response.data));
+    toast.info("Meta excluida");
   };
 
   const handleActivieDelete = (id) => {
-    const newActivities = activities.filter((atividade) => atividade.id !== id);
-
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     api
       .delete(`activities/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setNewActivities(newActivities));
+      .then((response) => setNewActivities(response.data));
+    toast.info("Atividade excluída");
   };
 
   const handleGoalCreation = (data) => {
@@ -64,10 +55,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
+      .then((e) => toast.info("Grupo criado com sucesso"))
       .catch((e) => console.log(e));
   };
-  
+
   const handleActivitieCreation = (data) => {
     const { title, realization_time, group } = data;
 
@@ -85,7 +76,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
+      .then((e) => toast.info("Grupo criado com sucesso"))
       .catch((e) => console.log(e));
   };
 
