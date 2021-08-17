@@ -29,7 +29,7 @@ export const HomeHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    background-color: var(--blue-color);
+    background-color: rgba(80, 60, 200, 1);
     width: 100%;
     padding: 0 1%;
     
@@ -67,14 +67,15 @@ export const HomeHeader = styled.header`
 
 export const BodyContainer = styled.div`
 
-    width: 65%;
+    width: 75%;
     padding-top: 40%;
     padding-left: 5%;
 
     h1{
         color: white;
         font-size: 1.6rem;
-        font-weight: 200;
+        font-weight: 500;
+        font-family: var(--title-font);
     }
     
     div{
@@ -87,7 +88,7 @@ export const BodyContainer = styled.div`
 
         padding-top: 18%;
         margin-left: 12%;
-        width: 30%;
+        width: 40%;
 
     }
 
@@ -130,7 +131,7 @@ export const HomeCards = styled.div`
     background-color: white;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -142,11 +143,12 @@ export const HomeCards = styled.div`
     }
 
     h4{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     p{
-        font-size: 1.2rem;
+        font-size: 0.8rem;
+        color: grey;
     }
 
     @media (min-width: 1024px){
@@ -155,7 +157,7 @@ export const HomeCards = styled.div`
         height: 170px;
 
         h4{
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         }
     }
 `;
@@ -187,7 +189,7 @@ export const ButtonPurple = styled.button`
 export const History = styled.div`
 
     font-size: 1.3rem;
-    padding: 5%;
+    padding: 10%;
     text-align: center;
 
     h4{
@@ -227,14 +229,14 @@ export const AboutCards = styled.div`
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 20px; 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-around;
 
 
     img{
-        width: 65px;
-        border-radius: 5px;
+        width: 75px;
+        border-radius: 10px;
         
     }
 
@@ -245,8 +247,6 @@ export const AboutCards = styled.div`
 
         img{
         width: 100px;
-        border-radius: 5px;
-        
         }
 
     }
