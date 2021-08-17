@@ -18,6 +18,7 @@ import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import { useAuth } from "../../Providers/Auth";
 import UpdateActivities from "../UpdateActivitiesModal";
+import UpdateGoal from "../UpdateGoalModal";
 const Tags = () => {
   const classes = useStyles();
   const { token } = useAuth();
@@ -27,7 +28,8 @@ const Tags = () => {
     getGroups(token);
   }, [groups]);
 
-  const { handleActivieDelete, handleGoalDelete, updateActivitie } = useListActivitiesGoals();
+  const { handleActivieDelete, handleGoalDelete, updateActivitie } =
+    useListActivitiesGoals();
 
   return (
     <MainContainer>
@@ -63,7 +65,7 @@ const Tags = () => {
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
-                  <UpdateActivities activityId={activity.id}/>
+                  <UpdateActivities activityId={activity.id} />
                   <button
                     className="delete"
                     onClick={() => handleActivieDelete(activity.id)}
@@ -79,10 +81,12 @@ const Tags = () => {
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
-                  <p>Nível: {goal.difficulty}</p>
+                  <p>Atividade completada : {goal.how_much_achieved}</p>
+                  <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
                     <DeleteForeverSharpIcon className="classes.button" />
                   </button>
+
                   {/* <span>{goal.achieved ? 'Sim' : 'Não'}</span>
                     <span>{goal.how_much_achieved}</span> */}
                 </DescriprionContainer>
