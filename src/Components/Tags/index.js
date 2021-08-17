@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Accordion, Typography, AccordionDetails } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
-import api from "../../Services/api";
 import {
   DescriprionContainer,
   SubTitleContainer,
@@ -16,33 +15,25 @@ import SearchBar from "../SearchBar";
 import CreateActivitiesModal from "../ActivitiesModal";
 import CreateGoalsModal from "../GoalsModal";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-
+import { useGroupsUser } from "../../Providers/GroupsUserProvider";
+import { useAuth } from "../../Providers/Auth";
+import UpdateActivities from "../UpdateActivitiesModal";
+import UpdateGoal from "../UpdateGoalModal";
 const Tags = () => {
   const classes = useStyles();
-
-  const [token, setToken] = useState("");
-  const [groups, setGroups] = useState([]);
-
-  const getGroups = (token) => {
-    api
-      .get("groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setGroups([...response.data]);
-      })
-      .catch((err) => console.log(err));
-  };
+  const { token } = useAuth();
+  const { getGroups, groups } = useGroupsUser();
 
   useEffect(() => {
-    let userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
-    setToken(userToken);
     getGroups(token);
-  }, [token, groups]);
-  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
+  }, [groups]);
+
+  const { handleActivieDelete, handleGoalDelete, updateActivitie } =
+    useListActivitiesGoals();
+
   return (
     <MainContainer>
-      <SearchBar groups={groups} setGroups={setGroups} getGroups={getGroups} />
+      <SearchBar groups={groups} getGroups={getGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
@@ -74,6 +65,7 @@ const Tags = () => {
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>Finalizar em: {activity.realization_time}</p>
+                  <UpdateActivities activityId={activity.id} />
                   <button
                     className="delete"
                     onClick={() => handleActivieDelete(activity.id)}
@@ -89,10 +81,12 @@ const Tags = () => {
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
-                  <p>Nível: {goal.difficulty}</p>
+                  <p>Atividade completada : {goal.how_much_achieved}</p>
+                  <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
                     <DeleteForeverSharpIcon className="classes.button" />
                   </button>
+
                   {/* <span>{goal.achieved ? 'Sim' : 'Não'}</span>
                     <span>{goal.how_much_achieved}</span> */}
                 </DescriprionContainer>

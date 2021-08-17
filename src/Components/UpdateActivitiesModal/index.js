@@ -12,7 +12,6 @@ import {
   Modal,
   Backdrop,
   Fade,
-  MenuItem,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
@@ -50,13 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateGoalsModal = ({ groupId }) => {
+const UpdateActivities = ({ activityId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { handleGoalCreation } = useListActivitiesGoals();
+  const { updateActivitie } = useListActivitiesGoals();
 
   const handleOpen = () => {
     setOpen(true);
@@ -68,7 +67,9 @@ const CreateGoalsModal = ({ groupId }) => {
 
   return (
     <div>
-      <ButtonAdd onClick={handleOpen}>+ meta</ButtonAdd>
+      <ButtonAdd className="addButton" onClick={handleOpen}>
+        Atualizar
+      </ButtonAdd>
 
       <Modal
         className={classes.modal}
@@ -93,9 +94,9 @@ const CreateGoalsModal = ({ groupId }) => {
                 >
                   x
                 </Button>
-                <h1>Crie uma nova Meta</h1>
+                <h1>Atualize o título de sua atividade</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(handleGoalCreation)}>
+              <form onSubmit={handleSubmit(updateActivitie)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
@@ -108,39 +109,10 @@ const CreateGoalsModal = ({ groupId }) => {
                     />
                   </InputContainer>
                   <InputContainer>
-                    <TextField
-                      className={classes.select}
-                      size="small"
-                      id="outlined-basic"
-                      label="Dificuldade"
-                      variant="outlined"
-                      color="primary"
-                      {...register("difficulty")}
-                      select
-                    >
-                      <MenuItem value={"muito-facil"}>Muito fácil</MenuItem>
-                      <MenuItem value={"facil"}>Fácil</MenuItem>
-                      <MenuItem value={"medio"}>Médio</MenuItem>
-                      <MenuItem value={"dificil"}>Difícil</MenuItem>
-                      <MenuItem value={"muito-dificil"}>Muito difícil</MenuItem>
-                    </TextField>
-                  </InputContainer>
-                  <InputContainer>
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Quantos % realizado"
-                      variant="outlined"
-                      type="number"
-                      color="primary"
-                      {...register("how_much_achieved")}
-                    />
-                  </InputContainer>
-                  <InputContainer>
                     <InputId
                       className="hidden-id"
-                      value={groupId}
-                      {...register("group")}
+                      value={activityId}
+                      {...register("id")}
                     />
                   </InputContainer>
                 </div>
@@ -165,4 +137,4 @@ const CreateGoalsModal = ({ groupId }) => {
   );
 };
 
-export default CreateGoalsModal;
+export default UpdateActivities;

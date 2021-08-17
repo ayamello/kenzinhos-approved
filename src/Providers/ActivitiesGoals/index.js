@@ -81,7 +81,6 @@ export const ActivitiesGoalsProvider = ({ children }) => {
 
   const updateGoal = (data) => {
     const { achieved } = data;
-    console.log(data);
     api
       .patch(
         `goals/${goals.id}/`,
@@ -98,11 +97,12 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const updateActivitie = (data) => {
-    const { title } = data;
+    const { title, id } = data;
+    console.log(data);
 
     api
       .patch(
-        `activities/${activities.id}/`,
+        `activities/${id}/`,
         {
           title: title,
         },
