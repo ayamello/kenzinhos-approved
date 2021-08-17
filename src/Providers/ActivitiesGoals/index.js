@@ -58,6 +58,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .then((e) => console.log(e))
       .catch((e) => console.log(e));
   };
+  
   const handleActivitieCreation = (data) => {
     const { title, realization_time, group } = data;
 

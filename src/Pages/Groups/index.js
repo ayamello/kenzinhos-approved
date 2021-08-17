@@ -4,7 +4,6 @@ import ViewNavbar from "../../Components/ViewNavbar";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
-
 import {
   Container,
   Content,
@@ -44,25 +43,15 @@ const Groups = () => {
       })
       .catch((err) => console.log(err));
   };
+
   useEffect(() => {
     api
       .get("groups/")
-      .then((res) => {
-        const apiGroups = res.data.results.map((group) => ({
-          ...group,
-          realization_time: new Date(group.realization_time).toLocaleDateString(
-            "pt-BR",
-            {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            }
-          ),
-        }));
-        setGroups(apiGroups);
-      })
+      .then((res) => setGroups(res.data.results))
       .catch((err) => console.log(err));
   }, []);
+
+  
 
   const handleViewDetailsGroup = (group) => {
     setGroupForCard(group);
@@ -180,7 +169,6 @@ const Groups = () => {
                               name={"goal" + index}
                             />
                             <label htmlFor={"goal" + index}>
-                              {" "}
                               {goal.title}
                             </label>
                             <span>
