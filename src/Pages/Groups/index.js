@@ -24,7 +24,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
-
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
@@ -59,20 +59,14 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.filter((group) => group.name === groupName);
-    const id = group[0].id;
-
-    if (group) {
-      api
-        .get(`groups/${id}/`)
-        .then((res) => {
-          setViewBtnShowAllGroups(true);
-          setGroups([res.data]);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      toast.error("Grupo não encontrado");
+    const group = groups.find((group) => group.name === groupName);
+    if (!group) {
+      return toast.error("Grupo não encontrado");
     }
+    api
+      .get(`groups/${group.id}/`)
+      .then((res) => setGroups([res.data]))
+      .catch((err) => console.log(err));
   };
 
   const ShowAllGroupsBtn = () => {
@@ -80,6 +74,7 @@ const Groups = () => {
     setViewBtnShowAllGroups(false);
   };
 
+  const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
   return (
     <Container>
       <ViewNavbar />
@@ -116,6 +111,7 @@ const Groups = () => {
 
                       <div className="InfosGroup">
                         <span>Atividades: {group.activities.length}</span>
+
                         <span>Metas: {group.goals.length}</span>
                       </div>
                     </div>
@@ -156,6 +152,12 @@ const Groups = () => {
                         {group.activities.map((activity) => (
                           <ActivitiesGroup key={activity.id}>
                             <p>{activity.title}</p>
+                            <button
+                              className="delete"
+                              onClick={() => handleActivieDelete(activity.id)}
+                            >
+                              Excluir
+                            </button>
                             <span>
                               <strong>Finalizar em:</strong>
                               {activity.realization_time}
