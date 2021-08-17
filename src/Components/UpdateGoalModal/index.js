@@ -49,13 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UpdateActivities = ({ activityId }) => {
+const UpdateGoal = ({ goalId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { updateActivitie } = useListActivitiesGoals();
+  const { updateGoal } = useListActivitiesGoals();
 
   const handleOpen = () => {
     setOpen(true);
@@ -96,22 +96,23 @@ const UpdateActivities = ({ activityId }) => {
                 </Button>
                 <h1>Atualize o título de sua atividade</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(updateActivitie)}>
+              <form onSubmit={handleSubmit(updateGoal)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Título"
+                      label="Quantos % realizado"
                       variant="outlined"
+                      type="number"
                       color="primary"
-                      {...register("title")}
+                      {...register("how_much_achieved")}
                     />
                   </InputContainer>
                   <InputContainer>
                     <InputId
                       className="hidden-id"
-                      value={activityId}
+                      value={goalId}
                       {...register("id")}
                     />
                   </InputContainer>
@@ -137,4 +138,4 @@ const UpdateActivities = ({ activityId }) => {
   );
 };
 
-export default UpdateActivities;
+export default UpdateGoal;
