@@ -14,7 +14,7 @@ import {
   Fade,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { InputId } from "./style";
+import { ButtonAdd, InputId } from "./style";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -67,15 +67,9 @@ const CreateActivitiesModal = ({ groupId }) => {
 
   return (
     <div>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        size="small"
-        onClick={handleOpen}
-      >
-        Add
-      </Button>
+      <ButtonAdd className="addButton" onClick={handleOpen}>
+        + atividade
+      </ButtonAdd>
 
       <Modal
         className={classes.modal}

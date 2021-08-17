@@ -48,7 +48,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
   };
 
   const handleGoalCreation = (data) => {
-    const { title, difficulty, how_much_achieved } = data;
+    const { title, difficulty, how_much_achieved, group } = data;
     api
       .post(
         "goals/",
@@ -56,6 +56,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           title: title,
           difficulty: difficulty,
           how_much_achieved: how_much_achieved,
+          group: group,
         },
         {
           headers: {
@@ -133,6 +134,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         updateActivitie,
         updateGoal,
         handleActivitieCreation,
+        handleGoalCreation,
       }}
     >
       {children}
