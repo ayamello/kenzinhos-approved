@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   title: {
     fontSize: 12,
   },
-  botao: {
+  button: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "flex-end",
@@ -101,7 +101,7 @@ const Group = ({ group }) => {
           ))}
         </ContainerActivities>
       </CardContent>
-      <CardActions className={classes.botao}>
+      <CardActions className={classes.button}>
         <Button variant="contained" color="primary" size="medium">
           Inscrever-se
         </Button>
