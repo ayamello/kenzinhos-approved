@@ -14,7 +14,7 @@ import {
   Fade,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "./style";
+import { ButtonAdd, InputId } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   modal: {

@@ -22,12 +22,14 @@ import {
   AccordionDetails,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
 
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
+  const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
@@ -51,8 +53,6 @@ const Groups = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  
-
   const handleViewDetailsGroup = (group) => {
     setGroupForCard(group);
     setViewCardGroup(true);
@@ -61,21 +61,28 @@ const Groups = () => {
   const handleSearchGroup = (groupName) => {
     const group = groups.filter((group) => group.name === groupName);
     const id = group[0].id;
-    console.log(id);
 
     if (group) {
       api
         .get(`groups/${id}/`)
-        .then((res) => setGroups([res.data]))
+        .then((res) => {
+          setViewBtnShowAllGroups(true);
+          setGroups([res.data]);
+        })
         .catch((err) => console.log(err));
     } else {
-      console.log("Grupo não encontrado");
+      toast.error("Grupo não encontrado");
     }
+  };
+
+  const ShowAllGroupsBtn = () => {
+    getGroups(token);
+    setViewBtnShowAllGroups(false);
   };
 
   return (
     <Container>
-      <ViewNavbar/>
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
@@ -96,14 +103,7 @@ const Groups = () => {
                 </button>
               </div>
             </div>
-            <div>
-              <button
-                className="AllGroupsButton"
-                onClick={() => getGroups(token)}
-              >
-                Mostrar todos os grupos
-              </button>
-            </div>
+
             {window.innerWidth >= 1024 && (
               <div className="List">
                 {groups.map((group) => (
@@ -171,9 +171,7 @@ const Groups = () => {
                               id={"goal" + index}
                               name={"goal" + index}
                             />
-                            <label htmlFor={"goal" + index}>
-                              {goal.title}
-                            </label>
+                            <label htmlFor={"goal" + index}>{goal.title}</label>
                             <span>
                               <strong>Nível:</strong>
                               {goal.difficulty}
@@ -191,6 +189,8 @@ const Groups = () => {
               </ListGroups>
             )}
           </div>
+
+          {viewBtnShowAllGroups && <BtnShowAllGroups ShowAllGroupsBtn={ShowAllGroupsBtn} />}
 
           <div className="GroupDetails">
             {viewCardGroup && <CardGroup group={groupForCard} />}
