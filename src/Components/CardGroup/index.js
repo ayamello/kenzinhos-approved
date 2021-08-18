@@ -4,7 +4,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { ContainerGoals, ContainerActivities, useStyles, TopContainer } from "./styles";
+import {
+  ContainerGoals,
+  ContainerActivities,
+  useStyles,
+  TopContainer,
+} from "./styles";
 import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 
 const Group = ({ group }) => {
@@ -38,12 +43,12 @@ const Group = ({ group }) => {
           <div>
             <CardActions className={classes.botao}>
               <Button
-              variant="contained"
-              color="primary"
-              size="medium"
-              onClick={() => subscribeToAGroup(group.id)}
+                variant="contained"
+                color="primary"
+                size="medium"
+                onClick={() => subscribeToAGroup(group.id)}
               >
-              Inscrever-se
+                Inscrever-se
               </Button>
             </CardActions>
           </div>
@@ -70,6 +75,16 @@ const Group = ({ group }) => {
           ))}
         </ContainerActivities>
       </CardContent>
+      <CardActions className={classes.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="medium"
+          onClick={() => subscribeToAGroup(group.id)}
+        >
+          Inscrever-se
+        </Button>
+      </CardActions>
     </Card>
   );
 };

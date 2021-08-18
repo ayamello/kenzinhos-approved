@@ -43,7 +43,7 @@ export const useStyles = makeStyles({
   title: {
     fontSize: 12,
   },
-  botao: {
+  button: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "flex-end",
@@ -67,12 +67,3 @@ export const ContainerActivities = styled.div`
     font-weight: bold;
   }
 `;
-
-export const TopContainer = styled.div`
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-`;
-
