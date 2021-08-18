@@ -12,35 +12,40 @@ export const Content = styled.div`
   .Header {
     width: 90%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
     margin-bottom: 40px;
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
+    
+    .BtnEdit {
+      button {
+        background-color: transparent;
+        color: #000;
+        border: none;
+
+        svg {
+          font-size: 20px;
+          transform: translateY(5px);
+        }
+      }
+    }
+
     span {
       color:white;
-      font-family: 'Alegreya Sans SC';
+      font-family: 'Source Code Pro';
       font-size: 1.5rem;
       margin-right: 10px;
-      span{
+      strong {
         text-transform: capitalize;
       }
     }
+
     .Email {
+      color: var(--gray-details);
       font-size: 1rem;
       align-self: flex-start;
       line-height: 35px;
-    }
-
-    button {
-      font-size: 13px;
-      font-weight: 600;
-      font-family: "Source Code Pro";
-      padding: 0 1em;
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      background-color: var(--blue-color);
     }
   }
 
