@@ -4,7 +4,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { ContainerGoals, ContainerActivities, useStyles } from "./styles";
+import {
+  ContainerGoals,
+  ContainerActivities,
+  useStyles,
+  TopContainer,
+} from "./styles";
 import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 
 const Group = ({ group }) => {
@@ -15,23 +20,40 @@ const Group = ({ group }) => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h5" component="h2">
-          {group?.name}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Categoria: {group?.category}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Descrição: {group?.description}
-        </Typography>
+        <TopContainer>
+          <div>
+            <Typography variant="h5" component="h2">
+              {group?.name}
+            </Typography>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              Categoria: {group?.category}
+            </Typography>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              Descrição: {group?.description}
+            </Typography>
+          </div>
+          <div>
+            <CardActions className={classes.botao}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="medium"
+                onClick={() => subscribeToAGroup(group.id)}
+              >
+                Inscrever-se
+              </Button>
+            </CardActions>
+          </div>
+        </TopContainer>
+
         <ContainerGoals>
           <Typography variant="h5" component="h4">
             Metas:
