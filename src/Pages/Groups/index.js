@@ -4,6 +4,8 @@ import ViewNavbar from "../../Components/ViewNavbar";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
+import Button from "@material-ui/core/Button";
+import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import {
   Container,
   Content,
@@ -73,6 +75,8 @@ const Groups = () => {
     getGroups(token);
     setViewBtnShowAllGroups(false);
   };
+
+  const { subscribeToAGroup } = useGroupsUser();
 
   const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
   return (
@@ -152,12 +156,6 @@ const Groups = () => {
                         {group.activities.map((activity) => (
                           <ActivitiesGroup key={activity.id}>
                             <p>{activity.title}</p>
-                            <button
-                              className="delete"
-                              onClick={() => handleActivieDelete(activity.id)}
-                            >
-                              Excluir
-                            </button>
                             <span>
                               <strong>Finalizar em:</strong>
                               {activity.realization_time}
@@ -168,12 +166,7 @@ const Groups = () => {
                         <h5>Metas</h5>
                         {group.goals.map((goal, index) => (
                           <GoalsGroup key={goal.id}>
-                            <input
-                              type="checkbox"
-                              id={"goal" + index}
-                              name={"goal" + index}
-                            />
-                            <label htmlFor={"goal" + index}>{goal.title}</label>
+                            <p>{goal.title}</p>
                             <span>
                               <strong>Nível:</strong>
                               {goal.difficulty}
@@ -182,7 +175,14 @@ const Groups = () => {
                         ))}
 
                         <BtnSubscribe>
-                          <button>Inscrever-se</button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          size="medium"
+                          onClick={() => subscribeToAGroup(group.id)}
+                        >
+                        Inscrever-se
+                        </Button>
                         </BtnSubscribe>
                       </DetailsGroup>
                     </AccordionDetails>
