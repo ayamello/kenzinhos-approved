@@ -14,7 +14,8 @@ import {
   Fade,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
+import { InputId } from "../ActivitiesModal/styles";
+import CreateIcon from '@material-ui/icons/Create';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -49,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const UpdateActivities = ({ activityId }) => {
   const [open, setOpen] = useState(false);
 
@@ -67,10 +69,10 @@ const UpdateActivities = ({ activityId }) => {
 
   return (
     <div>
-      <ButtonAdd className="addButton" onClick={handleOpen}>
-        Atualizar
-      </ButtonAdd>
-
+      <button onClick={handleOpen}>
+      < CreateIcon className='updateIcon' color='primary'/>
+      </button>
+      
       <Modal
         className={classes.modal}
         open={open}

@@ -103,11 +103,32 @@ export const DescriprionContainer = styled.div`
     font-size: 12px;
     line-height: 28px;
     color: black;
-  }
+  };
   
   button{
     margin-bottom: 10px;
-  }
+    border:none;
+  };
+
+  .updateIcon{
+        color: var(--blue-color);
+        :hover{
+          color: green;
+        }
+        :active{
+          color: darkgreen ;
+        }
+  };
+
+  .deleteIcon{
+        color:red;
+        :hover{
+          color: tomato;
+        }
+        :active{
+          color: darkred;
+        }
+  };
   
   @media screen and (min-width: 769px){
     flex-direction: row;

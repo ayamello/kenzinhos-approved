@@ -15,7 +15,8 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
+import { InputId } from "../ActivitiesModal/styles";
+import CreateIcon from '@material-ui/icons/Create';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -65,10 +66,9 @@ const UpdateGoal = ({ goalId }) => {
   const { updateGoal } = useListActivitiesGoals();
   return (
     <div>
-      <ButtonAdd className="addButton" onClick={handleOpen}>
-        Atualizar
-      </ButtonAdd>
-
+      <button onClick={handleOpen}>
+        <CreateIcon className='updateIcon' color='primary'/>
+      </button>
       <Modal
         className={classes.modal}
         open={open}

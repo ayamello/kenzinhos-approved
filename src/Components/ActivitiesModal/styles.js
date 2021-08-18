@@ -16,6 +16,11 @@ export const ButtonAdd = styled.button`
   border-radius: 15px;
   color: var(--white-color);
   background-color: var(--blue-color);
+
+  :hover{
+    background-color: tomato;
+  }
+
   @media screen and (min-width: 800px) {
     width: 100px;
     font-size: 13px;
