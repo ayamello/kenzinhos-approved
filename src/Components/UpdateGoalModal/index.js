@@ -12,6 +12,7 @@ import {
   Modal,
   Backdrop,
   Fade,
+  MenuItem,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
@@ -51,12 +52,8 @@ const useStyles = makeStyles((theme) => ({
 
 const UpdateGoal = ({ goalId }) => {
   const [open, setOpen] = useState(false);
-
+  const [achieved, setAchieved] = useState(false);
   const classes = useStyles();
-
-  const { register, handleSubmit } = useForm();
-  const { updateGoal } = useListActivitiesGoals();
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -64,7 +61,8 @@ const UpdateGoal = ({ goalId }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const { register, handleSubmit } = useForm();
+  const { updateGoal } = useListActivitiesGoals();
   return (
     <div>
       <ButtonAdd className="addButton" onClick={handleOpen}>
@@ -94,7 +92,7 @@ const UpdateGoal = ({ goalId }) => {
                 >
                   x
                 </Button>
-                <h1>Atualize o título de sua atividade</h1>
+                <h1>Atualize sua meta</h1>
               </TitleContainer>
               <form onSubmit={handleSubmit(updateGoal)}>
                 <div className={classes.inputs}>
@@ -102,12 +100,15 @@ const UpdateGoal = ({ goalId }) => {
                     <TextField
                       size="small"
                       id="outlined-basic"
-                      label="Quantos % realizado"
+                      label="Meta"
                       variant="outlined"
-                      type="number"
                       color="primary"
-                      {...register("how_much_achieved")}
-                    />
+                      {...register("achieved")}
+                      select
+                    >
+                      <MenuItem value={"true"}>Meta realizada!</MenuItem>
+                      <MenuItem value={"false"}>Ainda não consegui!</MenuItem>
+                    </TextField>
                   </InputContainer>
                   <InputContainer>
                     <InputId
