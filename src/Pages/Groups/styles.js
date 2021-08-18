@@ -14,9 +14,9 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 90vh;
+  height: 100vh;
   width: 85%;
-  margin: 5vh auto;
+  margin: 0 auto;
 
   .Header {
     width: 100%;

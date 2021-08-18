@@ -5,6 +5,7 @@ import profile from '../../Assets/Img/profile.png';
 import { ArrowBack } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { useGroupsUser } from '../../Providers/GroupsUserProvider';
+import LogoutButton from '../LogoutButton/Index';
 
 const Navbar = ({setViewNavbar}) => {
     const { groups } = useGroupsUser()
@@ -30,6 +31,7 @@ const Navbar = ({setViewNavbar}) => {
                     <span>Participando: {groups.length}</span>
                 </Link>
             </Content>
+            <LogoutButton/>
             <img src={logo} alt="Logo"/>
         </Container>
     )

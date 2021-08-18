@@ -27,7 +27,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import LogoutButton from "../../Components/LogoutButton/Index";
+
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
@@ -83,8 +83,6 @@ const Groups = () => {
   return (
     <Container>
       <ViewNavbar />
-      <LogoutButton />
-
 
       <Content>
         <div className="Header">
@@ -178,14 +176,14 @@ const Groups = () => {
                         ))}
 
                         <BtnSubscribe>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="medium"
-                          onClick={() => subscribeToAGroup(group.id)}
-                        >
-                        Inscrever-se
-                        </Button>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="medium"
+                            onClick={() => subscribeToAGroup(group.id)}
+                          >
+                            Inscrever-se
+                          </Button>
                         </BtnSubscribe>
                       </DetailsGroup>
                     </AccordionDetails>
@@ -195,7 +193,9 @@ const Groups = () => {
             )}
           </div>
 
-          {viewBtnShowAllGroups && <BtnShowAllGroups ShowAllGroupsBtn={ShowAllGroupsBtn} />}
+          {viewBtnShowAllGroups && (
+            <BtnShowAllGroups ShowAllGroupsBtn={ShowAllGroupsBtn} />
+          )}
 
           <div className="GroupDetails">
             {viewCardGroup && <CardGroup group={groupForCard} />}

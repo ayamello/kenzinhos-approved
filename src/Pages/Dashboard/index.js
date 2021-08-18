@@ -10,7 +10,6 @@ import jwtDecode from "jwt-decode";
 import ViewNavbar from "../../Components/ViewNavbar";
 import Tags from "../../Components/Tags";
 import { useUser } from "../../Providers/User";
-import LogoutButton from "../../Components/LogoutButton/Index";
 
 const Dashboard = () => {
   const classes = useStyles();
@@ -50,13 +49,12 @@ const Dashboard = () => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const id = open ? "simple-popover" : undefined;
   /* ----------- /Update username ----------- */
 
   return (
     <Container>
       <ViewNavbar />
-      <LogoutButton />
 
       <Content>
         <div className="Header">
@@ -72,7 +70,7 @@ const Dashboard = () => {
             <button onClick={openPopover}>
               <Edit />
             </button>
-            
+
             <Popover
               id={id}
               open={open}
@@ -88,18 +86,18 @@ const Dashboard = () => {
               }}
             >
               <div className={classes.root}>
-                <input 
-                  type="text" 
-                  placeholder="Digite seu novo username" 
+                <input
+                  type="text"
+                  placeholder="Digite seu novo username"
                   className={classes.input}
-                  onChange={e => setInputUsername(e.target.value)} 
-                  value={inputUsername} 
+                  onChange={(e) => setInputUsername(e.target.value)}
+                  value={inputUsername}
                 />
-                <button 
-                  className={classes.button} 
+                <button
+                  className={classes.button}
                   onClick={() => updateUser(inputUsername)}
                 >
-                    Atualizar
+                  Atualizar
                 </button>
               </div>
             </Popover>
