@@ -53,7 +53,7 @@ const Group = ({ group }) => {
           ))}
         </ContainerActivities>
       </CardContent>
-      <CardActions className={classes.botao}>
+      <CardActions className={classes.button}>
         <Button
           variant="contained"
           color="primary"

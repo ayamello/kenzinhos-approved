@@ -43,7 +43,7 @@ export const useStyles = makeStyles({
   title: {
     fontSize: 12,
   },
-  botao: {
+  button: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "flex-end",
