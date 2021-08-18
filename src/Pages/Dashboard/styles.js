@@ -87,7 +87,7 @@ export const Content = styled.div`
   }
   .theme {
     display: flex;
-    justify-contente: space-between;
+    justify-content: space-between;
   }
 
   .Groups {
@@ -185,16 +185,15 @@ export const Content = styled.div`
     }
   }
   @media screen and (min-width: 769px) {
- 
     .Header {
       .UserInfos {
         padding: 0 0.5em;
         span {
           display: inline-block;
+          color: #000;
           strong {
             text-transform: capitalize;
             font-size: 25px;
-            color: #000;
           }
         }
       }
