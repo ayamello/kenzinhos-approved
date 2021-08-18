@@ -10,6 +10,13 @@ export const AuthProvider = ({ children }) => {
 
   const [auth, setAuth] = useState(token);
 
+  // const decodeToken = (token) => {
+  //   if (!!auth) {
+  //     const decoded = jwtDecode(token);
+  //     return decoded;
+  //   }
+  // };
+
   const signIn = (data, history) => {
     api
       .post("/sessions/", data)
@@ -29,7 +36,11 @@ export const AuthProvider = ({ children }) => {
       );
   };
 
-  return <AuthContext.Provider value={{token: auth, setAuth, signIn }} >{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ token: auth, setAuth, signIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => useContext(AuthContext);

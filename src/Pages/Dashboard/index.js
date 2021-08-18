@@ -10,6 +10,7 @@ import jwtDecode from "jwt-decode";
 import ViewNavbar from "../../Components/ViewNavbar";
 import Tags from "../../Components/Tags";
 import { useUser } from "../../Providers/User";
+import LogoutButton from "../../Components/LogoutButton/Index";
 
 const Dashboard = () => {
   const classes = useStyles();
@@ -55,6 +56,7 @@ const Dashboard = () => {
   return (
     <Container>
       <ViewNavbar />
+      <LogoutButton />
 
       <Content>
         <div className="Header">
@@ -88,7 +90,7 @@ const Dashboard = () => {
               <div className={classes.root}>
                 <input 
                   type="text" 
-                  placeholder="Insira seu novo username" 
+                  placeholder="Digite seu novo username" 
                   className={classes.input}
                   onChange={e => setInputUsername(e.target.value)} 
                   value={inputUsername} 
