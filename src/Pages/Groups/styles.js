@@ -14,9 +14,9 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 90vh;
+  height: 100vh;
   width: 85%;
-  margin: 5vh auto;
+  margin: 0 auto;
 
   .Header {
     width: 100%;
@@ -30,7 +30,7 @@ export const Content = styled.div`
     
 
     h2 {
-      
+      margin-top:40px;
       font-size: 25px;
       font-weight: 700;
       color: white;
@@ -175,6 +175,7 @@ export const Content = styled.div`
       border-bottom: 1px solid rgba(29, 100, 203, 0.2);
 
       h2 {
+        margin-top:0px;
         font-size: 28px;
         color: #000;
       }

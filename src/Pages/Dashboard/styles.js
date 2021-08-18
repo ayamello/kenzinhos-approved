@@ -54,7 +54,7 @@ export const Content = styled.div`
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
 
     .UserInfos {
-      margin-top:40px;
+      margin-top:20px;
       span {
         display: block;
         font-family: "Source Code Pro";
@@ -75,7 +75,7 @@ export const Content = styled.div`
         border: none;
 
         svg {
-          margin-top:40px;
+          margin-top:20px;
           font-size: 20px;
           transform: translateY(5px);
         }
