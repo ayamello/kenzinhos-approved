@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import backgroundDesktop from "../../Assets/Img/home.png";
-import backgroundDesktop2 from "../../Assets/Img/home2.png";
-import backgroundMobile from "../../Assets/Img/homeMobile.png";
+import styled from 'styled-components';
+import backgroundDesktop from '../../Assets/Img/home.png';
+import backgroundDesktop2 from '../../Assets/Img/home2.png';
+import backgroundMobile from '../../Assets/Img/homeMobile.png';
 
 export const MainContainer = styled.div`
 

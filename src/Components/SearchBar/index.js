@@ -25,7 +25,6 @@ const SearchBar = ({ groups }) => {
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
         />
-
         <button
           onClick={() => {
             findGroup(groupName);

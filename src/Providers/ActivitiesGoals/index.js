@@ -47,6 +47,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           difficulty: difficulty,
           how_much_achieved: how_much_achieved,
           group: group,
+          achieved: false,
         },
         {
           headers: {
@@ -79,8 +80,8 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       .catch((e) => console.log(e));
   };
 
-  const updateGoal = (data) => {
-    const { achieved } = data;
+  const updateGoal = (goals) => {
+    const { achieved } = goals;
     api
       .patch(
         `goals/${goals.id}/`,
@@ -93,7 +94,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .catch((e) => console.log(e));
+      .then((e) => toast.info("Meta atualizada!"));
   };
 
   const updateActivitie = (data) => {

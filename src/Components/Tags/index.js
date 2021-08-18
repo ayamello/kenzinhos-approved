@@ -1,24 +1,25 @@
-import { Accordion, Typography } from "@material-ui/core";
-import { AccordionSummary, MainContainer, SubTitles } from "./styles";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
+import { useEffect } from "react";
+import { Accordion, Typography, AccordionDetails } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { useEffect, useState } from "react";
-import api from "../../Services/api";
+import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import {
   DescriprionContainer,
   SubTitleContainer,
   TitleContainer,
   useStyles,
+  AccordionSummary, 
+  MainContainer, 
+  SubTitles
 } from "./styles";
 import SearchBar from "../SearchBar";
 import CreateActivitiesModal from "../ActivitiesModal";
 import CreateGoalsModal from "../GoalsModal";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import { useAuth } from "../../Providers/Auth";
 import UpdateActivities from "../UpdateActivitiesModal";
 import UpdateGoal from "../UpdateGoalModal";
+
 const Tags = () => {
   const classes = useStyles();
   const { token } = useAuth();
@@ -81,7 +82,12 @@ const Tags = () => {
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
-                  <p>Atividade completada : {goal.how_much_achieved}</p>
+                  <p>Nível: {goal.difficulty}</p>
+                  {goal.achieved ? (
+                    <p>Meta completada</p>
+                  ) : (
+                    <p>Meta incompleta</p>
+                  )}
                   <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
                     <DeleteForeverSharpIcon className="classes.button" />
