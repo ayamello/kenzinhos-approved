@@ -41,6 +41,7 @@ export const TitleContainer = styled.div`
   width: 100%;
   justify-content: center;
   margin-bottom: 20px;
+  align-items: flex-end;
   h1 {
     color: white;
     font-family: var(--title-font);
