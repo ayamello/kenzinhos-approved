@@ -33,6 +33,10 @@ export const Content = styled.div`
       line-height: 31px;
     }
   }
+  .theme {
+    display: flex;
+    justify-contente: space-between;
+  }
 
   .Groups {
     display: flex;
