@@ -10,9 +10,9 @@ export const Container = styled.div`
 `
 
 export const MainContainer = styled.div`
-  max-width: 230px;
-  min-width: 230px;
-  height: 260px;
+  max-width: 250px;
+  min-width: 250px;
+  height: 270px;
   background: #E5E5E5;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -40,8 +40,8 @@ export const MainContainer = styled.div`
 
 export const TitleContainer = styled.div`
   color: white;
-  max-width: 230px;
-  min-width: 230px;
+  max-width: 250px;
+  min-width: 250px;
   background:#1D64CB;
   height: 60px;
   border: 2px solid rgba(29, 100, 203, 0.1);

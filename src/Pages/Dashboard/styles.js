@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Containter = styled.div`
   display:flex;
   flex-direction: column;
-
 `
 export const Content = styled.div`
   width: 100%;
@@ -89,7 +88,7 @@ export const Content = styled.div`
         padding: 1em;
         border: 2px solid rgba(29, 100, 203, 0.1);
         box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
-        width: 100%;
+        width: 250px;
         background-color: var(--blue-color);
         margin-top: 15px;
 
@@ -155,6 +154,7 @@ export const Content = styled.div`
         margin-right: 50px;
 
         .List{
+          width: 100%;
           background-color: var(--white-color);
           margin-top: 0px;
           box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);

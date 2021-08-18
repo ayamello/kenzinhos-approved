@@ -97,10 +97,14 @@ const { deleteHabit,  updateHabit } = useHabits();
                 onChange={(event, newValue) => {
                     setHowMuch(newValue);
                 }}/>  
+                <div>
+                <h5>Concluído?</h5>
                 <input type='checkbox'
                     defaultValue={habit.achieved} 
                     checked={achieved} 
                     onChange={((e) => setAchieved(!achieved))} />   
+
+                </div>
             </TitleContainer>
             <ButtonContainer>
                 <button className='update'

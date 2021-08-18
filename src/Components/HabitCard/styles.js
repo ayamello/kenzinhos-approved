@@ -37,6 +37,7 @@ export const TitleContainer = styled.div`
     font-size: 13px;
   }
   input{
+    margin-top: 2px;
     width: 50px;
   }
 `;
