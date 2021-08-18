@@ -87,7 +87,6 @@ const Tags = () => {
                   ) : (
                     <p>Meta incompleta</p>
                   )}
-                  {/* <span>{goal.how_much_achieved}%</span> */}
                   <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
                     <DeleteForeverSharpIcon color='secondary' className="deleteIcon" />

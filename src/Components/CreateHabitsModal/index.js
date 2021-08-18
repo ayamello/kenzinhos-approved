@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useHabits } from '../../Providers/Habits';
 import { Container, FormContainer, InputContainer, TitleContainer } from './styles';
 import { makeStyles, Button, TextField, Modal, Backdrop, Fade, MenuItem } from '@material-ui/core';
+import jwtDecode from 'jwt-decode';
+import api from '../../Services/api'
+import { toast } from 'react-toastify';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,15 +48,54 @@ const CreateHabitsModal = () => {
   const classes = useStyles();
 
   const { register, handleSubmit, reset } = useForm();
-  const { createHabit } = useHabits();
-
-
+  const { loadHabits } = useHabits()
+  
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const createHabit = (data) => {
+
+    const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+    const decoded = jwtDecode(token);
+
+      const { 
+          title, 
+          category,
+          difficulty,
+          frequency,
+         } = data;
+
+      api 
+      .post('habits/',
+            { 
+              title: title,
+              category: category, 
+              difficulty: difficulty,
+              frequency: frequency,
+              achieved: false,
+              how_much_achieved: 0, 
+              user: decoded.user_id,
+            }
+          ,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          }, 
+          )
+          .then(() => {
+            toast.info('Hábito criado');
+            loadHabits();
+            reset();
+          })  
+          .catch((err) => 
+            toast.error('Não foi possível criar um hábito. Verifique dados informados'));
+
   };
 
   return (
@@ -99,7 +141,6 @@ const CreateHabitsModal = () => {
               label='Título'
               variant='outlined'
               color='primary'
-              reset
               {...register("title")}
             />
           </InputContainer>
@@ -110,7 +151,6 @@ const CreateHabitsModal = () => {
               label='Categoria'
               variant='outlined'
               color='primary'
-              reset
               {...register('category')}
             />
           </InputContainer>
@@ -122,7 +162,6 @@ const CreateHabitsModal = () => {
               label='Dificuldade'
               variant='outlined'
               color='primary'
-              reset
               {...register('difficulty')}
               select
             >
@@ -150,7 +189,6 @@ const CreateHabitsModal = () => {
           </InputContainer>
           <InputContainer>
             <TextField
-            reset
               size='small'
               id='outlined-basic'
               label='Frequência'
