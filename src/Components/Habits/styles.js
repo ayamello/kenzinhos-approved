@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  left:40%;
-  top:20%;
   @media screen and (min-width: 768px){
-  left:65%;
-  top:12%;
+ 
   }
 `
 
@@ -30,8 +27,8 @@ export const MainContainer = styled.div`
     justify-content: space-around;
   }
   @media screen and (min-width: 769px) {
-    max-width: 450px;
-    min-width: 450px;
+    max-width: 600px;
+    min-width: 600px;
     height: 450px;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
@@ -56,8 +53,8 @@ export const TitleContainer = styled.div`
   
   @media screen and (min-width: 769px) {
     color: black;
-    max-width: 450px;
-    min-width: 450px;
+    max-width: 600px;
+    min-width: 600px;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
   }
