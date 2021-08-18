@@ -23,6 +23,7 @@ export const useStyles = makeStyles((theme) => ({
   content: {
     margin: 0,
   },
+  
 }));
 
 export const AccordionSummary = withStyles({
@@ -90,8 +91,10 @@ export const SubTitleContainer = styled.div`
 `;
 export const DescriprionContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   font-size: 15px;
   p {
     font-family: "Source Sans Pro";
@@ -100,5 +103,17 @@ export const DescriprionContainer = styled.div`
     font-size: 12px;
     line-height: 28px;
     color: black;
+  }
+  
+  button{
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (min-width: 769px){
+    flex-direction: row;
+
+    button{
+      margin-bottom: 0px;
+    }
   }
 `;
