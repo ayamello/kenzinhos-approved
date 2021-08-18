@@ -1,36 +1,88 @@
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
+
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 260,
+    height: 80,
+    paddingTop: 15,
+    background:
+      "linear-gradient(180deg, #1D64CB 0%, rgba(116, 29, 203, 0.57) 100%);",
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.3);",
+    textAlign: "center",
+  },
+  input: {
+    display: "block",
+    width: "80%",
+    height: 25,
+    margin: ["0 auto"],
+    paddingLeft: 10,
+    border: "none",
+    borderRadius: 5,
+  },
+  button: {
+    width: "80%",
+    height: 25,
+    fontSize: 13,
+    padding: ["0 0.5em"],
+    marginTop: 5,
+    textTransform: "uppercase",
+    fontFamily: "Source Code Pro",
+    border: "none",
+    borderRadius: 5,
+    color: "var(--white-color)",
+    backgroundColor: "var(--blue-color)",
+  },
+}));
 
 export const Containter = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const Content = styled.div`
-  width: 100%;
-  padding: 18px 40px;
-  position: relative;
+  width: 85%;
+  margin: 0 auto;
 
   .Header {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
-    padding: 1em 0 0.2em 0;
+    padding: 2.5em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
-    position: relative;
-    span {
-      color: white;
-      font-family: "Alegreya Sans SC";
-      font-size: 1.5rem;
-      margin-right: 10px;
+
+    .UserInfos {
       span {
-        text-transform: capitalize;
+        display: block;
+        font-family: "Source Code Pro";
+        margin-right: 10px;
+        color: #fff;
+        
+        strong {
+          text-transform: capitalize;
+          font-size: 20px;
+        }
       }
     }
+
+    .BtnEdit {
+      button {
+        background-color: transparent;
+        color: #fff;
+        border: none;
+
+        svg {
+          font-size: 20px;
+          transform: translateY(5px);
+        }
+      }
+    }
+
     .Email {
       font-size: 1rem;
       align-self: flex-start;
-      line-height: 31px;
     }
   }
   .theme {
@@ -135,11 +187,26 @@ export const Content = styled.div`
   @media screen and (min-width: 769px) {
  
     .Header {
-      flex-direction: row;
-      width: 90%;
-      position: relative;
-      span {
-        color: black;
+      .UserInfos {
+        padding: 0 0.5em;
+        span {
+          display: inline-block;
+          strong {
+            text-transform: capitalize;
+            font-size: 25px;
+            color: #000;
+          }
+        }
+      }
+      .BtnEdit {
+        button {
+          color: #000;
+
+          svg {
+            font-size: 20px;
+            transform: translateY(5px);
+          }
+        }
       }
     }
 
