@@ -22,7 +22,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         },
       })
       .then((response) => setGoals(response.data));
-    toast.info("Meta excluida");
+    toast.error("Meta excluida");
   };
 
   const handleActivieDelete = (id) => {
@@ -34,7 +34,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         },
       })
       .then((response) => setNewActivities(response.data));
-    toast.info("Atividade excluída");
+    toast.error("Atividade excluída");
   };
 
   const handleGoalCreation = (data) => {
@@ -55,7 +55,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => toast.info("Grupo criado com sucesso"))
+      .then((e) => toast.info("Meta criada com sucesso"))
       .catch((e) => console.log(e));
   };
 
@@ -76,7 +76,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => toast.info("Grupo criado com sucesso"))
+      .then((e) => toast.info("Atividade criada com sucesso"))
       .catch((e) => console.log(e));
   };
 
@@ -113,7 +113,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .catch((e) => console.log(e));
+      .then((e) => toast.info("Atividade atualizada!"));
   };
 
   return (

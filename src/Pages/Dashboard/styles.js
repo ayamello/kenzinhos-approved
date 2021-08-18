@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Containter = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
 `
 export const Content = styled.div`
@@ -17,11 +17,11 @@ export const Content = styled.div`
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
     span {
-      color:white;
-      font-family: 'Alegreya Sans SC';
+      color: white;
+      font-family: "Alegreya Sans SC";
       font-size: 1.5rem;
       margin-right: 10px;
-      span{
+      span {
         text-transform: capitalize;
       }
     }
@@ -42,14 +42,18 @@ export const Content = styled.div`
       background-color: var(--blue-color);
     }
   }
+  .theme {
+    display: flex;
+    justify-contente: space-between;
+  }
 
   .Groups {
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
-   
+
     .GroupsList {
-      width:230px;
+      width: 230px;
       margin-right: 50px;
 
       .SearchField {
@@ -140,15 +144,15 @@ export const Content = styled.div`
   @media screen and (min-width: 769px) {
     .Header {
       flex-direction: row;
-      span{
-        color:black;
+      span {
+        color: black;
       }
     }
 
     .Groups {
       flex-direction: row;
       flex-wrap: nowrap;
-    
+
       .GroupsList {
         width: 50%;
         margin-right: 50px;
@@ -158,9 +162,8 @@ export const Content = styled.div`
           background-color: var(--white-color);
           margin-top: 0px;
           box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
-       }
-      
+        }
+      }
     }
   }
-}
 `;
