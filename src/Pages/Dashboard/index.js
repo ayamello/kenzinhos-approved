@@ -7,6 +7,7 @@ import api from "../../Services/api";
 import jwtDecode from "jwt-decode";
 import ViewNavbar from "../../Components/ViewNavbar";
 import Tags from "../../Components/Tags";
+import LogoutButton from "../../Components/LogoutButton/Index";
 
 const Dashboard = () => {
   const [token] = useState(
@@ -33,11 +34,11 @@ const Dashboard = () => {
   return (
     <Container>
       <ViewNavbar />
+      <LogoutButton />
 
       <Content>
         <div className="Header">
           <span>
-            Bem vindo,{" "}
             <span>
               <strong>{user}</strong>
             </span>

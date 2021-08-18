@@ -37,7 +37,7 @@ const SearchBar = ({ groups }) => {
           className="AllGroupsButton"
           onClick={() => getGroups(token)}
         >
-          Mostrar todos os meus grupos
+          Meus grupos
         </button>
       </InputContainer>
     </>
