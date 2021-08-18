@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
         const decoded = jwtDecode(access);
         localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
         setAuth(access);
+        console.log(decoded.user_id)
         history.push("/dashboard", { data: decoded.user_id });
       })
       .catch((err) =>
