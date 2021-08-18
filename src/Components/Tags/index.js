@@ -68,10 +68,9 @@ const Tags = () => {
                   <p>Finalizar em: {activity.realization_time}</p>
                   <UpdateActivities activityId={activity.id} />
                   <button
-                    className="delete"
                     onClick={() => handleActivieDelete(activity.id)}
                   >
-                    <DeleteForeverSharpIcon />
+                    <DeleteForeverSharpIcon color='secondary' className="deleteIcon" />
                   </button>
                 </DescriprionContainer>
               ))}
@@ -88,13 +87,11 @@ const Tags = () => {
                   ) : (
                     <p>Meta incompleta</p>
                   )}
+                  {/* <span>{goal.how_much_achieved}%</span> */}
                   <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
-                    <DeleteForeverSharpIcon className="classes.button" />
+                    <DeleteForeverSharpIcon color='secondary' className="deleteIcon" />
                   </button>
-
-                  {/* <span>{goal.achieved ? 'Sim' : 'Não'}</span>
-                    <span>{goal.how_much_achieved}</span> */}
                 </DescriprionContainer>
               ))}
             </Typography>

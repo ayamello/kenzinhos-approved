@@ -105,7 +105,7 @@ export const HabitsProvider = ({children}) => {
                 }
             })
             .then(loadHabits())
-            .then(toast.success('Hábito atualizado'))
+            .then(toast.info('Hábito atualizado'))
             .catch((err) => toast.error('Não foi possível atualizar o hábito.'));
 
     };

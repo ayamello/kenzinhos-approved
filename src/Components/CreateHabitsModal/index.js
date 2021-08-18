@@ -44,7 +44,7 @@ const CreateHabitsModal = () => {
 
   const classes = useStyles();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { createHabit } = useHabits();
 
 
@@ -99,6 +99,7 @@ const CreateHabitsModal = () => {
               label='Título'
               variant='outlined'
               color='primary'
+              reset
               {...register("title")}
             />
           </InputContainer>
@@ -109,6 +110,7 @@ const CreateHabitsModal = () => {
               label='Categoria'
               variant='outlined'
               color='primary'
+              reset
               {...register('category')}
             />
           </InputContainer>
@@ -120,6 +122,7 @@ const CreateHabitsModal = () => {
               label='Dificuldade'
               variant='outlined'
               color='primary'
+              reset
               {...register('difficulty')}
               select
             >
@@ -147,6 +150,7 @@ const CreateHabitsModal = () => {
           </InputContainer>
           <InputContainer>
             <TextField
+            reset
               size='small'
               id='outlined-basic'
               label='Frequência'
