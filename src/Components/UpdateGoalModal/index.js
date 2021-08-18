@@ -92,7 +92,7 @@ const UpdateGoal = ({ goalId }) => {
                 >
                   x
                 </Button>
-                <h1>Atualize o título de sua atividade</h1>
+                <h1>Atualize sua meta</h1>
               </TitleContainer>
               <form onSubmit={handleSubmit(updateGoal)}>
                 <div className={classes.inputs}>
