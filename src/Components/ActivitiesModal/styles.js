@@ -22,3 +22,7 @@ export const ButtonAdd = styled.button`
     
   }
 `;
+
+// export const ButtonGreen = styled.extends(ButtonAdd)`
+//   background-color: var(--blue-color);
+// `

@@ -19,6 +19,7 @@ import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import { useAuth } from "../../Providers/Auth";
 import UpdateActivities from "../UpdateActivitiesModal";
 import UpdateGoal from "../UpdateGoalModal";
+
 const Tags = () => {
   const classes = useStyles();
   const { token } = useAuth();
