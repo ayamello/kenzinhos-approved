@@ -14,7 +14,7 @@ export const Container = styled.div`
     background-color: var(--white-color);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 769px) {
     button {
       padding: 0 1em;
       border-radius: 10px;
@@ -47,29 +47,6 @@ export const TitleContainer = styled.div`
     font-size: 1.4rem;
     font-weight: 500;
     text-align: center;
-  }
-  @media screen and (max-width: 600px) {
-    flex-direction: row;
-    width: 80%;
-    justify-content: space-evenly;
-    h1 {
-      font-size: 1.1rem;
-    }
-    a {
-      margin-top: 0;
-      text-transform: capitalize;
-      border: none;
-      padding: 0px;
-      width: 0px;
-      border-radius: 8px;
-      color: white;
-      background-color: inherit;
-      font-family: var(--title-font);
-      text-align: center;
-      color: white;
-      font-size: 1.1rem;
-      width: auto;
-    }
   }
 `;
 

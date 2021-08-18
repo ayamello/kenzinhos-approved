@@ -16,6 +16,9 @@ export const MainContainer = styled.div`
   background-image: linear-gradient(#1D64CB, #741DCB);
   margin-bottom: 10px;
   margin-top: 10px;
+  @media screen and (min-width: 769px) {  
+    background-image: linear-gradient(#1D64CB, #741DCB);
+  }
 `;
 
 export const TitleContainer = styled.div`

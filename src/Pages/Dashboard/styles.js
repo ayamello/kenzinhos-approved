@@ -1,5 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
+export const Containter = styled.div`
+  display:flex;
+  flex-direction: column;
+
+`
 export const Content = styled.div`
   width: 100%;
   padding: 20px 40px;
@@ -8,12 +13,18 @@ export const Content = styled.div`
     width: 90%;
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     margin-bottom: 40px;
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
     span {
+      color:white;
+      font-family: 'Alegreya Sans SC';
       font-size: 1.5rem;
       margin-right: 10px;
+      span{
+        text-transform: capitalize;
+      }
     }
     .Email {
       font-size: 1rem;
@@ -35,9 +46,11 @@ export const Content = styled.div`
 
   .Groups {
     display: flex;
-
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+   
     .GroupsList {
-      width: 50%;
+      width:230px;
       margin-right: 50px;
 
       .SearchField {
@@ -75,8 +88,10 @@ export const Content = styled.div`
         align-items: center;
         padding: 1em;
         border: 2px solid rgba(29, 100, 203, 0.1);
-        box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+        box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
         width: 100%;
+        background-color: var(--blue-color);
+        margin-top: 15px;
 
         .HeaderGroup {
           display: flex;
@@ -123,4 +138,29 @@ export const Content = styled.div`
       width: 60%;
     }
   }
+  @media screen and (min-width: 769px) {
+    .Header {
+      flex-direction: row;
+      span{
+        color:black;
+      }
+    }
+
+    .Groups {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    
+      .GroupsList {
+        width: 50%;
+        margin-right: 50px;
+
+        .List{
+          background-color: var(--white-color);
+          margin-top: 0px;
+          box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+       }
+      
+    }
+  }
+}
 `;
