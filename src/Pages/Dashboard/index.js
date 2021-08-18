@@ -1,19 +1,20 @@
-import Habits from '../../Components/Habits';
-import { Content } from './styles';
-import { Container } from '../../Pages/Groups/styles';
-import { useHabits } from '../../Providers/Habits';
-import { useState, useEffect } from 'react';
-import api from '../../Services/api';
-import jwtDecode from 'jwt-decode';
-import ViewNavbar from '../../Components/ViewNavbar';
-import Tags from '../../Components/Tags';
+import Habits from "../../Components/Habits";
+import { Content } from "./styles";
+import { Container } from "../../Pages/Groups/styles";
+import { useHabits } from "../../Providers/Habits";
+import { useState, useEffect } from "react";
+import api from "../../Services/api";
+import jwtDecode from "jwt-decode";
+import ViewNavbar from "../../Components/ViewNavbar";
+import Tags from "../../Components/Tags";
+import LogoutButton from "../../Components/LogoutButton/Index";
 
 const Dashboard = () => {
   const [token] = useState(
-    JSON.parse(localStorage.getItem('@Kenzinho:token')) || ''
+    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
 
   const decoded = jwtDecode(token);
 
@@ -33,23 +34,26 @@ const Dashboard = () => {
   return (
     <Container>
       <ViewNavbar />
+      <LogoutButton />
 
       <Content>
-        <div className='Header'>
+        <div className="Header">
           <span>
-            Bem vindo, <span><strong>{user}</strong></span>
+            <span>
+              <strong>{user}</strong>
+            </span>
           </span>
-          <span className='Email'>{email}</span>
+          <span className="Email">{email}</span>
         </div>
 
-        <div className='Groups'>
-          <div className='GroupsList'>
-            <div className='List'>
+        <div className="Groups">
+          <div className="GroupsList">
+            <div className="List">
               <Tags />
             </div>
           </div>
 
-          <div className='GroupDetails'>
+          <div className="GroupDetails">
             <Habits />
           </div>
         </div>

@@ -1,45 +1,36 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Containter = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
-`
+`;
 export const Content = styled.div`
   width: 100%;
-  padding: 20px 40px;
+  padding: 18px 40px;
+  position: relative;
 
   .Header {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     margin-bottom: 40px;
     padding: 1em 0 0.2em 0;
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
+    position: relative;
     span {
-      color:white;
-      font-family: 'Alegreya Sans SC';
+      color: white;
+      font-family: "Alegreya Sans SC";
       font-size: 1.5rem;
       margin-right: 10px;
-      span{
+      span {
         text-transform: capitalize;
       }
     }
     .Email {
       font-size: 1rem;
       align-self: flex-start;
-      line-height: 35px;
-    }
-
-    button {
-      font-size: 13px;
-      font-weight: 600;
-      font-family: "Source Code Pro";
-      padding: 0 1em;
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      background-color: var(--blue-color);
+      line-height: 31px;
     }
   }
 
@@ -47,9 +38,9 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
-   
+
     .GroupsList {
-      width:230px;
+      width: 230px;
       margin-right: 50px;
 
       .SearchField {
@@ -138,29 +129,31 @@ export const Content = styled.div`
     }
   }
   @media screen and (min-width: 769px) {
+ 
     .Header {
       flex-direction: row;
-      span{
-        color:black;
+      width: 90%;
+      position: relative;
+      span {
+        color: black;
       }
     }
 
     .Groups {
       flex-direction: row;
       flex-wrap: nowrap;
-    
+
       .GroupsList {
         width: 50%;
         margin-right: 50px;
 
-        .List{
+        .List {
           width: 100%;
           background-color: var(--white-color);
           margin-top: 0px;
           box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
-       }
-      
+        }
+      }
     }
   }
-}
 `;

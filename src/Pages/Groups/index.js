@@ -25,6 +25,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
+import LogoutButton from "../../Components/LogoutButton/Index";
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
@@ -78,6 +79,8 @@ const Groups = () => {
   return (
     <Container>
       <ViewNavbar />
+      <LogoutButton />
+
 
       <Content>
         <div className="Header">
