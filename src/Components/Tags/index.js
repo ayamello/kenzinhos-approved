@@ -7,9 +7,9 @@ import {
   SubTitleContainer,
   TitleContainer,
   useStyles,
-  AccordionSummary, 
-  MainContainer, 
-  SubTitles
+  AccordionSummary,
+  MainContainer,
+  SubTitles,
 } from "./styles";
 import SearchBar from "../SearchBar";
 import CreateActivitiesModal from "../ActivitiesModal";
@@ -19,6 +19,7 @@ import { useGroupsUser } from "../../Providers/GroupsUserProvider";
 import { useAuth } from "../../Providers/Auth";
 import UpdateActivities from "../UpdateActivitiesModal";
 import UpdateGoal from "../UpdateGoalModal";
+import { format } from "date-fns";
 
 const Tags = () => {
   const classes = useStyles();
@@ -31,6 +32,10 @@ const Tags = () => {
 
   const { handleActivieDelete, handleGoalDelete, updateActivitie } =
     useListActivitiesGoals();
+
+  // let d = activity.realization_time;
+  // let newDate = new Date(d);
+  // newDate.toLocaleDateString();
 
   return (
     <MainContainer>
@@ -65,12 +70,18 @@ const Tags = () => {
               {group.activities.map((activity) => (
                 <DescriprionContainer key={activity.id}>
                   <p>{activity.title}</p>
-                  <p>Finalizar em: {activity.realization_time}</p>
+                  <p>
+                    Finalizar em:{" "}
+                    {new Date(activity.realization_time).toLocaleDateString(
+                      "pt-BR"
+                    )}
+                  </p>
                   <UpdateActivities activityId={activity.id} />
-                  <button
-                    onClick={() => handleActivieDelete(activity.id)}
-                  >
-                    <DeleteForeverSharpIcon color='secondary' className="deleteIcon" />
+                  <button onClick={() => handleActivieDelete(activity.id)}>
+                    <DeleteForeverSharpIcon
+                      color="secondary"
+                      className="deleteIcon"
+                    />
                   </button>
                 </DescriprionContainer>
               ))}
@@ -90,7 +101,10 @@ const Tags = () => {
                   {/* <span>{goal.how_much_achieved}%</span> */}
                   <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
-                    <DeleteForeverSharpIcon color='secondary' className="deleteIcon" />
+                    <DeleteForeverSharpIcon
+                      color="secondary"
+                      className="deleteIcon"
+                    />
                   </button>
                 </DescriprionContainer>
               ))}
