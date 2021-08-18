@@ -54,6 +54,7 @@ export const Content = styled.div`
     border-bottom: 1px solid rgba(29, 100, 203, 0.1);
 
     .UserInfos {
+      margin-top:40px;
       span {
         display: block;
         font-family: "Source Code Pro";
@@ -74,6 +75,7 @@ export const Content = styled.div`
         border: none;
 
         svg {
+          margin-top:40px;
           font-size: 20px;
           transform: translateY(5px);
         }
@@ -188,6 +190,7 @@ export const Content = styled.div`
     .Header {
       .UserInfos {
         padding: 0 0.5em;
+        margin-top:0px;
         span {
           display: inline-block;
           color: #000;
@@ -202,6 +205,7 @@ export const Content = styled.div`
           color: #000;
 
           svg {
+            margin-top:0px;
             font-size: 20px;
             transform: translateY(5px);
           }

@@ -27,8 +27,10 @@ export const Content = styled.div`
     align-items: center;
     padding-bottom: 0.2em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    
 
     h2 {
+      
       font-size: 25px;
       font-weight: 700;
       color: white;
