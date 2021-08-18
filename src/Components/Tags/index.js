@@ -81,7 +81,12 @@ const Tags = () => {
               {group.goals.map((goal) => (
                 <DescriprionContainer key={goal.id}>
                   <p>{goal.title}</p>
-                  <p>Atividade completada : {goal.how_much_achieved}</p>
+                  <p>Nível: {goal.difficulty}</p>
+                  {goal.achieved ? (
+                    <p>Meta completada</p>
+                  ) : (
+                    <p>Meta incompleta</p>
+                  )}
                   <UpdateGoal goalId={goal.id} />
                   <button onClick={() => handleGoalDelete(goal.id)}>
                     <DeleteForeverSharpIcon className="classes.button" />
