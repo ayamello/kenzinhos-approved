@@ -65,12 +65,11 @@ const Dashboard = () => {
 
             <span className="Email">{email}</span>
           </div>
-
           <div className="BtnEdit">
             <button onClick={openPopover}>
               <Edit />
             </button>
-
+          
             <Popover
               id={id}
               open={open}

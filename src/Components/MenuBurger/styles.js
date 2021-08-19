@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    position:absolute;
     padding: 0.5vh 2vw;
 
     button {

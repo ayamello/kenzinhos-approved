@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: "15px",
+    marginTop:'40px',
+    [theme.breakpoints.up('md')]: {
+      marginTop:'0px'
+    },
   },
   close: {
     width: "1px",
