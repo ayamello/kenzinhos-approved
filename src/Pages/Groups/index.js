@@ -46,7 +46,9 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.find((group) => group.name.toUpperCase() === groupName.toUpperCase());
+    const group = groups.find(
+      (group) => group.name.toUpperCase() === groupName.toUpperCase()
+    );
     if (!group) {
       return toast.error("Grupo não encontrado");
     }
