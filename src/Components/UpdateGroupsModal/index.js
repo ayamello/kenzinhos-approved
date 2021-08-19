@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useGroupsUser } from "../../Providers/GroupsUser";
-import { FormContainer, InputContainer, TitleContainer } from "./styles";
+import {
+  FormContainer,
+  InputContainer,
+  TitleContainer,
+} from "../CreateHabitsModal/styles";
 import {
   makeStyles,
   Button,
@@ -11,7 +14,9 @@ import {
   Fade,
   MenuItem,
 } from "@material-ui/core";
-import { toast } from "react-toastify";
+import { useGroupsUser } from "../../Providers/GroupsUser";
+import { InputId } from "../ActivitiesModal/styles";
+import CreateIcon from "@material-ui/icons/Create";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -26,10 +31,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "20px",
     boxShadow: theme.shadows[9],
     padding: theme.spacing(2, 4, 3),
-    margin: "20%",
   },
   inputs: {
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#ffff",
     border: "1px solid #000",
     padding: "15px",
     borderRadius: "5px",
@@ -37,10 +41,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: "15px",
-    marginTop: "40px",
-    [theme.breakpoints.up("md")]: {
-      marginTop: "0px",
-    },
   },
   close: {
     width: "1px",
@@ -48,29 +48,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "190px",
     marginBottom: "20px",
     fontSize: "10px",
-  },
-  select: {
-    backgroundColor: "#ffff",
-  },
-  close: {
-    width: "1px",
-    borderRadius: "20px",
-    marginLeft: "190px",
-    marginBottom: "20px",
-    fontSize: "10px",
-  },
-  select: {
-    backgroundColor: "#ffff",
   },
 }));
 
-const CreateGroups = () => {
+const UpdateGroups = ({ groupsId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { handleGroupCreation } = useGroupsUser();
+  const { updateGroups } = useGroupsUser();
 
   const handleOpen = () => {
     setOpen(true);
@@ -80,22 +67,11 @@ const CreateGroups = () => {
     setOpen(false);
   };
 
-  const handleCreation = () => {
-    toast.info("Grupo criado");
-  };
-
   return (
     <div>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        size="small"
-        onClick={handleOpen}
-      >
-        Criar +
-      </Button>
-
+      <button onClick={handleOpen}>
+        <CreateIcon className="updateIcon" color="primary" />
+      </button>
       <Modal
         className={classes.modal}
         open={open}
@@ -119,9 +95,9 @@ const CreateGroups = () => {
                 >
                   x
                 </Button>
-                <h1>Crie seu grupo</h1>
+                <h1>Atualize seu grupo</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(handleGroupCreation)}>
+              <form onSubmit={handleSubmit(updateGroups)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
@@ -132,40 +108,33 @@ const CreateGroups = () => {
                       color="primary"
                       {...register("name")}
                     />
-
+                  </InputContainer>
+                  <InputContainer>
                     <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Descrição"
-                      variant="outlined"
-                      color="primary"
-                      {...register("description")}
-                    />
-
-                    <TextField
-                      className={classes.select}
                       size="small"
                       id="outlined-basic"
                       label="Categoria"
                       variant="outlined"
                       color="primary"
                       {...register("category")}
-                      select
-                    >
-                      <MenuItem value={"Educação"}>Educação</MenuItem>
-                      <MenuItem value={"Saúde"}>Saúde</MenuItem>
-                      <MenuItem value={"Finanças"}>Finanças</MenuItem>
-                    </TextField>
+                    />
+                  </InputContainer>
+                  <InputContainer>
+                    <InputId
+                      className="hidden-id"
+                      value={groupsId}
+                      {...register("id")}
+                    />
                   </InputContainer>
                 </div>
                 <InputContainer>
                   <Button
+                    onClick={handleClose}
                     variant="contained"
                     color="primary"
                     size="small"
                     type="submit"
                     className="submitButton"
-                    onClick={handleCreation}
                   >
                     Adicionar
                   </Button>
@@ -179,4 +148,4 @@ const CreateGroups = () => {
   );
 };
 
-export default CreateGroups;
+export default UpdateGroups;
