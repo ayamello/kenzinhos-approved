@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Accordion, Typography, AccordionDetails } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
@@ -21,13 +21,16 @@ import UpdateGoal from "../UpdateGoalModal";
 import api from "../../Services/api";
 import { toast } from "react-toastify";
 import UpdateGroups from "../UpdateGroupsModal";
+import jwtDecode from 'jwt-decode';
 
 const Tags = ({newGroups, isNewGroups }) => {
   const classes = useStyles();
   const { token } = useAuth();
   const { groups, setGroups } = useGroupsUser();
 
+  const data = jwtDecode(token);
 
+  
   useEffect(() => {
     api
       .get("groups/subscriptions/", {
@@ -123,8 +126,10 @@ const Tags = ({newGroups, isNewGroups }) => {
             <Typography className={classes.heading}>
               <div key={group.id}>
                 <TitleContainer>
+                  <h4>{group.name}</h4>{
+                    group.creator.id === data.user_id && 
                   <UpdateGroups groupsId={group.id} />
-                  <h4>{group.name}</h4>
+                  }
                   <span>{group.category}</span>
                 </TitleContainer>
                 <SubTitleContainer>
