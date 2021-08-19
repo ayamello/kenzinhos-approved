@@ -32,23 +32,6 @@ const Groups = () => {
   const [viewCardGroup, setViewCardGroup] = useState(false);
   const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
-  );
-
-  const getGroups = (token) => {
-    api
-      .get("groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setGroups([...response.data]);
-      })
-      .catch((err) => 
-      toast.error('Inscrições não podem ser carregadas')
-      );
-
-  };
 
   useEffect(() => {
     api
@@ -63,7 +46,7 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.find((group) => group.name === groupName);
+    const group = groups.find((group) => group.name.toUpperCase() === groupName.toUpperCase());
     if (!group) {
       return toast.error("Grupo não encontrado");
     }
@@ -80,7 +63,10 @@ const Groups = () => {
   };
 
   const ShowAllGroupsBtn = () => {
-    getGroups(token);
+    api
+      .get("groups/")
+      .then((response) => setGroups(response.data.results))
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
     setViewBtnShowAllGroups(false);
   };
 

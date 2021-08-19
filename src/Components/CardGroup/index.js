@@ -43,8 +43,8 @@ const Group = ({ group }) => {
             </Typography>
           </div>
           <div>
-            <CardActions className={classes.botao}>
-              <Button
+            <CardActions >
+              <Button className={classes.button}
                 variant='contained'
                 color='primary'
                 size='medium'

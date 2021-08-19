@@ -40,6 +40,23 @@ export const MainContainer = styled.div`
   }
 `;
 
+export const LogoContainerSignup = styled.div`
+  position: absolute;
+  top: 0;
+  right: 2%;
+  width: 75px;
+  height: 75px;
+  img {
+    width: 100%;
+    margin: 5px;
+  }
+  @media screen and (min-width: 600px) {
+    width: 100px;
+    height: 100px;
+    right: 1%;
+  }
+`;
+
 export const FormContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -97,6 +114,16 @@ export const TitleContainer = styled.div`
     font-size: 1.1rem;
     width: auto;
   }
+
+  a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+
+  a:active{
+            background: rgba(0, 0, 0, 0.8)
+  }
+
   @media screen and (min-width: 600px) {
     flex-direction: column;
     width: 30%;

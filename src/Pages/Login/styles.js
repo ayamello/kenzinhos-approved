@@ -23,7 +23,7 @@ const fadeIn = keyframes`
   }
 `
 
-export const LogoContainer = styled.div`
+export const LogoContainerLogin = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -136,6 +136,15 @@ export const TitleContainer = styled.div`
     width: auto;
     font-weight: 500;
   }
+  a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+
+  a:active{
+            background: rgba(0, 0, 0, 0.8)
+        }
+
   @media screen and (min-width: 600px) {
     text-align: start;
     flex-direction: column;

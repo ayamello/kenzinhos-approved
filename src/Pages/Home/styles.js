@@ -46,11 +46,20 @@ export const HomeHeader = styled.header`
     
     #logoHeader{
         width: 150px;
-    }
+    };
 
     nav{
         display: none;
-    }
+    };
+
+    a:hover{
+            color:tomato;
+    };
+
+    a:active{
+            color:red;
+        }
+        
     
     @media (min-width: 768px){
 
@@ -71,7 +80,7 @@ export const HomeHeader = styled.header`
         }
 
         button{
-            display: none;
+            display: none;  
         }
     }
 `;
@@ -178,7 +187,16 @@ export const ButtonWhite = styled.button`
         border-radius: 10px;
         border: none;
         color: var(--blue-color);
-        font-size: 1rem;    
+        font-size: 1rem; 
+        :hover{
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid white;
+        };
+        
+        :active{
+            background: rgba(0, 0, 0, 0.8)
+        }
 `;
 
 export const ButtonPurple = styled.button`
@@ -190,6 +208,15 @@ export const ButtonPurple = styled.button`
         color: white;
         border: 1px solid white;
         font-size: 1rem;   
+        :hover{
+            background: rgba(300, 300, 300, 0.7);
+            color: var(--blue-color);
+            border: none;
+        };  
+        :active{
+            background: rgba(300, 300, 300);
+        }
+
 `;
 
 export const History = styled.div`

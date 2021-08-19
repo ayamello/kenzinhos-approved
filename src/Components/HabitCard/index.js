@@ -72,9 +72,9 @@ const { deleteHabit,  updateHabit } = useHabits();
     return(
         <MainContainer>
             <TitleContainer>
-               <h4>{habit.title}</h4> 
-                <p>categoria: {habit.category}</p>
-                <p>frequência: {habit.frequency}</p>
+               <h3>{habit.title}</h3> 
+                <p>Categoria: <span>{habit.category}</span></p>
+                <p>Frequência: <span>{habit.frequency}</span></p>
             </TitleContainer>
             <TitleContainer>   
                 <h4>Dificuldade</h4>

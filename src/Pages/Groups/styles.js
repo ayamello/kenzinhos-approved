@@ -79,6 +79,7 @@ export const Content = styled.div`
         input {
           width: 92%;
           padding: 0 10px;
+          text-transform: capitalize;
         }
 
         input,
@@ -137,7 +138,9 @@ export const Content = styled.div`
             h4 {
               font-family: "Source Sans Pro";
               font-size: 15px;
+              text-transform: uppercase;
             }
+            
             span {
               color: var(--gray-details);
               font-size: 12px;
@@ -180,6 +183,7 @@ export const Content = styled.div`
   }
 
   @media (min-width: 1024px) {
+    margin: 15px auto;
     .Header {
       padding: 1em 0 0.2em 0;
       border-bottom: 1px solid rgba(29, 100, 203, 0.2);
