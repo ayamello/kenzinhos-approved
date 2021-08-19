@@ -59,6 +59,8 @@ export const InputContainer = styled.div`
     background-color: white;
     width: 200px;
     border-radius: 5px;
+    color: grey;
+    text-transform: uppercase;
   }
   button {
     width: 200px;
