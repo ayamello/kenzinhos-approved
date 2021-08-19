@@ -12,7 +12,6 @@ import {
   Modal,
   Backdrop,
   Fade,
-
 } from "@material-ui/core";
 import { useGroupsUser } from "../../Providers/GroupsUser";
 import { InputId } from "../ActivitiesModal/styles";

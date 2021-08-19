@@ -91,6 +91,23 @@ export const TitleContainer = styled.div`
     font-weight: 500;
     transform: translateY(1px);
   }
+
+  button{
+    border:none
+  }
+
+  .updateIcon {
+    color: var(--blue-color);
+    margin-left:5px;
+    :hover {
+      color: green;
+    }
+    :active {
+      color: darkgreen;
+    }
+  }
+
+
 `;
 
 export const SubTitleContainer = styled.div`
