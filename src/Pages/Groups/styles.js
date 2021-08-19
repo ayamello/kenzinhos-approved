@@ -68,6 +68,7 @@ export const Content = styled.div`
         input {
           width: 92%;
           padding: 0 10px;
+          text-transform: capitalize;
         }
 
         input,

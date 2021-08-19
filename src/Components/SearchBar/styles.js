@@ -21,6 +21,7 @@ export const InputContainer = styled.div`
   input {
     width: 85%;
     padding: 0 10px;
+    text-transform: capitalize;
   }
 
   input,
