@@ -30,7 +30,7 @@ export const AccordionSummary = withStyles({
     backgroundColor: "rgba(0, 0, 0, .0)",
     borderBottom: "1px solid rgba(0, 0, 0, .125)",
     marginBottom: -1,
-    minHeight: 64,
+    minHeight: 75,
     "&$expanded": {
       minHeight: 56,
     },
@@ -78,7 +78,8 @@ export const TitleContainer = styled.div`
   align-items: center;
 
   h4 {
-    font-size: 16px;
+    text-align: left;
+    font-size: 14px;
     font-family: "Source Sans Pro";
     text-transform: uppercase;
   }
@@ -105,7 +106,7 @@ export const SubTitleContainer = styled.div`
     margin-left: 15px;
   }
 `;
-export const DescriprionContainer = styled.div`
+export const DescripritionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -1,6 +1,5 @@
 import Habits from "../../Components/Habits";
-import { Content, useStyles } from "./styles";
-import { Container } from "../../Pages/Groups/styles";
+import { Container, Content, useStyles } from "./styles";
 import { Edit } from "@material-ui/icons";
 import Popover from "@material-ui/core/Popover";
 import { useHabits } from "../../Providers/Habits";

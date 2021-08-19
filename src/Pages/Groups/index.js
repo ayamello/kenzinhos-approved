@@ -36,17 +36,6 @@ const Groups = () => {
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
 
-  const getGroups = (token) => {
-    api
-      .get("groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setGroups([...response.data]);
-      })
-      .catch((err) => toast.error("Grupos não podem ser carregados"));
-  };
-
   useEffect(() => {
     api
       .get("groups/")
@@ -80,7 +69,7 @@ const Groups = () => {
     api
       .get("groups/")
       .then((response) => setGroups(response.data.results))
-      .catch((err) => toast.error("Grupos não podem ser carregados"));
+      .catch((_) => toast.error("Grupos não podem ser carregados"));
     setViewBtnShowAllGroups(false);
   };
 

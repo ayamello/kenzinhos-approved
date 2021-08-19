@@ -1,20 +1,21 @@
-import React from 'react';
-import { 
-  Card, 
-  CardActions, 
-  CardContent, 
-  Button, 
-  Typography } from '@material-ui/core';
+import React from "react";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+} from "@material-ui/core";
 import {
   ContainerGoals,
   ContainerActivities,
   useStyles,
   TopContainer,
-} from './styles';
-import { useGroupsUser } from '../../Providers/GroupsUser';
+  ListsDiv,
+} from "./styles";
+import { useGroupsUser } from "../../Providers/GroupsUser";
 
 const Group = ({ group }) => {
-
   const classes = useStyles();
 
   const { subscribeToAGroup } = useGroupsUser();
@@ -24,30 +25,31 @@ const Group = ({ group }) => {
       <CardContent>
         <TopContainer>
           <div>
-            <Typography variant='h5' component='h2'>
+            <Typography variant="h5" component="h2">
               {group?.name}
             </Typography>
             <Typography
               className={classes.title}
-              color='textSecondary'
+              color="textSecondary"
               gutterBottom
             >
               Categoria: {group?.category}
             </Typography>
             <Typography
               className={classes.title}
-              color='textSecondary'
+              color="textSecondary"
               gutterBottom
             >
               Descrição: {group?.description}
             </Typography>
           </div>
           <div>
-            <CardActions >
-              <Button className={classes.button}
-                variant='contained'
-                color='primary'
-                size='medium'
+            <CardActions>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                size="medium"
                 onClick={() => subscribeToAGroup(group.id)}
               >
                 Inscrever-se
@@ -56,24 +58,38 @@ const Group = ({ group }) => {
           </div>
         </TopContainer>
         <ContainerGoals>
-          <Typography variant='h5' component='h4'>
-            Metas:
+          <Typography variant="h5" component="h4">
+            Metas
           </Typography>
-          {group?.goals.map((goal) => (
-            <Typography variant='body2' component='p'>
-              {goal.title}
-            </Typography>
-          ))}
+          <ListsDiv>
+            {group?.goals.map((goal) => (
+              <div className="Goal">
+                <span><strong>{goal.title}</strong></span>
+                <span>
+                  <strong>Nível: </strong>
+                  {goal.difficulty}
+                </span>
+              </div>
+            ))}
+          </ListsDiv>
         </ContainerGoals>
         <ContainerActivities>
-          <Typography variant='h5' component='h4'>
-            Atividades:
+          <Typography variant="h5" component="h4">
+            Atividades
           </Typography>
-          {group?.activities.map((activity) => (
-            <Typography variant='body2' component='li' >
-              {activity.title}
-            </Typography>
-          ))}
+          <ListsDiv>
+            {group?.activities.map((activity) => (
+              <div className="Activity">
+                <span><strong>{activity.title}</strong></span>
+                <span>
+                  <strong>Finalizar em: </strong>
+                  {new Date(activity.realization_time).toLocaleDateString(
+                    "pt-BR"
+                  )}
+                </span>
+              </div>
+            ))}
+          </ListsDiv>
         </ContainerActivities>
       </CardContent>
     </Card>

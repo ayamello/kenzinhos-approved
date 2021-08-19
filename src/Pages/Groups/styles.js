@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 100vh;
+  overflow-y: hidden;
+  
   background: linear-gradient(
     180deg,
     #1d64cb 0%,
@@ -56,7 +59,7 @@ export const Content = styled.div`
 
     .GroupsList {
       width: 100%;
-      max-width: 415px;
+      max-width: 550px;
       margin: 0 auto;
 
       .SearchField {
@@ -66,7 +69,7 @@ export const Content = styled.div`
         align-items: center;
 
         input {
-          width: 92%;
+          width: 100%;
           padding: 0 10px;
           text-transform: capitalize;
         }

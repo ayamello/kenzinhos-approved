@@ -3,7 +3,7 @@ import { Accordion, Typography, AccordionDetails } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteForeverSharpIcon from "@material-ui/icons/DeleteForeverSharp";
 import {
-  DescriprionContainer,
+  DescripritionContainer,
   SubTitleContainer,
   TitleContainer,
   useStyles,
@@ -69,10 +69,10 @@ const Tags = () => {
                 <CreateActivitiesModal groupId={group.id} />
               </SubTitles>
               {group.activities.map((activity) => (
-                <DescriprionContainer key={activity.id}>
+                <DescripritionContainer key={activity.id}>
                   <p>{activity.title}</p>
                   <p>
-                    Finalizar em:{" "}
+                    Finalizar em:
                     {new Date(activity.realization_time).toLocaleDateString(
                       "pt-BR"
                     )}
@@ -84,14 +84,14 @@ const Tags = () => {
                       className="deleteIcon"
                     />
                   </button>
-                </DescriprionContainer>
+                </DescripritionContainer>
               ))}
               <SubTitles>
                 <h4>Metas:</h4>
                 <CreateGoalsModal groupId={group.id} />
               </SubTitles>
               {group.goals.map((goal) => (
-                <DescriprionContainer key={goal.id}>
+                <DescripritionContainer key={goal.id}>
                   <p>{goal.title}</p>
                   <p>Nível: {goal.difficulty}</p>
                   {goal.achieved ? (
@@ -106,7 +106,7 @@ const Tags = () => {
                       className="deleteIcon"
                     />
                   </button>
-                </DescriprionContainer>
+                </DescripritionContainer>
               ))}
             </Typography>
           </AccordionDetails>
