@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: 100vh;
   width: 85%;
-  margin: 0 auto;
+  margin: 15px auto;
 
   .Header {
     width: 100%;

@@ -40,7 +40,7 @@ const Dashboard = () => {
       .catch((err) => 
         toast.error('Usuário não pode ser carregados'));
 
-  }, [user]);
+  }, []);
 
   const { updateUser } = useUser();
   const [anchorEl, setAnchorEl] = useState(null);
