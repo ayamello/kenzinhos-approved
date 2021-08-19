@@ -68,7 +68,7 @@ const Groups = () => {
     api
       .get("groups/")
       .then((response) => setGroups(response.data.results))
-      .catch((err) => toast.error("Grupos não podem ser carregados"));
+      .catch((_) => toast.error("Grupos não podem ser carregados"));
     setViewBtnShowAllGroups(false);
   };
 
