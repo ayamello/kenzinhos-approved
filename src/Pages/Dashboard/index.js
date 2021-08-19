@@ -17,6 +17,9 @@ const Dashboard = () => {
   const { getGroups, groups } = useGroupsUser();
   const classes = useStyles();
 
+  const [newGroups, setNewGroups] = useState([])
+  const [isNewGroups, setIsNewGroups] = useState(false)
+
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
@@ -109,10 +112,10 @@ const Dashboard = () => {
 
         <div className="Groups">
           <div className="GroupsList">
-            <SearchBar groups={groups} getGroups={getGroups} />
+            <SearchBar groups={groups} getGroups={getGroups} setNewGroups={setNewGroups} setIsNewGroups={setIsNewGroups}/>
             
             <div className="List">
-              <Tags />
+              <Tags setIsNewGroups={setIsNewGroups} newGroups={newGroups} isNewGroups={isNewGroups}/>
             </div>
           </div>
 
