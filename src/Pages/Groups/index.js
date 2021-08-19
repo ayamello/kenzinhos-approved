@@ -46,21 +46,16 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.find(
-      (group) => group.name.toUpperCase() === groupName.toUpperCase()
-    );
-    if (!group) {
-      return toast.error("Grupo não encontrado");
-    }
-
     api
-      .get(`groups/${group.id}/`)
+      .get(`groups/?search=${groupName}`)
       .then((res) => {
         setViewBtnShowAllGroups(true);
-        setGroups([res.data]);
+        console.log(res.data.results);
+        setGroups([...res.data.results]);
+        setTextInput("");
       })
-      .catch((err) =>
-        toast.error("Grupos não pode ser encontrado, verifique nome informado!")
+      .catch((_) =>
+        toast.error("Grupo não pode ser encontrado, verifique nome informado!")
       );
   };
 
@@ -89,6 +84,7 @@ const Groups = () => {
               <input
                 type="text"
                 placeholder="Pesquisar grupo"
+                value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
               />
               <div>
@@ -109,9 +105,9 @@ const Groups = () => {
                       </div>
 
                       <div className="InfosGroup">
-                        <span>Atividades: {group.activities.length}</span>
+                        <span>Atividades: {group.activities?.length}</span>
 
-                        <span>Metas: {group.goals.length}</span>
+                        <span>Metas: {group.goals?.length}</span>
                       </div>
                     </div>
 
@@ -140,8 +136,8 @@ const Groups = () => {
                       </HeaderGroup>
 
                       <InfosGroup>
-                        <span>Atividades: {group.activities.length}</span>
-                        <span>Metas: {group.goals.length}</span>
+                        <span>Atividades: {group.activities?.length}</span>
+                        <span>Metas: {group.goals?.length}</span>
                       </InfosGroup>
                     </AccordionSummary>
 
