@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory, Link } from 'react-router-dom';
-import { MainContainer, FormContainer, InputContainer, TitleContainer } from './styles';
+import { MainContainer, FormContainer, InputContainer, TitleContainer, LogoContainerSignup } from './styles';
 import { Button, TextField } from '@material-ui/core';
 import { toast } from 'react-toastify';
-import { LogoContainer } from '../Login/styles';
 import logo from '../../Assets/Img/logoMobile.png';
 
 const Signup = () => {
@@ -53,11 +52,11 @@ const Signup = () => {
 
   return (
     <MainContainer>
-      <LogoContainer>
+      <LogoContainerSignup>
         <Link to='/'>
           <img alt='logo' src={logo} />
         </Link>
-      </LogoContainer>
+      </LogoContainerSignup>
       <FormContainer>
         <h1>Cadastro</h1>
         <form onSubmit={handleSubmit(onSubmitFunction)}>

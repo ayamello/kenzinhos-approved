@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import backgroundDesktop from '../../Assets/Img/login.png';
 import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
 
-export const LogoContainer = styled.div`
+export const LogoContainerLogin = styled.div`
   position: absolute;
   top: 0;
   left: 0;

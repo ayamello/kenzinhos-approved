@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { InputContainer, Button, Container } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { useGroupsUser } from "../../Providers/GroupsUser";
 import { useAuth } from "../../Providers/Auth";
+import { useGroupsUser } from "../../Providers/GroupsUser";
 
-const SearchBar = ({ groups }) => {
+const SearchBar = ({ groups, setGroups }) => {
   const [groupName, setGroupName] = useState("");
 
   const { token } = useAuth();
-  const { setGroups, getGroups } = useGroupsUser();
+  const { getGroups } = useGroupsUser();
 
   const findGroup = (groupName) => {
     if (groups.find((group) => group.name === groupName)) {

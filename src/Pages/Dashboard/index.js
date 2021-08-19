@@ -37,8 +37,10 @@ const Dashboard = () => {
         setUser(response.data.username);
         setEmail(response.data.email);
       })
-      .catch((err) => toast.error("Usuário não pode ser carregados"));
-  }, []);
+      .catch((err) => 
+        toast.error('Usuário não pode ser carregados'));
+
+  }, [user]);
 
   const { updateUser } = useUser();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -97,7 +99,7 @@ const Dashboard = () => {
                 />
                 <button
                   className={classes.button}
-                  onClick={() => updateUser(inputUsername)}
+                  onClick={() => {updateUser(inputUsername); closePopover()}}
                 >
                   Atualizar
                 </button>
