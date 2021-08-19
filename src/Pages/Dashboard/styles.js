@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
+import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -7,31 +7,31 @@ export const useStyles = makeStyles((theme) => ({
     height: 80,
     paddingTop: 15,
     background:
-      "linear-gradient(180deg, #1D64CB 0%, rgba(116, 29, 203, 0.57) 100%);",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.3);",
-    textAlign: "center",
+      'linear-gradient(180deg, #1D64CB 0%, rgba(116, 29, 203, 0.57) 100%);',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.3);',
+    textAlign: 'center',
   },
   input: {
-    display: "block",
-    width: "80%",
+    display: 'block',
+    width: '80%',
     height: 25,
-    margin: ["0 auto"],
+    margin: ['0 auto'],
     paddingLeft: 10,
-    border: "none",
+    border: 'none',
     borderRadius: 5,
   },
   button: {
-    width: "80%",
+    width: '80%',
     height: 25,
     fontSize: 13,
-    padding: ["0 0.5em"],
+    padding: ['0 0.5em'],
     marginTop: 5,
-    textTransform: "uppercase",
-    fontFamily: "Source Code Pro",
-    border: "none",
+    textTransform: 'uppercase',
+    fontFamily: 'Source Code Pro',
+    border: 'none',
     borderRadius: 5,
-    color: "var(--white-color)",
-    backgroundColor: "var(--blue-color)",
+    color: 'var(--white-color)',
+    backgroundColor: 'var(--blue-color)',
   },
 }));
 

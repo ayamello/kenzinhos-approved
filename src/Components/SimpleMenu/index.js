@@ -18,11 +18,11 @@ export default function SimpleMenu() {
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-      <HamburguerIcon src={Hamburguer} alt="Icone Menu"/>
+      <Button aria-controls='simple-menu' aria-haspopup='true' onClick={handleClick}>
+      <HamburguerIcon src={Hamburguer} alt='Icone Menu'/>
       </Button>
       <Menu
-        id="simple-menu"
+        id='simple-menu'
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}

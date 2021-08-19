@@ -1,8 +1,9 @@
-import NavbarDash from "../../Components/NavbarDash";
-import MenuBurger from "../../Components/MenuBurger";
-import { useState } from "react";
+import NavbarDash from '../../Components/NavbarDash';
+import MenuBurger from '../../Components/MenuBurger';
+import { useState } from 'react';
 
 const ViewNavbar = () => {
+
 const [viewNavbar, setViewNavbar] = useState(false);
 
   return (
@@ -14,6 +15,7 @@ const [viewNavbar, setViewNavbar] = useState(false);
       )}
     </>
   );
+  
 };
 
 export default ViewNavbar;

@@ -1,39 +1,32 @@
-import jwtDecode from "jwt-decode";
-import { createContext, useContext, useState } from "react";
-import { toast } from "react-toastify";
-import api from "../../Services/api";
+import { createContext, useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import jwtDecode from 'jwt-decode';
+import api from '../../Services/api';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const token = JSON.parse(localStorage.getItem("@Kenzinho:token")) || "";
+
+  const token = JSON.parse(localStorage.getItem('@Kenzinho:token')) || '';
 
   const [auth, setAuth] = useState(token);
 
-  // const decodeToken = (token) => {
-  //   if (!!auth) {
-  //     const decoded = jwtDecode(token);
-  //     return decoded;
-  //   }
-  // };
-
   const signIn = (data, history) => {
+
     api
-      .post("/sessions/", data)
+      .post('/sessions/', data)
       .then((response) => {
         toast.info(`Bem vindo ${data.username}`);
         const { access } = response.data;
         const decoded = jwtDecode(access);
-        localStorage.setItem("@Kenzinho:token", JSON.stringify(access));
+        localStorage.setItem('@Kenzinho:token', JSON.stringify(access));
         setAuth(access);
-        console.log(decoded.user_id)
-        history.push("/dashboard", { data: decoded.user_id });
+        history.push('/dashboard', { data: decoded.user_id });
       })
       .catch((err) =>
-        toast.error(
-          "Não foi possível fazer o login. Verifique dados informados"
-        )
+        toast.error('Não foi possível fazer o login. Verifique dados informados')
       );
+      
   };
 
   return (

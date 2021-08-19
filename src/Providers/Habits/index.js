@@ -19,10 +19,12 @@ export const HabitsProvider = ({children}) => {
           }
         }).then((response) => setNewHabits(response.data))
           .catch((err) => 
-            toast.error('Hábitos não pode ser carregado'));
+            toast.error('Hábitos não podem ser carregados')
+          );
+
     };
 
-    const deleteHabit = (id) =>{
+    const deleteHabit = (id) => {
 
         const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
         const newHabits = habits.filter((habit) => habit.id !== id);
@@ -33,16 +35,18 @@ export const HabitsProvider = ({children}) => {
             Authorization: `Bearer ${token}`,
             }
         })
-        .then((response) => {
+        .then(() => {
           setNewHabits(newHabits);
           toast.error('Hábito excluído');
-          loadHabits()
+          loadHabits();
         })
-        .catch((err) => toast.error('Não foi possível excluir o hábito.'));
+        .catch((err) => 
+          toast.error('Não foi possível excluir o hábito.')
+        );
 
     };
 
-    const updateHabit = (data) =>{
+    const updateHabit = (data) => {
 
         const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
 
@@ -64,9 +68,13 @@ export const HabitsProvider = ({children}) => {
                 Authorization: `Bearer ${token}`,
                 }
             })
-            .then(loadHabits())
-            .then(toast.info('Hábito atualizado'))
-            .catch((err) => toast.error('Não foi possível atualizar o hábito.'));
+            .then(() => {
+              toast.info('Hábito atualizado');
+              loadHabits();
+            })
+            .catch((err) => 
+              toast.error('Não foi possível atualizar o hábito.')
+            );
 
     };
 

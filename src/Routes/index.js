@@ -9,11 +9,11 @@ import Route  from './route'
 const Routes = () => {
     return(
         <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route isPrivate path="/dashboard" component={Dashboard} />
-            <Route isPrivate path="/groups" component={Groups} />
+            <Route exact path='/' component={Home} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/login' component={Login} />
+            <Route isPrivate path='/dashboard' component={Dashboard} />
+            <Route isPrivate path='/groups' component={Groups} />
         </Switch>
     ); 
 }

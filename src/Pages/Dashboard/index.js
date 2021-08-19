@@ -1,24 +1,26 @@
-import Habits from "../../Components/Habits";
-import { Content, useStyles } from "./styles";
-import { Container } from "../../Pages/Groups/styles";
-import { Edit } from "@material-ui/icons";
-import Popover from "@material-ui/core/Popover";
-import { useHabits } from "../../Providers/Habits";
-import { useState, useEffect } from "react";
-import api from "../../Services/api";
-import jwtDecode from "jwt-decode";
-import ViewNavbar from "../../Components/ViewNavbar";
-import Tags from "../../Components/Tags";
-import { useUser } from "../../Providers/User";
+import Habits from '../../Components/Habits';
+import { Content, useStyles } from './styles';
+import { Container } from '../../Pages/Groups/styles';
+import { Edit }  from '@material-ui/icons';
+import Popover from '@material-ui/core/Popover';
+import { useHabits } from '../../Providers/Habits';
+import { useState, useEffect } from 'react';
+import api from '../../Services/api';
+import jwtDecode from 'jwt-decode';
+import ViewNavbar from '../../Components/ViewNavbar';
+import Tags from '../../Components/Tags';
+import { useUser } from '../../Providers/User';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
+
   const classes = useStyles();
 
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
+    JSON.parse(localStorage.getItem('@Kenzinho:token')) || ''
   );
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
 
   const decoded = jwtDecode(token);
 
@@ -26,13 +28,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     loadHabits();
+
     api
       .get(`users/${decoded.user_id}/`)
       .then((response) => {
         setUser(response.data.username);
         setEmail(response.data.email);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => 
+        toast.error('Usuário não pode ser carregados'));
+
   }, []);
 
   /* ----------- Update username ----------- */
@@ -41,15 +46,19 @@ const Dashboard = () => {
   const [inputUsername, setInputUsername] = useState("");
 
   const openPopover = (event) => {
+
     setAnchorEl(event.currentTarget);
+
   };
 
   const closePopover = () => {
+
     setAnchorEl(null);
+
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? 'simple-popover' : undefined;
   /* ----------- /Update username ----------- */
 
   return (
@@ -57,15 +66,15 @@ const Dashboard = () => {
       <ViewNavbar />
 
       <Content>
-        <div className="Header">
-          <div className="UserInfos">
+        <div className='Header'>
+          <div className='UserInfos'>
             <span>
               <strong>{user}</strong>
             </span>
 
-            <span className="Email">{email}</span>
+            <span className='Email'>{email}</span>
           </div>
-          <div className="BtnEdit">
+          <div className='BtnEdit'>
             <button onClick={openPopover}>
               <Edit />
             </button>
@@ -76,18 +85,18 @@ const Dashboard = () => {
               anchorEl={anchorEl}
               onClose={closePopover}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
+                vertical: 'bottom',
+                horizontal: 'center',
               }}
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
             >
               <div className={classes.root}>
                 <input
-                  type="text"
-                  placeholder="Digite seu novo username"
+                  type='text'
+                  placeholder='Digite seu novo username'
                   className={classes.input}
                   onChange={(e) => setInputUsername(e.target.value)}
                   value={inputUsername}
@@ -103,14 +112,14 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="Groups">
-          <div className="GroupsList">
-            <div className="List">
+        <div className='Groups'>
+          <div className='GroupsList'>
+            <div className='List'>
               <Tags />
             </div>
           </div>
 
-          <div className="GroupDetails">
+          <div className='GroupDetails'>
             <Habits />
           </div>
         </div>
