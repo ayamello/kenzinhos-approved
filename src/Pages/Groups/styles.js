@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: 100vh;
   width: 85%;
-  margin: 0 auto;
+  margin: 15px auto;
 
   .Header {
     width: 100%;
@@ -68,6 +68,7 @@ export const Content = styled.div`
         input {
           width: 92%;
           padding: 0 10px;
+          text-transform: capitalize;
         }
 
         input,

@@ -60,7 +60,7 @@ const Groups = () => {
   };
 
   const handleSearchGroup = (groupName) => {
-    const group = groups.find((group) => group.name === groupName);
+    const group = groups.find((group) => group.name.toUpperCase() === groupName.toUpperCase());
     if (!group) {
       return toast.error("Grupo não encontrado");
     }
@@ -77,7 +77,10 @@ const Groups = () => {
   };
 
   const ShowAllGroupsBtn = () => {
-    getGroups(token);
+    api
+      .get("groups/")
+      .then((response) => setGroups(response.data.results))
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
     setViewBtnShowAllGroups(false);
   };
 
