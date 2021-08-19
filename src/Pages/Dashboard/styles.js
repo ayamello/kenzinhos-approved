@@ -98,9 +98,6 @@ export const Content = styled.div`
     flex-wrap: wrap;
 
     .GroupsList {
-      width: 230px;
-      margin-right: 50px;
-
       .SearchField {
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -181,12 +178,8 @@ export const Content = styled.div`
         }
       }
     }
-
-    .GroupDetails {
-      width: 60%;
-    }
   }
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1024px) {
     .Header {
       .UserInfos {
         padding: 0 0.5em;

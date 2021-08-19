@@ -40,26 +40,20 @@ const Dashboard = () => {
 
   }, []);
 
-  /* ----------- Update username ----------- */
   const { updateUser } = useUser();
   const [anchorEl, setAnchorEl] = useState(null);
   const [inputUsername, setInputUsername] = useState("");
 
   const openPopover = (event) => {
-
     setAnchorEl(event.currentTarget);
-
   };
 
   const closePopover = () => {
-
     setAnchorEl(null);
-
   };
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-  /* ----------- /Update username ----------- */
 
   return (
     <Container>
