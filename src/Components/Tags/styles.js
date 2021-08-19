@@ -58,6 +58,19 @@ export const MainContainer = styled.div`
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--blue-color);
+    border-radius: 10px;
+  }
 `;
 
 export const TitleContainer = styled.div`
