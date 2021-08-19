@@ -110,7 +110,7 @@ const CreateActivitiesModal = ({ groupId }) => {
                   </InputContainer>
                   <InputContainer>
                     <input
-                      type="datetime-local"
+                      type="date"
                       {...register("realization_time")}
                     />
                   </InputContainer>
