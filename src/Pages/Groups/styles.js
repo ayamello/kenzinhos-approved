@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const Container = styled.div`
   height: 100vh;
@@ -9,6 +19,7 @@ export const Container = styled.div`
     #1d64cb 0%,
     rgba(116, 29, 203, 0.57) 100%
   );
+  animation:${fadeIn} 1s;
 
   @media (min-width: 1024px) {
     display: flex;
@@ -19,7 +30,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   height: 100vh;
   width: 85%;
-  margin: 15px auto;
+  margin: 0 auto;
 
   .Header {
     width: 100%;
@@ -175,6 +186,7 @@ export const Content = styled.div`
   }
 
   @media (min-width: 1024px) {
+    margin: 15px auto;
     .Header {
       padding: 1em 0 0.2em 0;
       border-bottom: 1px solid rgba(29, 100, 203, 0.2);

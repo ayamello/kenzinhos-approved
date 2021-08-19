@@ -35,7 +35,7 @@ const Tags = () => {
         setGroups([...response.data]);
       })
       .catch((err) => toast.error("Grupos não podem ser carregados"));
-  }, [setGroups, token]);
+  }, [groups, token]);
 
   const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
 

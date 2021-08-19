@@ -32,9 +32,6 @@ const Groups = () => {
   const [viewCardGroup, setViewCardGroup] = useState(false);
   const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
-  );
 
   useEffect(() => {
     api

@@ -1,8 +1,20 @@
-import styled from "styled-components";
+import styled, {keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const Container = styled.div`
   width: 100%;
+  animation:${fadeIn}1x;
 `;
+
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -20,7 +32,7 @@ export const MainContainer = styled.div`
   div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-around;  
   }
   
   @media screen and (min-width: 1024px) {

@@ -61,6 +61,15 @@ export const Button = styled.div`
     height: 35px;
   }
 
+  button:hover{
+    color:white;
+    background-color: tomato;
+  }
+
+  button:active{
+    background-color: rgba(255,99,71,0.8);
+  }
+
   @media (min-width: 1024px) {
     button {
       background-color: var(--blue-color);
