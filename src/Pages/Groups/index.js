@@ -64,23 +64,22 @@ const Groups = () => {
   }, []);
 
   const handleViewDetailsGroup = (group) => {
-
     setGroupForCard(group);
     setViewCardGroup(true);
-
   };
 
   const handleSearchGroup = (groupName) => {
-
     const group = groups.find((group) => group.name === groupName);
-
     if (!group) {
       return toast.error('Grupo não encontrado');
     }
 
     api
       .get(`groups/${group.id}/`)
-      .then((res) => setGroups([res.data]))
+      .then((res) => {
+        setViewBtnShowAllGroups(true);
+        setGroups([res.data]);
+      })
       .catch((err) => 
         toast.error('Grupos não pode ser encontrado, verifique nome informado!')
       );
@@ -93,7 +92,6 @@ const Groups = () => {
   };
 
   const { subscribeToAGroup } = useGroupsUser();
-
   
   return (
     <Container>

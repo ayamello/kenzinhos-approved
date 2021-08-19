@@ -1,21 +1,18 @@
-import { createContext, useContext, useState } from 'react';
-import api from '../../Services/api';
-import { useAuth } from '../Auth/index';
-import { toast } from 'react-toastify';
+import { createContext, useContext, useState } from "react";
+import api from "../../Services/api";
+import { useAuth } from "../Auth/index";
+import { toast } from "react-toastify";
 
 const ListActivitiesGoalsContext = createContext();
 
 export const ActivitiesGoalsProvider = ({ children }) => {
-
-  const [goals, setGoals] = useState('');
+  const [goals, setGoals] = useState("");
   const [activities, setNewActivities] = useState();
-  const [activitiesGroup, setActivitiesGroup] = useState('');
 
   const { token } = useAuth();
 
   const handleGoalDelete = (id) => {
-
-    const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     api
       .delete(`goals/${id}/`, {
         headers: {
@@ -24,14 +21,12 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       })
       .then((response) => {
         setGoals(response.data);
-        toast.error('Meta excluida');
+        toast.error("Meta excluida");
       });
-    
   };
 
   const handleActivieDelete = (id) => {
-
-    const token = JSON.parse(localStorage.getItem('@Kenzinho:token'));
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     api
       .delete(`activities/${id}/`, {
         headers: {
@@ -40,17 +35,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
       })
       .then((response) => {
         setNewActivities(response.data);
-        toast.error('Atividade excluída');
+        toast.error("Atividade excluída");
       });
-    
   };
 
   const handleGoalCreation = (data) => {
-
     const { title, difficulty, how_much_achieved, group } = data;
     api
       .post(
-        'goals/',
+        "goals/",
         {
           title: title,
           difficulty: difficulty,
@@ -64,20 +57,16 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then( toast.info('Meta criada com sucesso') )
-      .catch((err) => 
-        toast.error('Metas não podem ser criadas')
-      );
-
+      .then(toast.info("Meta criada com sucesso"))
+      .catch((err) => toast.error("Metas não podem ser criadas"));
   };
 
   const handleActivitieCreation = (data) => {
-
     const { title, realization_time, group } = data;
 
     api
       .post(
-        'activities/',
+        "activities/",
         {
           title: title,
           realization_time: `${realization_time}T23:59:59Z`,
@@ -89,15 +78,11 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then( toast.info('Atividade criada com sucesso') )
-      .catch((err) => 
-        toast.error('Hábitos não podem ser carregados')
-      );
-
+      .then(toast.info("Atividade criada com sucesso"))
+      .catch((err) => toast.error("Hábitos não podem ser carregados"));
   };
 
   const updateGoal = (goals) => {
-
     const { achieved } = goals;
 
     api
@@ -112,12 +97,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then( toast.info('Meta atualizada!') );
-
+      .then(toast.info("Meta atualizada!"));
   };
 
   const updateActivitie = (data) => {
-
     const { title, id } = data;
 
     api
@@ -132,18 +115,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then( toast.info('Atividade atualizada!') )
-      .catch((err) => 
-        toast.error('Hábitos não podem ser carregados')
-      )
-
+      .then(toast.info("Atividade atualizada!"))
+      .catch((err) => toast.error("Hábitos não podem ser carregados"));
   };
 
   return (
     <ListActivitiesGoalsContext.Provider
       value={{
         goals,
-        activitiesGroup,
+
         handleActivieDelete,
         handleGoalDelete,
         updateActivitie,

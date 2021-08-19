@@ -67,7 +67,6 @@ export const TitleContainer = styled.div`
     margin-top: 0px;
     text-transform: capitalize;
     border: none;
-    width: 0;
     border-radius: 8px;
     color: white;
     background-color: inherit;
@@ -92,7 +91,6 @@ export const TitleContainer = styled.div`
       background-color: white;
       text-align: center;
       font-size: 1.1rem;
-      width: auto;
     }
   }
 `;
