@@ -1,7 +1,19 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const Container = styled.div`
+  animation:${fadeIn}1x;
 `
+
 
 export const MainContainer = styled.div`
   max-width: 270px;
@@ -17,10 +29,11 @@ export const MainContainer = styled.div`
   justify-content: flex-start;
   overflow:auto;
   
+
   div{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-around;  
   }
   @media screen and (min-width: 769px) {
     max-width: 600px;

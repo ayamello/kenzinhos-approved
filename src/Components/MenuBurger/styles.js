@@ -4,6 +4,7 @@ export const Container = styled.div`
     position:absolute;
     padding: 0.5vh 2vw;
 
+
     button {
         width: 30px;
         height: 27px;

@@ -1,11 +1,23 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import backgroundDesktop from '../../Assets/Img/home.png';
 import backgroundDesktop2 from '../../Assets/Img/home2.png';
 import backgroundMobile from '../../Assets/Img/homeMobile.png';
 
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
+
 export const MainContainer = styled.div`
 
     background-color: #E5E5E5;
+    animation:${fadeIn} 1s;
+
 `;
 
 export const HomeContainer = styled.div`

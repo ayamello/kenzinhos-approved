@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const MainContainer = styled.div`
   color:white;
@@ -16,6 +26,7 @@ export const MainContainer = styled.div`
   background-image: linear-gradient(#1D64CB, #741DCB);
   margin-bottom: 10px;
   margin-top: 10px;
+  animation:${fadeIn}1x;
   @media screen and (min-width: 769px) {  
     background-image: linear-gradient(#1D64CB, #741DCB);
   }

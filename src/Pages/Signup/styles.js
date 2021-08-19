@@ -13,6 +13,15 @@ const appearFromRight = keyframes`
     transform:translateX(0px);
   }
 `
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const MainContainer = styled.div`
   background: url(${backgroundMobile}) round;
@@ -22,7 +31,7 @@ export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: ${appearFromRight} 1s;
+  animation: ${fadeIn} 1s;
   @media screen and (min-width: 600px) {
     background: url(${background}) round;
     justify-content: space-around;

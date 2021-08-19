@@ -13,6 +13,15 @@ const appearFromLeft = keyframes`
     transform:translateX(0px);
   }
 `
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const LogoContainer = styled.div`
   position: absolute;
@@ -38,10 +47,11 @@ export const MainContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-around;
-  animation: ${appearFromLeft} 1s;
+  animation: ${fadeIn} 1s;
   @media screen and (min-width: 600px) {
     background: url(${backgroundDesktop}) round;
     flex-direction: row;
+    animation: ${appearFromLeft} 1s;
   }
 `;
 
