@@ -47,7 +47,7 @@ const Groups = () => {
         setGroups([...response.data]);
       })
       .catch((err) => 
-      toast.error('Grupos não podem ser carregados')
+      toast.error('Inscrições não podem ser carregadas')
       );
 
   };

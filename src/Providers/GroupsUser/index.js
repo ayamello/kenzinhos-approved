@@ -64,10 +64,6 @@ export const GroupsUserProvider = ({ children }) => {
       
   };
 
-  useEffect(() => {
-    getGroups(token);
-  }, [token]);
-
   return (
     <GroupsUserContext.Provider
       value={{ groups, setGroups, getGroups, handleGroupCreation, subscribeToAGroup }}
