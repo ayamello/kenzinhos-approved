@@ -19,21 +19,30 @@ import { useGroupsUser } from "../../Providers/GroupsUser";
 import { useAuth } from "../../Providers/Auth";
 import UpdateActivities from "../UpdateActivitiesModal";
 import UpdateGoal from "../UpdateGoalModal";
+import api from "../../Services/api";
+import { toast } from "react-toastify";
 
 const Tags = () => {
   const classes = useStyles();
   const { token } = useAuth();
-  const { getGroups, groups } = useGroupsUser();
+  const { groups, setGroups } = useGroupsUser();
 
   useEffect(() => {
-    getGroups(token);
-  }, [groups]);
+    api
+      .get("groups/subscriptions/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setGroups([...response.data]);
+      })
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
+  }, [setGroups, token]);
 
   const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
 
   return (
     <MainContainer>
-      <SearchBar groups={groups} getGroups={getGroups} />
+      <SearchBar groups={groups} setGroups={setGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
