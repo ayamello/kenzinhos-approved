@@ -30,10 +30,12 @@ import {
 } from './styles';
 
 const Home = () => {
+
   const history = useHistory();
 
   const sendTo = (path) => {
     history.push(path);
+    
   };
 
   return (

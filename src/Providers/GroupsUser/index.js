@@ -1,46 +1,52 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import api from "../../Services/api";
-import { toast } from "react-toastify";
+import { createContext, useContext, useEffect, useState } from 'react';
+import api from '../../Services/api';
+import { toast } from 'react-toastify';
 
 const GroupsUserContext = createContext();
 
 export const GroupsUserProvider = ({ children }) => {
+
   const [groups, setGroups] = useState([]);
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
+    JSON.parse(localStorage.getItem('@Kenzinho:token')) || ''
   );
 
   const getGroups = (token) => {
+
     api
-      .get("groups/subscriptions/", {
+      .get('groups/subscriptions/', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setGroups([...response.data]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => 
+        toast.error('Grupos não podem ser carregados')
+        );
+
   };
 
   const subscribeToAGroup = (id) => {
+
     api
       .post(`groups/${id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
         getGroups(token);
-        toast.success("Inscrição realizada com sucesso");
+        toast.success('Inscrição realizada com sucesso');
       })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Você já faz parte desse grupo")
-      });
+      .catch((err) => 
+        toast.error('Você já faz parte desse grupo')
+      );
+
   };
   
   const handleGroupCreation = (data) => {
     const { name, description, category } = data;
     api
       .post(
-        "groups/",
+        'groups/',
         {
           name: name,
           description: description,
@@ -52,8 +58,10 @@ export const GroupsUserProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
-      .catch((e) => console.log(e));
+      .catch((err) => 
+        toast.error('Grupo não pode ser criado')
+      );
+      
   };
 
   useEffect(() => {

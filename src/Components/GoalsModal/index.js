@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   InputContainer,
   TitleContainer,
-} from "../CreateHabitsModal/styles";
+} from '../CreateHabitsModal/styles';
 import {
   makeStyles,
   Button,
@@ -13,9 +13,9 @@ import {
   Backdrop,
   Fade,
   MenuItem,
-} from "@material-ui/core";
-import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "../ActivitiesModal/styles";
+} from '@material-ui/core';
+import { useListActivitiesGoals } from '../../Providers/ActivitiesGoals';
+import { ButtonAdd, InputId } from '../ActivitiesModal/styles';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -86,9 +86,9 @@ const CreateGoalsModal = ({ groupId }) => {
               <TitleContainer>
                 <Button
                   className={classes.close}
-                  variant="contained"
-                  color="primary"
-                  size="small"
+                  variant='contained'
+                  color='primary'
+                  size='small'
                   onClick={handleClose}
                 >
                   x
@@ -99,59 +99,59 @@ const CreateGoalsModal = ({ groupId }) => {
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Título"
-                      variant="outlined"
-                      color="primary"
-                      {...register("title")}
+                      size='small'
+                      id='outlined-basic'
+                      label='Título'
+                      variant='outlined'
+                      color='primary'
+                      {...register('title')}
                     />
                   </InputContainer>
                   <InputContainer>
                     <TextField
                       className={classes.select}
-                      size="small"
-                      id="outlined-basic"
-                      label="Dificuldade"
-                      variant="outlined"
-                      color="primary"
-                      {...register("difficulty")}
+                      size='small'
+                      id='outlined-basic'
+                      label='Dificuldade'
+                      variant='outlined'
+                      color='primary'
+                      {...register('difficulty')}
                       select
                     >
-                      <MenuItem value={"muito-facil"}>Muito fácil</MenuItem>
-                      <MenuItem value={"facil"}>Fácil</MenuItem>
-                      <MenuItem value={"medio"}>Médio</MenuItem>
-                      <MenuItem value={"dificil"}>Difícil</MenuItem>
-                      <MenuItem value={"muito-dificil"}>Muito difícil</MenuItem>
+                      <MenuItem value={'muito-facil'}>Muito fácil</MenuItem>
+                      <MenuItem value={'facil'}>Fácil</MenuItem>
+                      <MenuItem value={'medio'}>Médio</MenuItem>
+                      <MenuItem value={'dificil'}>Difícil</MenuItem>
+                      <MenuItem value={'muito-dificil'}>Muito difícil</MenuItem>
                     </TextField>
                   </InputContainer>
                   <InputContainer>
                     <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Quantos % realizado"
-                      variant="outlined"
-                      type="number"
-                      color="primary"
-                      {...register("how_much_achieved")}
+                      size='small'
+                      id='outlined-basic'
+                      label='Quantos % realizado'
+                      variant='outlined'
+                      type='number'
+                      color='primary'
+                      {...register('how_much_achieved')}
                     />
                   </InputContainer>
                   <InputContainer>
                     <InputId
-                      className="hidden-id"
+                      className='hidden-id'
                       value={groupId}
-                      {...register("group")}
+                      {...register('group')}
                     />
                   </InputContainer>
                 </div>
                 <InputContainer>
                   <Button
                     onClick={handleClose}
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    type="submit"
-                    className="submitButton"
+                    variant='contained'
+                    color='primary'
+                    size='small'
+                    type='submit'
+                    className='submitButton'
                   >
                     Adicionar
                   </Button>

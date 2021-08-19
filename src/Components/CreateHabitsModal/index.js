@@ -51,11 +51,15 @@ const CreateHabitsModal = () => {
   const { loadHabits } = useHabits()
   
   const handleOpen = () => {
+
     setOpen(true);
+
   };
 
   const handleClose = () => {
+
     setOpen(false);
+
   };
 
   const createHabit = (data) => {

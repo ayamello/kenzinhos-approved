@@ -1,5 +1,5 @@
-import { ShowAllGroups } from "./styles";
-import { Autorenew } from "@material-ui/icons";
+import { ShowAllGroups } from './styles';
+import { Autorenew } from '@material-ui/icons';
 
 const BtnShowAllGroups = ({ShowAllGroupsBtn}) => {
   return (

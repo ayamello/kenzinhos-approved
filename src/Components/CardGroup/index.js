@@ -1,18 +1,20 @@
-import React from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import { 
+  Card, 
+  CardActions, 
+  CardContent, 
+  Button, 
+  Typography } from '@material-ui/core';
 import {
   ContainerGoals,
   ContainerActivities,
   useStyles,
   TopContainer,
-} from "./styles";
-import { useGroupsUser } from "../../Providers/GroupsUserProvider";
+} from './styles';
+import { useGroupsUser } from '../../Providers/GroupsUser';
 
 const Group = ({ group }) => {
+
   const classes = useStyles();
 
   const { subscribeToAGroup } = useGroupsUser();
@@ -22,19 +24,19 @@ const Group = ({ group }) => {
       <CardContent>
         <TopContainer>
           <div>
-            <Typography variant="h5" component="h2">
+            <Typography variant='h5' component='h2'>
               {group?.name}
             </Typography>
             <Typography
               className={classes.title}
-              color="textSecondary"
+              color='textSecondary'
               gutterBottom
             >
               Categoria: {group?.category}
             </Typography>
             <Typography
               className={classes.title}
-              color="textSecondary"
+              color='textSecondary'
               gutterBottom
             >
               Descrição: {group?.description}
@@ -43,9 +45,9 @@ const Group = ({ group }) => {
           <div>
             <CardActions className={classes.botao}>
               <Button
-                variant="contained"
-                color="primary"
-                size="medium"
+                variant='contained'
+                color='primary'
+                size='medium'
                 onClick={() => subscribeToAGroup(group.id)}
               >
                 Inscrever-se
@@ -54,21 +56,21 @@ const Group = ({ group }) => {
           </div>
         </TopContainer>
         <ContainerGoals>
-          <Typography variant="h5" component="h4">
+          <Typography variant='h5' component='h4'>
             Metas:
           </Typography>
           {group?.goals.map((goal) => (
-            <Typography variant="body2" component="p">
+            <Typography variant='body2' component='p'>
               {goal.title}
             </Typography>
           ))}
         </ContainerGoals>
         <ContainerActivities>
-          <Typography variant="h5" component="h4">
+          <Typography variant='h5' component='h4'>
             Atividades:
           </Typography>
           {group?.activities.map((activity) => (
-            <Typography variant="body2" component="li">
+            <Typography variant='body2' component='li' >
               {activity.title}
             </Typography>
           ))}

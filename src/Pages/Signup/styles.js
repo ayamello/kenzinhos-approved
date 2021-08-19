@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import background from "../../Assets/Img/signup.png";
-import backgroundMobile from "../../Assets/Img/loginSignupMobile.png";
+import styled from 'styled-components';
+import background from '../../Assets/Img/signup.png';
+import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
 
 export const MainContainer = styled.div`
   background: url(${backgroundMobile}) round;

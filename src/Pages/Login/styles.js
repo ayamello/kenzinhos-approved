@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import backgroundDesktop from "../../Assets/Img/login.png";
-import backgroundMobile from "../../Assets/Img/loginSignupMobile.png";
+import styled from 'styled-components';
+import backgroundDesktop from '../../Assets/Img/login.png';
+import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
 
 export const LogoContainer = styled.div`
   position: absolute;

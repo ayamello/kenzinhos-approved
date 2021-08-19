@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputId = styled.input`
   display: none;
@@ -10,7 +10,7 @@ export const ButtonAdd = styled.button`
   font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
-  font-family: "Source Code Pro";
+  font-family: 'Source Code Pro';
   padding: 0 0.5em;
   border: none;
   border-radius: 15px;
@@ -27,7 +27,3 @@ export const ButtonAdd = styled.button`
     
   }
 `;
-
-// export const ButtonGreen = styled.extends(ButtonAdd)`
-//   background-color: var(--blue-color);
-// `

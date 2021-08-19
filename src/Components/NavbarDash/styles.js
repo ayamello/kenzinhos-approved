@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Background from "../../Assets/Img/navbar-dash.png";
-import BackgroundMob from "../../Assets/Img/navbar-dash-mobile.png";
+import styled from 'styled-components';
+import Background from '../../Assets/Img/navbar-dash.png';
+import BackgroundMob from '../../Assets/Img/navbar-dash-mobile.png';
 
 export const Container = styled.div`
   position: absolute;
