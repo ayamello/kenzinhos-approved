@@ -5,8 +5,8 @@ import styled from "styled-components";
 export const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: "20px",
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.5)",
+    marginBottom: "10px",
+    boxShadow: "0px 4px 4px rgba(116, 29, 203, .57)",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -30,7 +30,7 @@ export const AccordionSummary = withStyles({
     backgroundColor: "rgba(0, 0, 0, .0)",
     borderBottom: "1px solid rgba(0, 0, 0, .125)",
     marginBottom: -1,
-    minHeight: 56,
+    minHeight: 64,
     "&$expanded": {
       minHeight: 56,
     },
@@ -45,72 +45,56 @@ export const AccordionSummary = withStyles({
 })(MuiAccordionSummary);
 
 export const SubTitles = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
   margin-bottom: 10px;
 `;
 
 export const MainContainer = styled.div`
-   
+  width: 100%;
+  height: 380px;
   display: flex;
-  flex-direction: column;  
-  height: 65vh;
-  max-height: 400px;
+  flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 10px;
-  width: 100%;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--blue-color);
-    border-radius: 10px;
-  }
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 70%;
-  justify-content: space-between;
   align-items: center;
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  p {
-    font-style: normal;
-    font-weight: 600;
+
+  h4 {
+    font-size: 16px;
+    font-family: "Source Sans Pro";
+    text-transform: uppercase;
+  }
+
+  span {
+    margin-left: 12px;
     font-size: 12px;
     color: #a0a0a0;
+    font-weight: 500;
+    transform: translateY(1px);
   }
 `;
 
 export const SubTitleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 40%;
-  justify-content: space-between;
+  text-align: left;
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 25px;
   color: #959595;
+
+  span + span {
+    margin-left: 15px;
+  }
 `;
 export const DescriprionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   font-size: 15px;
@@ -148,7 +132,7 @@ export const DescriprionContainer = styled.div`
     }
   }
 
-  @media screen and (min-width: 769px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
 
     button {

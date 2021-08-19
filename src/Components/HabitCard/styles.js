@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  color:white;
+  color: white;
   height: 240px;
   width: 160px;
   display: flex;
@@ -28,6 +28,12 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top:5px;
+
+  h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+  }
   
   h4{
     font-size: 14px;
@@ -35,7 +41,12 @@ export const TitleContainer = styled.div`
 
   p{
     font-size: 13px;
+
+    span {
+      text-transform: capitalize;
+    }
   }
+  
   input{
     margin-top: 2px;
     width: 50px;

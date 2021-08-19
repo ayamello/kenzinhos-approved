@@ -126,7 +126,9 @@ export const Content = styled.div`
             h4 {
               font-family: "Source Sans Pro";
               font-size: 15px;
+              text-transform: uppercase;
             }
+            
             span {
               color: var(--gray-details);
               font-size: 12px;

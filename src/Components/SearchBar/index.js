@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputContainer } from "./styles";
+import { InputContainer, Button, Container } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { useAuth } from "../../Providers/Auth";
 import { useGroupsUser } from "../../Providers/GroupsUser";
@@ -17,7 +17,7 @@ const SearchBar = ({ groups, setGroups }) => {
   };
 
   return (
-    <>
+    <Container>
       <InputContainer>
         <input
           placeholder="Meu Grupo"
@@ -33,11 +33,12 @@ const SearchBar = ({ groups, setGroups }) => {
         >
           <SearchIcon />
         </button>
-        <button className="AllGroupsButton" onClick={() => getGroups(token)}>
-          Meus grupos
-        </button>
       </InputContainer>
-    </>
+
+      <Button className="AllGroupsButton" >
+        <button onClick={() => getGroups(token)}>Meus grupos</button>
+      </Button>
+    </Container>
   );
 };
 
