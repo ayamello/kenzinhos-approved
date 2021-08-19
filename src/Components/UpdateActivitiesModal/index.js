@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   FormContainer,
   InputContainer,
   TitleContainer,
-} from '../CreateHabitsModal/styles';
+} from "../CreateHabitsModal/styles";
 import {
   makeStyles,
   Button,
@@ -12,71 +12,66 @@ import {
   Modal,
   Backdrop,
   Fade,
-} from '@material-ui/core';
-import { useListActivitiesGoals } from '../../Providers/ActivitiesGoals';
-import { InputId } from '../ActivitiesModal/styles';
-import CreateIcon from '@material-ui/icons/Create';
+
+} from "@material-ui/core";
+import { useGroupsUser } from "../../Providers/GroupsUser";
+import { InputId } from "../ActivitiesModal/styles";
+import CreateIcon from "@material-ui/icons/Create";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
-    backgroundColor: 'blue',
-    backgroundImage: 'linear-gradient(#1D64CB, #741DCB)',
-    border: '1px solid #000',
-    borderRadius: '20px',
+    backgroundColor: "blue",
+    backgroundImage: "linear-gradient(#1D64CB, #741DCB)",
+    border: "1px solid #000",
+    borderRadius: "20px",
     boxShadow: theme.shadows[9],
     padding: theme.spacing(2, 4, 3),
   },
   inputs: {
-    backgroundColor: '#ffff',
-    border: '1px solid #000',
-    padding: '15px',
-    borderRadius: '5px',
-    boxShadow: '0px 4px 4px rgba(116, 29, 203, 0.57)',
+    backgroundColor: "#ffff",
+    border: "1px solid #000",
+    padding: "15px",
+    borderRadius: "5px",
+    boxShadow: "0px 4px 4px rgba(116, 29, 203, 0.57)",
   },
   button: {
-    borderRadius: '15px',
+    borderRadius: "15px",
   },
   close: {
-    width: '1px',
-    borderRadius: '20px',
-    marginLeft: '190px',
-    marginBottom: '20px',
-    fontSize: '10px',
+    width: "1px",
+    borderRadius: "20px",
+    marginLeft: "190px",
+    marginBottom: "20px",
+    fontSize: "10px",
   },
 }));
 
-
-const UpdateActivities = ({ activityId }) => {
+const UpdateGroups = ({ groupsId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { updateActivitie } = useListActivitiesGoals();
+  const { updateGroups } = useGroupsUser();
 
   const handleOpen = () => {
-
     setOpen(true);
-
   };
 
   const handleClose = () => {
-
     setOpen(false);
-
   };
 
   return (
     <div>
       <button onClick={handleOpen}>
-      < CreateIcon className='updateIcon' color='primary'/>
+        <CreateIcon className="updateIcon" color="primary" />
       </button>
-      
       <Modal
         className={classes.modal}
         open={open}
@@ -93,43 +88,53 @@ const UpdateActivities = ({ activityId }) => {
               <TitleContainer>
                 <Button
                   className={classes.close}
-                  variant='contained'
-                  color='primary'
-                  size='small'
+                  variant="contained"
+                  color="primary"
+                  size="small"
                   onClick={handleClose}
                 >
                   x
                 </Button>
-                <h1>Atualize o título de sua atividade</h1>
+                <h1>Atualize seu grupo</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(updateActivitie)}>
+              <form onSubmit={handleSubmit(updateGroups)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
-                      size='small'
-                      id='outlined-basic'
-                      label='Título'
-                      variant='outlined'
-                      color='primary'
-                      {...register('title')}
+                      size="small"
+                      id="outlined-basic"
+                      label="Nome"
+                      variant="outlined"
+                      color="primary"
+                      {...register("name")}
+                    />
+                  </InputContainer>
+                  <InputContainer>
+                    <TextField
+                      size="small"
+                      id="outlined-basic"
+                      label="Categoria"
+                      variant="outlined"
+                      color="primary"
+                      {...register("category")}
                     />
                   </InputContainer>
                   <InputContainer>
                     <InputId
-                      className='hidden-id'
-                      value={activityId}
-                      {...register('id')}
+                      className="hidden-id"
+                      value={groupsId}
+                      {...register("id")}
                     />
                   </InputContainer>
                 </div>
                 <InputContainer>
                   <Button
                     onClick={handleClose}
-                    variant='contained'
-                    color='primary'
-                    size='small'
-                    type='submit'
-                    className='submitButton'
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    type="submit"
+                    className="submitButton"
                   >
                     Adicionar
                   </Button>
@@ -143,4 +148,4 @@ const UpdateActivities = ({ activityId }) => {
   );
 };
 
-export default UpdateActivities;
+export default UpdateGroups;
