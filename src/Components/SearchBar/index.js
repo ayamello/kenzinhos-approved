@@ -4,15 +4,25 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useAuth } from "../../Providers/Auth";
 import { useGroupsUser } from "../../Providers/GroupsUser";
 
-const SearchBar = ({ groups, setGroups }) => {
+const SearchBar = ({ groups }) => {
   const [groupName, setGroupName] = useState("");
 
   const { token } = useAuth();
-  const { getGroups } = useGroupsUser();
+  const { getGroups, setGroups } = useGroupsUser();
 
   const findGroup = (groupName) => {
-    if (groups.find((group) => group.name === groupName)) {
-      setGroups(groups.filter((group) => group.name === groupName));
+    if (
+      groups.find(
+        (group) =>
+          group.name.toUpperCase() === groupName.toUpperCase()
+      )
+    ) {
+      setGroups(
+        groups.filter(
+          (group) =>
+            group.name.toUpperCase() === groupName.toUpperCase()
+        )
+      );
     }
   };
 
@@ -35,7 +45,7 @@ const SearchBar = ({ groups, setGroups }) => {
         </button>
       </InputContainer>
 
-      <Button className="AllGroupsButton" >
+      <Button className="AllGroupsButton">
         <button onClick={() => getGroups(token)}>Meus grupos</button>
       </Button>
     </Container>
