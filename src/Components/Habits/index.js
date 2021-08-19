@@ -1,10 +1,10 @@
 import CreateHabitsModal from '../CreateHabitsModal'
-import { useHabits } from "../../Providers/Habits";
-import { Container, MainContainer, TitleContainer } from "./styles";
-
-import HabitCard from "../HabitCard";
+import { useHabits } from '../../Providers/Habits';
+import { Container, MainContainer, TitleContainer } from './styles';
+import HabitCard from '../HabitCard';
 
 const Habits = () => {
+
     const {habits} = useHabits();
 
     return (
@@ -22,6 +22,7 @@ const Habits = () => {
             </div>
         </MainContainer>
         </Container>
+
     )
 }
 
