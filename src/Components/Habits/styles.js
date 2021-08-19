@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  width: 100%;
+`;
 
 export const MainContainer = styled.div`
   width: 100%;
   height: 270px;
-  max-height: 450px;
+  max-height: 380px;
   background: #e5e5e5;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -16,11 +18,11 @@ export const MainContainer = styled.div`
   overflow-y: auto;
 
   div {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
+  
   @media screen and (min-width: 1024px) {
     width: 600px;
     background: #f9f9f9;

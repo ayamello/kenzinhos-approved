@@ -14,7 +14,7 @@ export const Container = styled.div`
     background-color: var(--white-color);
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1024px) {
     button {
       padding: 0 1em;
       border-radius: 10px;

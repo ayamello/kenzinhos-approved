@@ -11,7 +11,6 @@ import {
   MainContainer,
   SubTitles,
 } from './styles';
-import SearchBar from '../SearchBar';
 import CreateActivitiesModal from '../ActivitiesModal';
 import CreateGoalsModal from '../GoalsModal';
 import { useListActivitiesGoals } from '../../Providers/ActivitiesGoals';
@@ -35,7 +34,6 @@ const Tags = () => {
 
   return (
     <MainContainer>
-      <SearchBar groups={groups} getGroups={getGroups} />
       {groups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
@@ -47,7 +45,7 @@ const Tags = () => {
               <div key={group.id}>
                 <TitleContainer>
                   <h4>{group.name}</h4>
-                  <p>{group.category}</p>
+                  <span>{group.category}</span>
                 </TitleContainer>
                 <SubTitleContainer>
                   <span>Atividades: {group.activities.length}</span>
