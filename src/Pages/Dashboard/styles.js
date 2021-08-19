@@ -137,7 +137,7 @@ export const Content = styled.div`
         padding: 1em;
         border: 2px solid rgba(29, 100, 203, 0.1);
         box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
-        width: 250px;
+        width: 270px;
         background-color: var(--blue-color);
         margin-top: 15px;
 

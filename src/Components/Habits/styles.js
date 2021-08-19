@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  @media screen and (min-width: 768px){
- 
-  }
 `
 
 export const MainContainer = styled.div`
-  max-width: 250px;
-  min-width: 250px;
+  max-width: 270px;
+  min-width: 270px;
   height: 270px;
   background: #E5E5E5;
   border: 2px solid rgba(29, 100, 203, 0.1);
@@ -19,7 +16,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   overflow:auto;
-  
   
   div{
     display: flex;
@@ -37,8 +33,8 @@ export const MainContainer = styled.div`
 
 export const TitleContainer = styled.div`
   color: white;
-  max-width: 250px;
-  min-width: 250px;
+  max-width: 270px;
+  min-width: 270px;
   background:#1D64CB;
   height: 60px;
   border: 2px solid rgba(29, 100, 203, 0.1);
@@ -49,7 +45,6 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  
   
   @media screen and (min-width: 769px) {
     color: black;

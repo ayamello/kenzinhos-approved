@@ -134,7 +134,7 @@ const CreateActivitiesModal = ({ groupId }) => {
                     color='primary'
                     size='small'
                     type='submit'
-                    className="submitButton"
+                    className='submitButton'
                   >
                     Adicionar
                   </Button>
