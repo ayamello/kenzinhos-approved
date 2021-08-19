@@ -23,12 +23,18 @@ const Dashboard = () => {
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
   );
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
 
   const decoded = jwtDecode(token);
 
   const { loadHabits } = useHabits();
+
+  const { updateUser } = useUser();
+
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [inputUsername, setInputUsername] = useState("");
 
   useEffect(() => {
     loadHabits();
@@ -36,18 +42,14 @@ const Dashboard = () => {
     api
       .get(`users/${decoded.user_id}/`)
       .then((response) => {
-        setUser(response.data.username);
-        setEmail(response.data.email);
+        setUserName(response.data.username);
+        setUserEmail(response.data.email);
       })
       .catch((err) => 
         toast.error('Usuário não pode ser carregados'));
 
-  }, []);
-
-  const { updateUser } = useUser();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [inputUsername, setInputUsername] = useState("");
-
+  }, [setUserName, decoded.user_id, loadHabits]);
+  
   const openPopover = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -67,10 +69,10 @@ const Dashboard = () => {
         <div className="Header">
           <div className="UserInfos">
             <span>
-              <strong>{user}</strong>
+              <strong>{userName}</strong>
             </span>
 
-            <span className="Email">{email}</span>
+            <span className="Email">{userEmail}</span>
           </div>
           <div className="BtnEdit">
             <button onClick={openPopover}>
@@ -96,12 +98,12 @@ const Dashboard = () => {
                   type="text"
                   placeholder="Digite seu novo username"
                   className={classes.input}
-                  onChange={(e) => setInputUsername(e.target.value)}
+                  onChange={(e) => {setInputUsername(e.target.value); e.preventDefault()}}
                   value={inputUsername}
                 />
                 <button
                   className={classes.button}
-                  onClick={() => {updateUser(inputUsername); closePopover()}}
+                  onClick={() => {updateUser(inputUsername); closePopover();}}
                 >
                   Atualizar
                 </button>
