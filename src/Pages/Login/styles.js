@@ -1,6 +1,27 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import backgroundDesktop from '../../Assets/Img/login.png';
 import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
+
+const appearFromLeft = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-100px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0px);
+  }
+`
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const LogoContainerLogin = styled.div`
   position: absolute;
@@ -26,9 +47,11 @@ export const MainContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-around;
+  animation: ${fadeIn} 1s;
   @media screen and (min-width: 600px) {
     background: url(${backgroundDesktop}) round;
     flex-direction: row;
+    animation: ${appearFromLeft} 1s;
   }
 `;
 
@@ -113,6 +136,15 @@ export const TitleContainer = styled.div`
     width: auto;
     font-weight: 500;
   }
+  a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+
+  a:active{
+            background: rgba(0, 0, 0, 0.8)
+        }
+
   @media screen and (min-width: 600px) {
     text-align: start;
     flex-direction: column;

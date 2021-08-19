@@ -32,20 +32,6 @@ const Groups = () => {
   const [viewCardGroup, setViewCardGroup] = useState(false);
   const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
-  );
-
-  const getGroups = (token) => {
-    api
-      .get("groups/subscriptions/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setGroups([...response.data]);
-      })
-      .catch((err) => toast.error("Grupos não podem ser carregados"));
-  };
 
   useEffect(() => {
     api

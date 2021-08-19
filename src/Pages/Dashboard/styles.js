@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes }from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
@@ -32,8 +32,19 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
     color: 'var(--white-color)',
     backgroundColor: 'var(--blue-color)',
+    '&:hover': {
+      background: 'darkblue',
+   },
+   '&:active': {
+    background: 'rgba(0,0,139, 0.8)',
+ }
+    
   },
+
+ 
 }));
+
+
 
 export const Containter = styled.div`
   display: flex;
@@ -79,6 +90,14 @@ export const Content = styled.div`
           margin-top:20px;
           font-size: 20px;
           transform: translateY(5px);
+        }
+
+        svg:hover{
+          color:green;
+        }
+
+        svg:active{
+          color:darkgreen;
         }
       }
     }
@@ -175,6 +194,7 @@ export const Content = styled.div`
           color: #000;
 
           svg {
+            color:var(--blue-color);
             margin-top:0px;
             font-size: 20px;
             transform: translateY(5px);

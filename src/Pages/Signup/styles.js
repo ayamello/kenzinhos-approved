@@ -1,6 +1,27 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import background from '../../Assets/Img/signup.png';
 import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
+
+const appearFromRight = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0px);
+  }
+`
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const MainContainer = styled.div`
   background: url(${backgroundMobile}) round;
@@ -10,10 +31,12 @@ export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  animation: ${fadeIn} 1s;
   @media screen and (min-width: 600px) {
     background: url(${background}) round;
     justify-content: space-around;
     flex-direction: row;
+    animation: ${appearFromRight} 1s;
   }
 `;
 
@@ -91,6 +114,16 @@ export const TitleContainer = styled.div`
     font-size: 1.1rem;
     width: auto;
   }
+
+  a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+
+  a:active{
+            background: rgba(0, 0, 0, 0.8)
+  }
+
   @media screen and (min-width: 600px) {
     flex-direction: column;
     width: 30%;
@@ -122,3 +155,5 @@ export const InputContainer = styled.div`
     background-color: white;
   }
 `;
+
+

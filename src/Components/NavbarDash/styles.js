@@ -1,6 +1,30 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Background from '../../Assets/Img/navbar-dash.png';
 import BackgroundMob from '../../Assets/Img/navbar-dash-mobile.png';
+
+const appearFromLeft = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-100px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0px);
+  }
+`
+
+const disappearFromRight = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(100px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0px);
+  }
+`
 
 export const Container = styled.div`
   position: absolute;
@@ -15,7 +39,8 @@ export const Container = styled.div`
   background-image: url(${BackgroundMob});
   background-size: contain;
   background-attachment: fixed;
-
+  animation:${appearFromLeft} 1s;
+  
   img {
     width: 60px;
   }
