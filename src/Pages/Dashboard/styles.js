@@ -43,6 +43,7 @@ export const Containter = styled.div`
 export const Content = styled.div`
   width: 85%;
   margin: 0 auto;
+  padding-bottom: 20px;
 
   .Header {
     width: 100%;
@@ -98,48 +99,21 @@ export const Content = styled.div`
     flex-wrap: wrap;
 
     .GroupsList {
-      width: 230px;
-      margin-right: 50px;
-
-      .SearchField {
-        width: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        height: 36px;
-        display: flex;
-        align-items: center;
-
-        input {
-          width: 92%;
-          padding: 0 10px;
-        }
-
-        input,
-        button {
-          height: 34px;
-          border: none;
-          background-color: #fff;
-        }
-
-        button {
-          border-left: 1px solid rgba(0, 0, 0, 0.1);
-          padding: 0 5px;
-
-          svg {
-            transform: translateY(2px);
-          }
-        }
-      }
+      width: 100%;
+      background-color: var(--blue-color);
+      border: 2px solid rgba(29, 100, 203, 0.1);
+      box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
+      text-align: center;
+      padding-top: 15px;
+      margin-top: 30px;
 
       .List {
+        width: 100%;
+        max-height: 390px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1em;
-        border: 2px solid rgba(29, 100, 203, 0.1);
-        box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.57);
-        width: 270px;
-        background-color: var(--blue-color);
-        margin-top: 15px;
 
         .HeaderGroup {
           display: flex;
@@ -181,12 +155,8 @@ export const Content = styled.div`
         }
       }
     }
-
-    .GroupDetails {
-      width: 60%;
-    }
   }
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1024px) {
     .Header {
       .UserInfos {
         padding: 0 0.5em;
@@ -220,12 +190,14 @@ export const Content = styled.div`
       .GroupsList {
         width: 50%;
         margin-right: 50px;
+        margin-top: 0;
+        background-color: transparent;
 
         .List {
           width: 100%;
-          background-color: var(--white-color);
+          background-color: transparent;
           margin-top: 0px;
-          box-shadow: 0px 4px 4px rgb(116 29 203 / 57%);
+          box-shadow: 0px 4px 4px rgba(116, 29, 203, .57);
         }
       }
     }

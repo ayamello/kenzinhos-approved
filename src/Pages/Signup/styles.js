@@ -17,6 +17,23 @@ export const MainContainer = styled.div`
   }
 `;
 
+export const LogoContainerSignup = styled.div`
+  position: absolute;
+  top: 0;
+  right: 2%;
+  width: 75px;
+  height: 75px;
+  img {
+    width: 100%;
+    margin: 5px;
+  }
+  @media screen and (min-width: 600px) {
+    width: 100px;
+    height: 100px;
+    right: 1%;
+  }
+`;
+
 export const FormContainer = styled.div`
   display: flex;
   justify-content: space-around;

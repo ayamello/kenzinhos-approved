@@ -7,7 +7,7 @@ import {
   InputContainer,
   FormContainer,
   MainContainer,
-  LogoContainer,
+  LogoContainerLogin,
 } from './styles';
 import { Button, TextField } from '@material-ui/core';
 import { useAuth } from '../../Providers/Auth';
@@ -41,11 +41,11 @@ const Login = () => {
 
   return (
     <MainContainer>
-      <LogoContainer>
+      <LogoContainerLogin>
         <Link to='/'>
           <img alt='logo' src={logo} />
         </Link>
-      </LogoContainer>
+      </LogoContainerLogin>
       <TitleContainer>
         <h1>Não é cadastrado?</h1>
         <Link to='/signup'>Cadastre-se</Link>
