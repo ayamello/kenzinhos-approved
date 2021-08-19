@@ -21,10 +21,11 @@ import UpdateGoal from '../UpdateGoalModal';
 import api from "../../Services/api";
 import { toast } from "react-toastify";
 
-const Tags = () => {
+const Tags = ({newGroups, isNewGroups }) => {
   const classes = useStyles();
   const { token } = useAuth();
   const { groups, setGroups } = useGroupsUser();
+
 
   useEffect(() => {
     api
@@ -35,13 +36,13 @@ const Tags = () => {
         setGroups([...response.data]);
       })
       .catch((err) => toast.error("Grupos não podem ser carregados"));
-  }, [groups, token]);
+  }, [groups]);
 
   const { handleActivieDelete, handleGoalDelete } = useListActivitiesGoals();
 
   return (
     <MainContainer>
-      {groups.map((group) => (
+      {isNewGroups === true ? newGroups.map((group) => (
         <Accordion key={group.id} className={classes.root}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -111,7 +112,77 @@ const Tags = () => {
             </Typography>
           </AccordionDetails>
         </Accordion>
-      ))}
+      )) : groups.map((group) => (
+        <Accordion key={group.id} className={classes.root}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>
+              <div key={group.id}>
+                <TitleContainer>
+                  <h4>{group.name}</h4>
+                  <span>{group.category}</span>
+                </TitleContainer>
+                <SubTitleContainer>
+                  <span>Atividades: {group.activities.length}</span>
+
+                  <span>Metas: {group.goals.length}</span>
+                </SubTitleContainer>
+              </div>
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography className={classes.lowerMenu}>
+              <SubTitles>
+                <h4>Atividades:</h4>
+                <CreateActivitiesModal groupId={group.id} />
+              </SubTitles>
+              {group.activities.map((activity) => (
+                <DescripritionContainer key={activity.id}>
+                  <p>{activity.title}</p>
+                  <p>
+                    Finalizar em:
+                    {new Date(activity.realization_time).toLocaleDateString(
+                      "pt-BR"
+                    )}
+                  </p>
+                  <UpdateActivities activityId={activity.id} />
+                  <button onClick={() => handleActivieDelete(activity.id)}>
+                    <DeleteForeverSharpIcon
+                      color="secondary"
+                      className="deleteIcon"
+                    />
+                  </button>
+                </DescripritionContainer>
+              ))}
+              <SubTitles>
+                <h4>Metas:</h4>
+                <CreateGoalsModal groupId={group.id} />
+              </SubTitles>
+              {group.goals.map((goal) => (
+                <DescripritionContainer key={goal.id}>
+                  <p>{goal.title}</p>
+                  <p>Nível: {goal.difficulty}</p>
+                  {goal.achieved ? (
+                    <p>Meta completada</p>
+                  ) : (
+                    <p>Meta incompleta</p>
+                  )}
+                  <UpdateGoal goalId={goal.id} />
+                  <button onClick={() => handleGoalDelete(goal.id)}>
+                    <DeleteForeverSharpIcon
+                      color="secondary"
+                      className="deleteIcon"
+                    />
+                  </button>
+                </DescripritionContainer>
+              ))}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))  }
     </MainContainer>
   );
 };
