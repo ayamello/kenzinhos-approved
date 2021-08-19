@@ -23,7 +23,6 @@ export const UserProvider = ({children}) => {
         })
         .then((_) => toast.success("Username atualizado com sucesso"))
         .catch(err => {
-            console.log(err);
             toast.error("Não foi possível atualizar o username");
         })
     }

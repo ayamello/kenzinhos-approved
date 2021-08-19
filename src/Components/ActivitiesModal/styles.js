@@ -49,6 +49,10 @@ export const ButtonAdd = styled.button`
     background-color: tomato;
   }
 
+  :active{
+    background-color: rgba(255,99,71,0.8);
+  }
+  
   @media screen and (min-width: 800px) {
     width: 100px;
     font-size: 13px;

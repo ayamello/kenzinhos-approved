@@ -12,6 +12,15 @@ export const ButtonLogout = styled.button`
   height: 30px;
   width: 75%;
 
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+
+  :active{
+            background: rgba(0, 0, 0, 0.8)
+        }
   @media screen and (min-width: 769px) {
       font-size: 13px;
       font-weight: 600;
