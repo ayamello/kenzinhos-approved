@@ -1,50 +1,42 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../Services/api";
+import { useAuth } from "../Auth/index";
+import { toast } from "react-toastify";
 
 const ListActivitiesGoalsContext = createContext();
 
 export const ActivitiesGoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState("");
   const [activities, setNewActivities] = useState();
-  const [activitiesGroup, setActivitiesGroup] = useState("");
-  const [group, setGroup] = useState("");
 
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
-  );
-
-  useEffect(() => {
-    api
-      .get(`groups/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setGroup(response.data))
-      .catch((e) => console.log(e));
-  }, [activities]);
+  const { token } = useAuth();
 
   const handleGoalDelete = (id) => {
-    const newGoals = goals.filter((meta) => meta.id !== id);
-    api.delete
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
+    api
       .delete(`goals/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setGoals());
+      .then((response) => {
+        setGoals(response.data);
+        toast.error("Meta excluida");
+      });
   };
 
   const handleActivieDelete = (id) => {
-    const newActivities = activities.filter((atividade) => atividade.id !== id);
-
+    const token = JSON.parse(localStorage.getItem("@Kenzinho:token"));
     api
       .delete(`activities/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setNewActivities(newActivities));
+      .then((response) => {
+        setNewActivities(response.data);
+        toast.error("Atividade excluída");
+      });
   };
 
   const handleGoalCreation = (data) => {
@@ -57,6 +49,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           difficulty: difficulty,
           how_much_achieved: how_much_achieved,
           group: group,
+          achieved: false,
         },
         {
           headers: {
@@ -64,9 +57,10 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
-      .catch((e) => console.log(e));
+      .then(toast.info("Meta criada com sucesso"))
+      .catch((err) => toast.error("Metas não podem ser criadas"));
   };
+
   const handleActivitieCreation = (data) => {
     const { title, realization_time, group } = data;
 
@@ -75,7 +69,7 @@ export const ActivitiesGoalsProvider = ({ children }) => {
         "activities/",
         {
           title: title,
-          realization_time: realization_time,
+          realization_time: `${realization_time}T23:59:59Z`,
           group: group,
         },
         {
@@ -84,13 +78,13 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .then((e) => console.log(e))
-      .catch((e) => console.log(e));
+      .then(toast.info("Atividade criada com sucesso"))
+      .catch((err) => toast.error("Hábitos não podem ser carregados"));
   };
 
-  const updateGoal = (data) => {
-    const { achieved } = data;
-    console.log(data);
+  const updateGoal = (goals) => {
+    const { achieved } = goals;
+
     api
       .patch(
         `goals/${goals.id}/`,
@@ -103,15 +97,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .catch((e) => console.log(e));
+      .then(toast.info("Meta atualizada!"));
   };
 
   const updateActivitie = (data) => {
-    const { title } = data;
+    const { title, id } = data;
 
     api
       .patch(
-        `activities/${activities.id}/`,
+        `activities/${id}/`,
         {
           title: title,
         },
@@ -121,14 +115,15 @@ export const ActivitiesGoalsProvider = ({ children }) => {
           },
         }
       )
-      .catch((e) => console.log(e));
+      .then(toast.info("Atividade atualizada!"))
+      .catch((err) => toast.error("Hábitos não podem ser carregados"));
   };
 
   return (
     <ListActivitiesGoalsContext.Provider
       value={{
         goals,
-        activitiesGroup,
+
         handleActivieDelete,
         handleGoalDelete,
         updateActivitie,

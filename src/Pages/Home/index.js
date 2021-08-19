@@ -7,7 +7,6 @@ import goals from "../../Assets/Img/metas.png";
 import logo from "../../Assets/Img/logo.png";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import EmailIcon from "@material-ui/icons/Email";
 import Alex from "../../Assets/Img/Alex.jpeg";
 import Gabriel from "../../Assets/Img/Gabriel.jpeg";
 import Ayana from "../../Assets/Img/Ayana.jpg";
@@ -90,13 +89,16 @@ const Home = () => {
       <History>
         <h4>Sobre nós</h4>
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          Somos alunos do curso de Desenvolvimento Full Stack da Kenzie Academy
+          Brasil e, ao sermos desafiados a desenvolver um projeto em equipe
+          utilizando uma API de hábitos, pensamos nos novatos que chegam à
+          Kenzie. Como ingressamos recentemente na programação, conhecemos as
+          dificuldades que um Kenzinho enfrenta. Tendo isso em mente,
+          desenvolvemos esta aplicação com o intuito de ajudar os novos alunos a
+          entrarem no ritmo do curso e conseguirem manter seus estudos em dia.
+          Além disso, ainda podem trabalhar algumas soft skills como gestão de
+          tempo, produtividade e formação de novos hábitos, os quais são
+          essenciais ao Programador, principalmente na era do trabalho remoto.
         </p>
       </History>
       <AboutCardsContainer id="bottom">
@@ -104,42 +106,51 @@ const Home = () => {
           <img src={Alex} alt="Alex" />
           <CardsInfo>
             <h4>Alex - Product Owner</h4>
-            <p>Lorem Ipsum.</p>
+            <p>Email: alesilvasp@gmail.com</p>
             <IconsNav>
-              <LinkedInIcon />
-              <GitHubIcon />
-              <EmailIcon />
+              <a href="https://www.linkedin.com/in/alex-silva-2b1aaa202/">
+                <LinkedInIcon />
+              </a>
+              <a href="https://github.com/alesilvasp">
+                <GitHubIcon />
+              </a>
             </IconsNav>
           </CardsInfo>
         </AboutCards>
         <AboutCards>
           <CardsInfo>
             <h4>Ayana - Tech Leader</h4>
-            <p>Lorem Ipsum.</p>
+            <p>Email: dev.ayanamello@gmail.com</p>
             <IconsNav>
-              <LinkedInIcon />
-              <GitHubIcon />
-              <EmailIcon />
+              <a href="https://www.linkedin.com/in/ayana-mello/">
+                <LinkedInIcon />
+              </a>
+              <a href="https://github.com/ayanamello">
+                <GitHubIcon />
+              </a>
             </IconsNav>
           </CardsInfo>
           <img src={Ayana} alt="Ayana" />
         </AboutCards>
         <AboutCards>
-          <img src={Carlos} alt="Imagem de usuário" />
+          <img src={Carlos} alt="Carlos" />
           <CardsInfo>
             <h4>Carlos - Quality Assurance</h4>
-            <p>Lorem Ipsum.</p>
+            <p>Email: hiro1kz77@gmail.com</p>
             <IconsNav>
-              <LinkedInIcon />
-              <GitHubIcon />
-              <EmailIcon />
+              <a href="https://www.linkedin.com/in/carlos-lima-773337215/">
+                <LinkedInIcon />
+              </a>
+              <a href="https://www.linkedin.com/in/carlos-lima-773337215/">
+                <GitHubIcon />
+              </a>
             </IconsNav>
           </CardsInfo>
         </AboutCards>
         <AboutCards>
           <CardsInfo>
             <h4>Gabriel - Quality Assurance</h4>
-            <p>Lorem Ipsum.</p>
+            <p>Email: gabrielcb84@hotmail.com</p>
             <IconsNav>
               <a href="https://www.linkedin.com/in/gabriel-bueno-11227a209/">
                 <LinkedInIcon />
@@ -147,7 +158,6 @@ const Home = () => {
               <a href="https://github.com/GabrielBuenodev">
                 <GitHubIcon />
               </a>
-              <EmailIcon />
             </IconsNav>
           </CardsInfo>
           <img src={Gabriel} alt="Gabriel" />
@@ -156,7 +166,7 @@ const Home = () => {
           <img src={Gabriela} alt="Gabriela" />
           <CardsInfo>
             <h4>Gabriela - Scrum Master</h4>
-            <p>Lorem Ipsum.</p>
+            <p>Email: gabrielarodrigues432@gmail.com</p>
             <IconsNav>
               <a href="https://www.linkedin.com/in/gabriela-rodrigues-3aa382208/">
                 <LinkedInIcon />
@@ -164,7 +174,6 @@ const Home = () => {
               <a href="https://github.com/gaavro">
                 <GitHubIcon />
               </a>
-              <EmailIcon />
             </IconsNav>
           </CardsInfo>
         </AboutCards>

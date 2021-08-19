@@ -1,11 +1,14 @@
-import { TextField } from "@material-ui/core";
 import { useState } from "react";
 import { InputContainer } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { useAuth } from "../../Providers/Auth";
+import { useGroupsUser } from "../../Providers/GroupsUser";
 
-const SearchBar = ({ groups, setGroups, getGroups }) => {
+const SearchBar = ({ groups, setGroups }) => {
   const [groupName, setGroupName] = useState("");
-  const userToken = JSON.parse(localStorage.getItem("@Kenzinho:token"));
+
+  const { token } = useAuth();
+  const { getGroups } = useGroupsUser();
 
   const findGroup = (groupName) => {
     if (groups.find((group) => group.name === groupName)) {
@@ -22,7 +25,6 @@ const SearchBar = ({ groups, setGroups, getGroups }) => {
           value={groupName}
           onChange={(e) => setGroupName(e.target.value)}
         />
-
         <button
           onClick={() => {
             findGroup(groupName);
@@ -31,8 +33,8 @@ const SearchBar = ({ groups, setGroups, getGroups }) => {
         >
           <SearchIcon />
         </button>
-        <button className='AllGroupsButton'onClick={() => getGroups(userToken)}>
-          Mostrar todos os meus grupos
+        <button className="AllGroupsButton" onClick={() => getGroups(token)}>
+          Meus grupos
         </button>
       </InputContainer>
     </>

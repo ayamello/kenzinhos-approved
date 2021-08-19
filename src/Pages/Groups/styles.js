@@ -29,6 +29,7 @@ export const Content = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     h2 {
+      margin-top: 40px;
       font-size: 25px;
       font-weight: 700;
       color: white;
@@ -173,6 +174,7 @@ export const Content = styled.div`
       border-bottom: 1px solid rgba(29, 100, 203, 0.2);
 
       h2 {
+        margin-top: 0px;
         font-size: 28px;
         color: #000;
       }
@@ -183,13 +185,6 @@ export const Content = styled.div`
         color: #fff;
         background-color: var(--blue-color);
       }
-    }
-    .AllGroupsButton {
-      margin-top: 5px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 0 5px;
-      height: 34px;
     }
 
     .Groups {

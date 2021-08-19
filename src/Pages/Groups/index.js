@@ -1,11 +1,10 @@
-import NavbarDash from "../../Components/NavbarDash";
 import CreateGroupsModal from "../../Components/CreateGroupsModal";
-import MenuBurger from "../../Components/MenuBurger";
 import CardGroup from "../../Components/CardGroup";
+import ViewNavbar from "../../Components/ViewNavbar";
 import { Search, ArrowForwardIos } from "@material-ui/icons";
 import api from "../../Services/api";
 import { useEffect, useState } from "react";
-
+import { useGroupsUser } from "../../Providers/GroupsUser";
 import {
   Container,
   Content,
@@ -17,20 +16,21 @@ import {
   GoalsGroup,
   BtnSubscribe,
 } from "./styles";
-
 import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Button,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BtnShowAllGroups from "../../Components/BtnShowAllGroups";
 import { toast } from "react-toastify";
 
 const Groups = () => {
   const [groups, setGroups] = useState([]);
   const [groupForCard, setGroupForCard] = useState();
   const [viewCardGroup, setViewCardGroup] = useState(false);
-  const [viewNavbar, setViewNavbar] = useState(false);
+  const [viewBtnShowAllGroups, setViewBtnShowAllGroups] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Kenzinho:token")) || ""
@@ -44,26 +44,14 @@ const Groups = () => {
       .then((response) => {
         setGroups([...response.data]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
   };
+
   useEffect(() => {
     api
       .get("groups/")
-      .then((res) => {
-        const apiGroups = res.data.results.map((group) => ({
-          ...group,
-          realization_time: new Date(group.realization_time).toLocaleDateString(
-            "pt-BR",
-            {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            }
-          ),
-        }));
-        setGroups(apiGroups);
-      })
-      .catch((err) => console.log(err));
+      .then((response) => setGroups(response.data.results))
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
   }, []);
 
   const handleViewDetailsGroup = (group) => {
@@ -76,19 +64,28 @@ const Groups = () => {
     if (!group) {
       return toast.error("Grupo não encontrado");
     }
+
     api
       .get(`groups/${group.id}/`)
-      .then((res) => setGroups([res.data]))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setViewBtnShowAllGroups(true);
+        setGroups([res.data]);
+      })
+      .catch((err) =>
+        toast.error("Grupos não pode ser encontrado, verifique nome informado!")
+      );
   };
+
+  const ShowAllGroupsBtn = () => {
+    getGroups(token);
+    setViewBtnShowAllGroups(false);
+  };
+
+  const { subscribeToAGroup } = useGroupsUser();
 
   return (
     <Container>
-      {window.innerWidth >= 1024 || viewNavbar === true ? (
-        <NavbarDash setViewNavbar={setViewNavbar} />
-      ) : (
-        <MenuBurger viewNavbar={viewNavbar} setViewNavbar={setViewNavbar} />
-      )}
+      <ViewNavbar />
 
       <Content>
         <div className="Header">
@@ -109,14 +106,7 @@ const Groups = () => {
                 </button>
               </div>
             </div>
-            <div>
-              <button
-                className="AllGroupsButton"
-                onClick={() => getGroups(token)}
-              >
-                Mostrar todos os grupos
-              </button>
-            </div>
+
             {window.innerWidth >= 1024 && (
               <div className="List">
                 {groups.map((group) => (
@@ -129,6 +119,7 @@ const Groups = () => {
 
                       <div className="InfosGroup">
                         <span>Atividades: {group.activities.length}</span>
+
                         <span>Metas: {group.goals.length}</span>
                       </div>
                     </div>
@@ -179,15 +170,7 @@ const Groups = () => {
                         <h5>Metas</h5>
                         {group.goals.map((goal, index) => (
                           <GoalsGroup key={goal.id}>
-                            <input
-                              type="checkbox"
-                              id={"goal" + index}
-                              name={"goal" + index}
-                            />
-                            <label htmlFor={"goal" + index}>
-                              {" "}
-                              {goal.title}
-                            </label>
+                            <p>{goal.title}</p>
                             <span>
                               <strong>Nível:</strong>
                               {goal.difficulty}
@@ -196,7 +179,14 @@ const Groups = () => {
                         ))}
 
                         <BtnSubscribe>
-                          <button>Inscrever-se</button>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="medium"
+                            onClick={() => subscribeToAGroup(group.id)}
+                          >
+                            Inscrever-se
+                          </Button>
                         </BtnSubscribe>
                       </DetailsGroup>
                     </AccordionDetails>
@@ -205,6 +195,10 @@ const Groups = () => {
               </ListGroups>
             )}
           </div>
+
+          {viewBtnShowAllGroups && (
+            <BtnShowAllGroups ShowAllGroupsBtn={ShowAllGroupsBtn} />
+          )}
 
           <div className="GroupDetails">
             {viewCardGroup && <CardGroup group={groupForCard} />}

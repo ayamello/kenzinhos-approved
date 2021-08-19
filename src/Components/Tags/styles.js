@@ -52,10 +52,29 @@ export const SubTitles = styled.div`
 `;
 
 export const MainContainer = styled.div`
-  width: 100%;
-  height: 50%;
+   
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
+  marginLeft: 100,
+  height: 65vh;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 10px;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--blue-color);
+    border-radius: 10px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -90,8 +109,10 @@ export const SubTitleContainer = styled.div`
 `;
 export const DescriprionContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   font-size: 15px;
   p {
     font-family: "Source Sans Pro";
@@ -100,5 +121,38 @@ export const DescriprionContainer = styled.div`
     font-size: 12px;
     line-height: 28px;
     color: black;
+  }
+
+  button {
+    margin-bottom: 10px;
+    border: none;
+  }
+
+  .updateIcon {
+    color: var(--blue-color);
+    :hover {
+      color: green;
+    }
+    :active {
+      color: darkgreen;
+    }
+  }
+
+  .deleteIcon {
+    color: red;
+    :hover {
+      color: tomato;
+    }
+    :active {
+      color: darkred;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+
+    button {
+      margin-bottom: 0px;
+    }
   }
 `;

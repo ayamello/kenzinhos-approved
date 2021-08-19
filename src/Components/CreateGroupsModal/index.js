@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useGroupsUser } from "../../Providers/GroupsUserProvider";
+import { useGroupsUser } from "../../Providers/GroupsUser";
 import { FormContainer, InputContainer, TitleContainer } from "./styles";
 import {
   makeStyles,
@@ -11,6 +11,7 @@ import {
   Fade,
   MenuItem,
 } from "@material-ui/core";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "20px",
     boxShadow: theme.shadows[9],
     padding: theme.spacing(2, 4, 3),
+    margin: "20%",
   },
   inputs: {
     backgroundColor: "#e5e5e5",
@@ -35,6 +37,20 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: "15px",
+    marginTop: "40px",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "0px",
+    },
+  },
+  close: {
+    width: "1px",
+    borderRadius: "20px",
+    marginLeft: "190px",
+    marginBottom: "20px",
+    fontSize: "10px",
+  },
+  select: {
+    backgroundColor: "#ffff",
   },
   close: {
     width: "1px",
@@ -62,6 +78,10 @@ const CreateGroups = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCreation = () => {
+    toast.info("Grupo criado");
   };
 
   return (
@@ -145,6 +165,7 @@ const CreateGroups = () => {
                     size="small"
                     type="submit"
                     className="submitButton"
+                    onClick={handleCreation}
                   >
                     Adicionar
                   </Button>

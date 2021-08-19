@@ -1,17 +1,23 @@
 import { HabitsProvider } from './Habits';
 import { ActivitiesGoalsProvider } from './ActivitiesGoals';
-import { GroupsUserProvider } from './GroupsUserProvider';
+import { GroupsUserProvider } from './GroupsUser';
+import { AuthProvider } from './Auth';
+import { UserProvider } from './User';
 
-const Providers = ({children}) => {
-    return(
-        <HabitsProvider>
-            <ActivitiesGoalsProvider>
-                <GroupsUserProvider>
-                    {children}
-                </GroupsUserProvider>
-            </ActivitiesGoalsProvider>
-        </HabitsProvider>
-    );
-}
+const Providers = ({ children }) => {
+  return (
+    <AuthProvider>
+      <HabitsProvider>
+        <ActivitiesGoalsProvider>
+          <GroupsUserProvider>
+            <UserProvider>
+              {children}
+            </UserProvider>
+            </GroupsUserProvider>
+        </ActivitiesGoalsProvider>
+      </HabitsProvider>
+    </AuthProvider>
+  );
+};
 
 export default Providers;

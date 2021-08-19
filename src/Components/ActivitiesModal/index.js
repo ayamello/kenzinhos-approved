@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  FormContainer,
-  InputContainer,
-  TitleContainer,
-} from "../CreateHabitsModal/styles";
+import { FormContainer, TitleContainer } from "../CreateHabitsModal/styles";
 import {
   makeStyles,
   Button,
@@ -14,7 +10,7 @@ import {
   Fade,
 } from "@material-ui/core";
 import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
-import { ButtonAdd, InputId } from "./style";
+import { InputContainer, ButtonAdd, InputDate, InputId } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -96,7 +92,9 @@ const CreateActivitiesModal = ({ groupId }) => {
                 </Button>
                 <h1>Crie uma nova atividade</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(handleActivitieCreation)}>
+              <form
+                onSubmit={handleSubmit(handleActivitieCreation)}
+              >
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
@@ -109,12 +107,8 @@ const CreateActivitiesModal = ({ groupId }) => {
                     />
                   </InputContainer>
                   <InputContainer>
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Tempo para realização"
-                      variant="outlined"
-                      color="primary"
+                    <InputDate
+                      type="date"
                       {...register("realization_time")}
                     />
                   </InputContainer>

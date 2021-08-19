@@ -12,64 +12,71 @@ import {
   Modal,
   Backdrop,
   Fade,
-  MenuItem,
 } from '@material-ui/core';
 import { useListActivitiesGoals } from '../../Providers/ActivitiesGoals';
-import { ButtonAdd, InputId } from '../ActivitiesModal/styles';
+import { InputId } from '../ActivitiesModal/styles';
+import CreateIcon from '@material-ui/icons/Create';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
-    backgroundColor: "blue",
-    backgroundImage: "linear-gradient(#1D64CB, #741DCB)",
-    border: "1px solid #000",
-    borderRadius: "20px",
+    backgroundColor: 'blue',
+    backgroundImage: 'linear-gradient(#1D64CB, #741DCB)',
+    border: '1px solid #000',
+    borderRadius: '20px',
     boxShadow: theme.shadows[9],
     padding: theme.spacing(2, 4, 3),
   },
   inputs: {
-    backgroundColor: "#ffff",
-    border: "1px solid #000",
-    padding: "15px",
-    borderRadius: "5px",
-    boxShadow: "0px 4px 4px rgba(116, 29, 203, 0.57)",
+    backgroundColor: '#ffff',
+    border: '1px solid #000',
+    padding: '15px',
+    borderRadius: '5px',
+    boxShadow: '0px 4px 4px rgba(116, 29, 203, 0.57)',
   },
   button: {
-    borderRadius: "15px",
+    borderRadius: '15px',
   },
   close: {
-    width: "1px",
-    borderRadius: "20px",
-    marginLeft: "190px",
-    marginBottom: "20px",
-    fontSize: "10px",
+    width: '1px',
+    borderRadius: '20px',
+    marginLeft: '190px',
+    marginBottom: '20px',
+    fontSize: '10px',
   },
 }));
 
-const CreateGoalsModal = ({ groupId }) => {
+
+const UpdateActivities = ({ activityId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { handleGoalCreation } = useListActivitiesGoals();
+  const { updateActivitie } = useListActivitiesGoals();
 
   const handleOpen = () => {
+
     setOpen(true);
+
   };
 
   const handleClose = () => {
+
     setOpen(false);
+
   };
 
   return (
     <div>
-      <ButtonAdd onClick={handleOpen}>+ meta</ButtonAdd>
-
+      <button onClick={handleOpen}>
+      < CreateIcon className='updateIcon' color='primary'/>
+      </button>
+      
       <Modal
         className={classes.modal}
         open={open}
@@ -93,9 +100,9 @@ const CreateGoalsModal = ({ groupId }) => {
                 >
                   x
                 </Button>
-                <h1>Crie uma nova Meta</h1>
+                <h1>Atualize o título de sua atividade</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(handleGoalCreation)}>
+              <form onSubmit={handleSubmit(updateActivitie)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
@@ -108,39 +115,10 @@ const CreateGoalsModal = ({ groupId }) => {
                     />
                   </InputContainer>
                   <InputContainer>
-                    <TextField
-                      className={classes.select}
-                      size='small'
-                      id='outlined-basic'
-                      label='Dificuldade'
-                      variant='outlined'
-                      color='primary'
-                      {...register('difficulty')}
-                      select
-                    >
-                      <MenuItem value={'muito-facil'}>Muito fácil</MenuItem>
-                      <MenuItem value={'facil'}>Fácil</MenuItem>
-                      <MenuItem value={'medio'}>Médio</MenuItem>
-                      <MenuItem value={'dificil'}>Difícil</MenuItem>
-                      <MenuItem value={'muito-dificil'}>Muito difícil</MenuItem>
-                    </TextField>
-                  </InputContainer>
-                  <InputContainer>
-                    <TextField
-                      size='small'
-                      id='outlined-basic'
-                      label='Quantos % realizado'
-                      variant='outlined'
-                      type='number'
-                      color='primary'
-                      {...register('how_much_achieved')}
-                    />
-                  </InputContainer>
-                  <InputContainer>
                     <InputId
                       className='hidden-id'
-                      value={groupId}
-                      {...register('group')}
+                      value={activityId}
+                      {...register('id')}
                     />
                   </InputContainer>
                 </div>
@@ -165,4 +143,4 @@ const CreateGoalsModal = ({ groupId }) => {
   );
 };
 
-export default CreateGoalsModal;
+export default UpdateActivities;

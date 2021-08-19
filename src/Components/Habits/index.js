@@ -1,10 +1,10 @@
 import CreateHabitsModal from '../CreateHabitsModal'
-import { useHabits } from "../../Providers/Habits";
-import { Container, MainContainer, TitleContainer } from "./styles";
-
-import HabitCard from "../HabitCard";
+import { useHabits } from '../../Providers/Habits';
+import { Container, MainContainer, TitleContainer } from './styles';
+import HabitCard from '../HabitCard';
 
 const Habits = () => {
+
     const {habits} = useHabits();
 
     return (
@@ -14,14 +14,15 @@ const Habits = () => {
             <CreateHabitsModal/>
         </TitleContainer>
         <MainContainer>
-           
             <div>
             {
             habits&&
-            habits.map((habit) => <HabitCard habit={habit} key={habit.id}/>)}
+            habits.map((habit) => <HabitCard habit={habit} key={habit.id}/>)
+            }
             </div>
         </MainContainer>
         </Container>
+
     )
 }
 
