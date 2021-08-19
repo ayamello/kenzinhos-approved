@@ -48,6 +48,9 @@ export const useStyles = makeStyles({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     fontFamily: 'Source Code Pro',
+    borderRadius: '15px',
+    fontWeight: 'bold',
+    backgroundColor: 'var(--blue-color)',
   },
 });
 
