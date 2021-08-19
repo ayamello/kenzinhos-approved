@@ -52,6 +52,26 @@ export const GroupsUserProvider = ({ children }) => {
       .catch((err) => toast.error("Grupo não pode ser criado"));
   };
 
+  const updateGroups = (data) => {
+    const { name, category, id } = data;
+    console.log(data);
+    api
+      .patch(
+        `groups/${id}/`,
+        {
+          name: name,
+          category: category,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(toast.info("Grupo atualizada!"))
+      .catch((err) => toast.error("Grupos não podem ser carregados"));
+  };
+
   return (
     <GroupsUserContext.Provider
       value={{
@@ -60,6 +80,7 @@ export const GroupsUserProvider = ({ children }) => {
         getGroups,
         handleGroupCreation,
         subscribeToAGroup,
+        updateGroups,
       }}
     >
       {children}
