@@ -53,7 +53,6 @@ const Group = ({ group }) => {
             </CardActions>
           </div>
         </TopContainer>
-
         <ContainerGoals>
           <Typography variant="h5" component="h4">
             Metas:
@@ -75,16 +74,6 @@ const Group = ({ group }) => {
           ))}
         </ContainerActivities>
       </CardContent>
-      <CardActions className={classes.button}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="medium"
-          onClick={() => subscribeToAGroup(group.id)}
-        >
-          Inscrever-se
-        </Button>
-      </CardActions>
     </Card>
   );
 };
