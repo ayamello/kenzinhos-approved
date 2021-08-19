@@ -53,7 +53,6 @@ const Group = ({ group }) => {
             </CardActions>
           </div>
         </TopContainer>
-
         <ContainerGoals>
           <Typography variant="h5" component="h4">
             Metas:
