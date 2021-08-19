@@ -55,12 +55,12 @@ export const MainContainer = styled.div`
    
   display: flex;
   flex-direction: column;  
-  marginLeft: 100,
   height: 65vh;
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
   margin-top: 10px;
+  width: 100%;
   &::-webkit-scrollbar {
     width: 5px;
   }
