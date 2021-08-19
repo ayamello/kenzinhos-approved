@@ -2,7 +2,7 @@
 	<h1>Kenzinhos Approved</h1>
 </div> 
 	
-<p>Projeto desenvolvido com o objetivo de praticar a criação de interfaces usando React em equipe. Trata-se de um gerenciador de rotina para alunos recém chegados à Kenzie Academy Brasil. O intuito do gerenciador é ajudar os novos kenzinhos a entrarem no ritmo do curso e conseguirem manter seus estudos em dia. Além disso, ainda podem trabalhar algumas soft skills como gestão de tempo, produtividade e formação de novos hábitos, os quais são essenciais ao Programador, principalmente na era do trabalho remoto.
+<p>Projeto desenvolvido com o objetivo de praticar a criação de interfaces em equipe usando React. Trata-se de um gerenciador de rotina para alunos recém chegados à Kenzie Academy Brasil. O intuito do gerenciador é ajudar os novos kenzinhos a entrarem no ritmo do curso e conseguirem manter seus estudos em dia. Além disso, ainda podem trabalhar algumas soft skills como gestão de tempo, produtividade e formação de novos hábitos, os quais são essenciais ao Programador, principalmente na era do trabalho remoto.
 </p>
 
 <h3> 🚀 Tecnologias utilizadas </h3> 
