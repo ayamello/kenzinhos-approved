@@ -1,6 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import backgroundDesktop from '../../Assets/Img/login.png';
 import backgroundMobile from '../../Assets/Img/loginSignupMobile.png';
+
+const appearFromLeft = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-100px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0px);
+  }
+`
 
 export const LogoContainer = styled.div`
   position: absolute;
@@ -26,6 +38,7 @@ export const MainContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-around;
+  animation: ${appearFromLeft} 1s;
   @media screen and (min-width: 600px) {
     background: url(${backgroundDesktop}) round;
     flex-direction: row;

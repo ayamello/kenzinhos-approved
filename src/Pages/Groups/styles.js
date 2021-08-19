@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:100;
+  }
+`
 
 export const Container = styled.div`
   background: linear-gradient(
@@ -6,6 +16,7 @@ export const Container = styled.div`
     #1d64cb 0%,
     rgba(116, 29, 203, 0.57) 100%
   );
+  animation:${fadeIn} 1s;
 
   @media (min-width: 1024px) {
     display: flex;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes }from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
@@ -34,6 +34,8 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: 'var(--blue-color)',
   },
 }));
+
+
 
 export const Containter = styled.div`
   display: flex;
