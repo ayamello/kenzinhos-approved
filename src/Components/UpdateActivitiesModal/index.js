@@ -13,7 +13,7 @@ import {
   Backdrop,
   Fade,
 } from "@material-ui/core";
-import { useGroupsUser } from "../../Providers/GroupsUser";
+import { useListActivitiesGoals } from "../../Providers/ActivitiesGoals";
 import { InputId } from "../ActivitiesModal/styles";
 import CreateIcon from "@material-ui/icons/Create";
 
@@ -50,13 +50,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UpdateGroups = ({ groupsId }) => {
+const UpdateActivities = ({ activityId }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
   const { register, handleSubmit } = useForm();
-  const { updateGroups } = useGroupsUser();
+  const { updateActivitie } = useListActivitiesGoals();
 
   const handleOpen = () => {
     setOpen(true);
@@ -94,9 +94,9 @@ const UpdateGroups = ({ groupsId }) => {
                 >
                   x
                 </Button>
-                <h1>Atualize seu grupo</h1>
+                <h1>Atualize sua atividade</h1>
               </TitleContainer>
-              <form onSubmit={handleSubmit(updateGroups)}>
+              <form onSubmit={handleSubmit(updateActivitie)}>
                 <div className={classes.inputs}>
                   <InputContainer>
                     <TextField
@@ -105,23 +105,14 @@ const UpdateGroups = ({ groupsId }) => {
                       label="Nome"
                       variant="outlined"
                       color="primary"
-                      {...register("name")}
+                      {...register("title")}
                     />
                   </InputContainer>
-                  <InputContainer>
-                    <TextField
-                      size="small"
-                      id="outlined-basic"
-                      label="Categoria"
-                      variant="outlined"
-                      color="primary"
-                      {...register("category")}
-                    />
-                  </InputContainer>
+
                   <InputContainer>
                     <InputId
                       className="hidden-id"
-                      value={groupsId}
+                      value={activityId}
                       {...register("id")}
                     />
                   </InputContainer>
@@ -147,4 +138,4 @@ const UpdateGroups = ({ groupsId }) => {
   );
 };
 
-export default UpdateGroups;
+export default UpdateActivities;
