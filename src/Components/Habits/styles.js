@@ -19,7 +19,6 @@ export const Container = styled.div`
 export const MainContainer = styled.div`
   width: 100%;
   height: 300px;
-  max-height: 380px;
   background: #e5e5e5;
   border: 2px solid rgba(29, 100, 203, 0.1);
   box-sizing: border-box;
@@ -37,6 +36,7 @@ export const MainContainer = styled.div`
   
   @media screen and (min-width: 1024px) {
     width: 600px;
+    height: 430px;
     background: #f9f9f9;
     box-shadow: 0px 4px 4px rgba(116, 29, 203, 0.57);
   }

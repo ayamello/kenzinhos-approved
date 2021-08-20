@@ -106,8 +106,6 @@ export const TitleContainer = styled.div`
       color: darkgreen;
     }
   }
-
-
 `;
 
 export const SubTitleContainer = styled.div`
