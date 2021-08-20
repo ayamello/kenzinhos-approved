@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
         --title-font: 'Source Code Pro';
         --body-font: 'Source Sans Pro';
         --blue-color: rgba(29,100,203,1);
+        --purple-color: rgba(116,29,203,.5);
+        --gray-details: rgba(149,149,149,1);
+        --white-color: rgba(255,255,255,1);
     }
 
     body, input, button{
