@@ -108,10 +108,10 @@ const Home = () => {
             <h4>Alex - Product Owner</h4>
             <p>Email: alesilvasp@gmail.com</p>
             <IconsNav>
-              <a href="https://www.linkedin.com/in/alex-silva-2b1aaa202/">
+              <a href="https://www.linkedin.com/in/alex-silva-2b1aaa202/" target="_blank" rel="noreferrer">
                 <LinkedInIcon />
               </a>
-              <a href="https://github.com/alesilvasp">
+              <a href="https://github.com/alesilvasp" target="_blank" rel="noreferrer">
                 <GitHubIcon />
               </a>
             </IconsNav>
@@ -122,10 +122,10 @@ const Home = () => {
             <h4>Ayana - Tech Leader</h4>
             <p>Email: dev.ayanamello@gmail.com</p>
             <IconsNav>
-              <a href="https://www.linkedin.com/in/ayana-mello/">
+              <a href="https://www.linkedin.com/in/ayana-mello/" target="_blank" rel="noreferrer">
                 <LinkedInIcon />
               </a>
-              <a href="https://github.com/ayanamello">
+              <a href="https://github.com/ayanamello" target="_blank" rel="noreferrer">
                 <GitHubIcon />
               </a>
             </IconsNav>
@@ -138,10 +138,10 @@ const Home = () => {
             <h4>Carlos - Quality Assurance</h4>
             <p>Email: hiro1kz77@gmail.com</p>
             <IconsNav>
-              <a href="https://www.linkedin.com/in/carlos-lima-773337215/">
+              <a href="https://www.linkedin.com/in/carlos-lima-773337215/" target="_blank" rel="noreferrer">
                 <LinkedInIcon />
               </a>
-              <a href="https://github.com/hirokz7">
+              <a href="https://github.com/hirokz7" target="_blank" rel="noreferrer">
                 <GitHubIcon />
               </a>
             </IconsNav>
@@ -152,10 +152,10 @@ const Home = () => {
             <h4>Gabriel - Quality Assurance</h4>
             <p>Email: gabrielcb84@hotmail.com</p>
             <IconsNav>
-              <a href="https://www.linkedin.com/in/gabriel-bueno-11227a209/">
+              <a href="https://www.linkedin.com/in/gabriel-bueno-11227a209/" target="_blank" rel="noreferrer">
                 <LinkedInIcon />
               </a>
-              <a href="https://github.com/GabrielBuenodev">
+              <a href="https://github.com/GabrielBuenodev" target="_blank" rel="noreferrer">
                 <GitHubIcon />
               </a>
             </IconsNav>
@@ -168,10 +168,10 @@ const Home = () => {
             <h4>Gabriela - Scrum Master</h4>
             <p>Email: gabrielarodrigues432@gmail.com</p>
             <IconsNav>
-              <a href="https://www.linkedin.com/in/gabriela-rodrigues-3aa382208/">
+              <a href="https://www.linkedin.com/in/gabriela-rodrigues-3aa382208/" target="_blank" rel="noreferrer">
                 <LinkedInIcon />
               </a>
-              <a href="https://github.com/gaavro">
+              <a href="https://github.com/gaavro" target="_blank" rel="noreferrer">
                 <GitHubIcon />
               </a>
             </IconsNav>
