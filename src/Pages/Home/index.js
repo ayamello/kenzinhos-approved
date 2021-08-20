@@ -141,7 +141,7 @@ const Home = () => {
               <a href="https://www.linkedin.com/in/carlos-lima-773337215/">
                 <LinkedInIcon />
               </a>
-              <a href="https://www.linkedin.com/in/carlos-lima-773337215/">
+              <a href="https://github.com/hirokz7">
                 <GitHubIcon />
               </a>
             </IconsNav>
