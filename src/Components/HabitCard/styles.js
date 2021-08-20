@@ -12,8 +12,8 @@ const fadeIn = keyframes`
 
 export const MainContainer = styled.div`
   color: white;
-  height: 370px;
-  width: 160px;
+  height: 300px;
+  width: 170px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -27,6 +27,7 @@ export const MainContainer = styled.div`
   margin-bottom: 10px;
   margin-top: 10px;
   animation: ${fadeIn}1x;
+
   @media screen and (min-width: 769px) {
     background-image: linear-gradient(#1d64cb, #741dcb);
   }
@@ -64,6 +65,20 @@ export const TitleContainer = styled.div`
   input {
     margin-top: 2px;
     width: 50px;
+  }
+
+  .formCompleted {
+    .check {
+      width: 20px;
+      margin: 0;
+      transform: translateY(4px);
+    }
+    label {
+      font-size: 16px;
+    }
+    .yesOption {
+      margin-right: 10px;
+    }
   }
 `;
 

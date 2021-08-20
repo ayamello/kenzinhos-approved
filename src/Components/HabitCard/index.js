@@ -4,7 +4,7 @@ import { ButtonContainer, MainContainer, TitleContainer } from "./styles";
 import { Slider } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { Rating } from "@material-ui/lab";
-import { TextField, MenuItem } from "@material-ui/core";
+
 const AchievedSlider = withStyles({
   root: {
     color: "#52af77",
@@ -97,19 +97,27 @@ const HabitCard = ({ habit }) => {
             setHowMuch(newValue);
           }}
         />
-        <div>
-          <h5>Conseguiu realizar?</h5>
+        <h5>Conseguiu realizar?</h5>
+        <div className="formCompleted">
+          <input 
+            type="checkbox" 
+            className="check" 
+            id="yesOption" 
+            defaultValue={habit.achieved} 
+            checked={achieved} 
+            onChange={((e) => setAchieved(!achieved))}
+          />
+          <label htmlFor="yesOption" className="yesOption">Sim</label>
 
-          <TextField
-            size="small"
-            id="outlined-basic"
-            variant="filled"
-            value="achieved"
-            select
-          >
-            <MenuItem value={"true"}>Consegui fazer</MenuItem>
-            <MenuItem value={"false"}>Não consegui!</MenuItem>
-          </TextField>
+          <input 
+            type="checkbox" 
+            className="check" 
+            id="noOption" 
+            defaultValue={habit.achieved} 
+            checked={!achieved} 
+            onChange={((e) => setAchieved(!achieved))}
+          />
+          <label htmlFor="noOption">Não</label>
         </div>
       </TitleContainer>
       <ButtonContainer>
