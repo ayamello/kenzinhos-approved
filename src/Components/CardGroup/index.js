@@ -11,6 +11,7 @@ import {
   ContainerActivities,
   useStyles,
   TopContainer,
+  ListsDiv,
 } from "./styles";
 import { useGroupsUser } from "../../Providers/GroupsUser";
 
@@ -58,23 +59,37 @@ const Group = ({ group }) => {
         </TopContainer>
         <ContainerGoals>
           <Typography variant="h5" component="h4">
-            Metas:
+            Metas
           </Typography>
-          {group?.goals.map((goal) => (
-            <Typography variant="body2" component="p">
-              {goal.title}
-            </Typography>
-          ))}
+          <ListsDiv>
+            {group?.goals.map((goal) => (
+              <div className="Goal">
+                <span><strong>{goal.title}</strong></span>
+                <span>
+                  <strong>Nível: </strong>
+                  {goal.difficulty}
+                </span>
+              </div>
+            ))}
+          </ListsDiv>
         </ContainerGoals>
         <ContainerActivities>
           <Typography variant="h5" component="h4">
-            Atividades:
+            Atividades
           </Typography>
-          {group?.activities.map((activity) => (
-            <Typography variant="body2" component="li">
-              {activity.title}
-            </Typography>
-          ))}
+          <ListsDiv>
+            {group?.activities.map((activity) => (
+              <div className="Activity">
+                <span><strong>{activity.title}</strong></span>
+                <span>
+                  <strong>Finalizar em: </strong>
+                  {new Date(activity.realization_time).toLocaleDateString(
+                    "pt-BR"
+                  )}
+                </span>
+              </div>
+            ))}
+          </ListsDiv>
         </ContainerActivities>
       </CardContent>
     </Card>

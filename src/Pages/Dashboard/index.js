@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-const Dashboard = () => {
-    return(
-        <div></div>
-    );
-}
-=======
 import Habits from "../../Components/Habits";
 import { Container, Content, useStyles } from "./styles";
 import { Edit } from "@material-ui/icons";
@@ -136,6 +129,5 @@ const Dashboard = () => {
     </Container>
   );
 };
->>>>>>> Test
 
 export default Dashboard;

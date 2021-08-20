@@ -1,5 +1,5 @@
 import { Container, Content } from './styles';
-import logo from '../../Assets/Img/logosimplified.png';
+import logo from '../../Assets/Img/logoMobile.png';
 import groupsImg from '../../Assets/Img/groups.png';
 import profile from '../../Assets/Img/profile.png';
 import { ArrowBack } from '@material-ui/icons';
