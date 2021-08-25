@@ -28,9 +28,9 @@
 <h3> 💻 Desenvolvedores </h3>
 
 <div> 
-    <span>[Alexander Silva](https://www.linkedin.com/in/alex-silva-2b1aaa202/)</span>
-    | <span>[Ayana Mello ](https://www.linkedin.com/in/ayana-mello/)</span>
-    | <span>[Carlos Lima](https://www.linkedin.com/in/carlos-lima-773337215/)</span>
-    | <span>[Gabriel Bueno](https://www.linkedin.com/in/gabriel-bueno-11227a209/)</span>
-    | <span>[Gabriela Rodrigues](https://www.linkedin.com/in/gabriela-rodrigues-3aa382208/)</span>
+  <a href="https://www.linkedin.com/in/alex-silva-2b1aaa202/">Alexander Silva</a>
+  | <a href="https://www.linkedin.com/in/ayana-mello/">Ayana Mello</a>
+  | <a href="https://www.linkedin.com/in/carlos-lima-773337215/">Carlos Lima</a>
+  | <a href="https://www.linkedin.com/in/gabriel-bueno-11227a209/">Gabriel Bueno</a>
+  | <a href="https://www.linkedin.com/in/gabriela-rodrigues-3aa382208/">Gabriela Rodrigues</a>
 </div>
