@@ -10,6 +10,7 @@
 <details>
 	<summary>Frontend</summary>
 	
+   - React
    - Material UI
    - Styled-components
    - Axios 
